@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+      supplier_group: 'Grupo de Fornecedor'
+      supplier: 'Fornecedor'
+      uasg: 'UASG'
+      bid: 'Pregão'
+      item_classification: 'Classificação de Item'
+    attributes:
+      user:
+        admin_authorization: 'Autorização do Admin'

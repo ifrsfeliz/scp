@@ -1,0 +1,50 @@
+<h1 class="title">Visualizar Usuário</h1>
+
+<p>
+  <strong>E-mail:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Autorização do Admin:</strong>
+  <% if @user.admin_authorization %>
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  <% else %>
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  <% end %>
+</p>
+
+<p>
+  <strong>Total de Logins:</strong>
+  <%= @user.sign_in_count %>
+</p>
+
+<p>
+  <strong>Login Atual em:</strong>
+  <%= I18n.l @user.current_sign_in_at, format: :short %>
+</p>
+
+<p>
+  <strong>IP Atual do Login:</strong>
+  <%= @user.current_sign_in_ip %>
+</p>
+
+<p>
+  <strong>Último IP de Login:</strong>
+  <%= @user.last_sign_in_ip %>
+</p>
+
+<p>
+  <strong>Criado em:</strong>
+  <%= I18n.l @user.created_at, format: :short %>
+</p>
+
+<p>
+  <strong>Atualizado em:</strong>
+  <%= I18n.l @user.updated_at, format: :short %>
+</p>
+
+<% if can? :update, @user %>
+  <%= link_to 'Editar', edit_user_path(@user), class: 'btn btn-warning' %>
+<% end %>
+<%= link_to 'Voltar', users_path, class: 'btn btn-default' %>

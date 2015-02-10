@@ -1,0 +1,4 @@
+pt-BR:
+  unauthorized:
+    default: "Você não está autorizado em executar esta ação"
+

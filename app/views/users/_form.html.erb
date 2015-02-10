@@ -1,0 +1,34 @@
+<p>Você está editando o usuário: <strong><%= @user.email %></strong>, não é possível alterar o e-mail, caso seja necessário, a conta deve ser deletada e o usuário deve fazer um novo cadastro.</p>
+
+<%= form_for(@user, html: {class: 'form-signin'}) do |f| %>
+  <% if @user.errors.any? %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+
+  <%= f.label :admin_authorization, "Autorizar acesso ao Sistema?" %>
+
+  <div class="cb-switcher">
+    <label class="inner-switcher">
+      <%= f.check_box :admin_authorization, {data: {'state-on': 'Sim', 'state-off': 'Não'}} %>
+    </label>
+    <span class="cb-state">Sim</span>
+  </div>
+
+  <br />
+  <br />
+
+  <%= f.label :role_ids, "Funções" %><br />
+  <%= f.collection_select :role_ids, @roles, :id, :name, {}, {:multiple => true, class: 'chosen-select' } %>
+
+  <br /><br />
+
+  <div class="actions">
+    <%= f.submit 'Salvar Usuário', class: 'btn btn-primary'%>
+  </div>
+<% end %>
+
+<hr />
