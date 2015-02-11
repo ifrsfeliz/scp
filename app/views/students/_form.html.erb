@@ -1,0 +1,12 @@
+<%= simple_form_for(@student) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.input :nome %>
+    <%= f.input :cpf %>
+    <%= f.input :rg %>
+    <%= f.input :email %>
+    <%= f.input :telefone %>
+    <%= f.input :celular %>
+
+    <%= f.button :submit, class: 'btn btn-primary'%>
+<% end %>

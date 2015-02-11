@@ -1,0 +1,31 @@
+<h1 class="title">Lista de students</h1>
+
+<table class="table table-striped">
+  <tr>
+      <th>nome</th>
+      <th>cpf</th>
+      <th>rg</th>
+      <th>email</th>
+      <th>telefone</th>
+      <th>celular</th>
+      <th colspan="3">Ações</th>
+  </tr>
+
+  <%= content_tag_for(:tr, @students) do |student| %>
+          <td><%= student.nome %></td>
+          <td><%= student.cpf %></td>
+          <td><%= student.rg %></td>
+          <td><%= student.email %></td>
+          <td><%= student.telefone %></td>
+          <td><%= student.celular %></td>
+        <td>
+      <%= link_to 'Mostrar', student %>
+      <%= link_to 'Editar', edit_student_path(student) %>
+      <%= link_to 'Destruir', student, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+    </td>
+  <% end %>
+</table>
+
+<hr />
+
+<%= link_to 'Novo(a) Student', new_student_path, class: 'btn btn-success' %>

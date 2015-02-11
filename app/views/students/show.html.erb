@@ -1,0 +1,21 @@
+<h1 class="title">Exibindo Student</h1>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @student.nome %></dd>
+  <dt>Cpf:</dt>
+  <dd><%= @student.cpf %></dd>
+  <dt>Rg:</dt>
+  <dd><%= @student.rg %></dd>
+  <dt>Email:</dt>
+  <dd><%= @student.email %></dd>
+  <dt>Telefone:</dt>
+  <dd><%= @student.telefone %></dd>
+  <dt>Celular:</dt>
+  <dd><%= @student.celular %></dd>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_student_path(@student), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', students_path, class: 'btn btn-default' %>
