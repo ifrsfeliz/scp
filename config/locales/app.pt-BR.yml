@@ -1,12 +1,18 @@
 pt-BR:
   activerecord:
     models:
-      user: Usuário
-      supplier_group: 'Grupo de Fornecedor'
-      supplier: 'Fornecedor'
-      uasg: 'UASG'
-      bid: 'Pregão'
-      item_classification: 'Classificação de Item'
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+      professor:
+        one: 'Professor'
+        other: 'Professores'
+      student:
+        one: 'Aluno'
+        other: 'Alunos'
+      situation:
+        one: 'Situação'
+        other: 'Situações'
     attributes:
       user:
         admin_authorization: 'Autorização do Admin'

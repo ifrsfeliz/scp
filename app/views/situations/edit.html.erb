@@ -1,6 +1,8 @@
-<h1>Editing Situation</h1>
-
+<h1 class="title">Editando Situação</h1>
+	
 <%= render 'form' %>
 
-<%= link_to 'Show', @situation %> |
-<%= link_to 'Back', situations_path %>
+<hr />
+
+<%= link_to 'Mostrar', @situation, class: 'btn btn-info' %>
+<%= link_to 'Voltar', situations_path, class: 'btn btn-default' %>

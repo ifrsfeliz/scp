@@ -1,27 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h1 class="title">Lista de Situações</h1>
 
-<h1>Listing Situations</h1>
+<table class="table table-striped">
+  <tr>
+      <th>Nome</th>
+      <th colspan="3">Ações</th>
+  </tr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @situations.each do |situation| %>
-      <tr>
-        <td><%= situation.name %></td>
-        <td><%= link_to 'Show', situation %></td>
-        <td><%= link_to 'Edit', edit_situation_path(situation) %></td>
-        <td><%= link_to 'Destroy', situation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <%= content_tag_for(:tr, @situations) do |situation| %>
+          <td><%= situation.nome %></td>
+        <td>
+      <%= link_to 'Mostrar', situation %>
+      <%= link_to 'Editar', edit_situation_path(situation) %>
+      <%= link_to 'Destruir', situation, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+    </td>
+  <% end %>
 </table>
 
-<br>
+<hr />
 
-<%= link_to 'New Situation', new_situation_path %>
+<%= link_to 'Nova Situação', new_situation_path, class: 'btn btn-success' %>
