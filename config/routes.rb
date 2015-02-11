@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :situations
+
   resources :professors
 
   get 'home/index'
