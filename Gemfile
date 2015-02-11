@@ -27,6 +27,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'devise-i18n'
 
+# Authorization
+gem 'cancancan'
+
+# Let the Selects good to use
+gem 'chosen-rails'
+
+# simple form && datepicker
+gem 'simple_form'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails' #dependency of datetimepicker-rails
+
+# Monetize
+gem 'money-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

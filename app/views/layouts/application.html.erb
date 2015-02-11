@@ -1,14 +1,139 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>ScpRails</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+<html lang="pt-br">
+  <head>
+    <title>SCP - Controle de Projetos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav id="top-nav">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul>
+              <li><a href="#" class="active">SCP - Sistema de Controle de Projetos</a></li>
+              <li><a href="#">Sistema Lorem</a></li>
+              <li><a href="#">Sistema Ipsum</a></li>
+              <li><a href="#">Sistema Dolor</a></li>
+              <li><a href="#">Sistema Sit Amet</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4">
+            <a href="<%= root_path %>" id="logo">
+              <img src="<%= image_url "logo-ifrs-feliz.png" %>" alt="IFRS - Campus Feliz">
+            </a>
+          </div>
+          <div class="col-lg-8">
+            <h1>SCP - Sistema de Controle de Projetos</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Alternar Navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<%= root_path %>">Início</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Orçamentos <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Ação</a></li>
+                    <li><a href="#">Outra Ação</a></li>
+                    <li><a href="#">Mais uma</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link separado</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Outro separado</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Licitações <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="/solpa/users" class="dropdown-toggle" data-toggle="dropdown">Planejamento <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Ação</a></li>
+                    <li><a href="#">Outra Ação</a></li>
+                    <li><a href="#">Mais uma</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link separado</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Outro separado</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <% if current_user %>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href=""Minha Conta</a></li>
+                      <li><%= link_to "Alterar Senha", :edit_user_registration %></li>
+                      <li><%= link_to "Sair", :destroy_user_session, :method => :delete %></li>
+                      <% if current_user.role? :admin %>
+                        <li class="divider"></li>
+                        <li role="presentation" class="dropdown-header">Administração</li>
+                        <% if can? :manage, User %>
+                          <li><%= link_to "Usuários", :users %></li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "Entrar", :new_user_session %>
+                  </li>
+                <% end %>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section id="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <% if flash[:notice] %>
+              <p class="alert alert-info"><%= notice %></p>
+            <% elsif flash[:alert] %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+    </div>
+    </section>
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>IFRS - Instituto Federal de Educação, Ciência e Tecnologia - Campus Feliz</p>
+            <p>STI - Setor de Tecnologia da Informação</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

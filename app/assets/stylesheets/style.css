@@ -1,0 +1,172 @@
+/* overrides/sobreescritas do bootstrap */
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+a {
+	color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+}
+	
+hr {
+  border-top: 1px solid #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+}
+
+table caption .new-record {
+	float: right;
+}
+
+.form-group.required .control-label:after { 
+   content:"*";
+   color:red;
+}
+
+.btn-primary {
+  	background-color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+	border-color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+}
+
+.btn-primary:hover {
+	background-color: #278B0C; /* #2D8985, #543F9B, #14316E, #BC6B00, #7E0C59, #A51A0F */
+}
+
+.alert p { /* this is to avoid create just a new class on codeigniter to create errors as a list, so it's better 4 lines than a whole class */
+	list-style:disc outside none;
+    display:list-item;
+	margin: 10px 0 0 20px;
+}
+/* overrides/sobreescritas do bootstrap */
+
+#top-nav {
+  border-bottom: 1px solid #000;
+  position: relative;
+  z-index: 999;
+  background: #3B3B3B;
+  background: -moz-linear-gradient(top, #3B3B3B 0%, #2b2b2b 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3B3B3B), color-stop(100%,#2b2b2b));
+}
+
+#top-nav ul {
+  list-style: none;
+  margin: 5px 0 5px;
+  padding: 0;
+}
+
+#top-nav ul li {
+  display: inline-block;
+  padding-right: 20px;
+}
+
+#top-nav ul li a {
+  color: #E7E7E7;
+}
+
+#top-nav ul li a:hover {
+  color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+  text-decoration: none;
+}
+
+#top-nav a.active {
+  color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+}
+
+header {
+  background: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 200%;
+  color: #FFFFFF;
+  margin: 35px 0 10px;
+  text-align: center;
+}
+
+
+#content {
+  margin-bottom: 30px;
+}
+
+#content .title {
+  color: #3AAC1C;
+  border-bottom: 2px solid #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+footer {
+  background: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
+  padding: 10px 0 0;
+}
+
+footer p {
+  color: #E7E7E7;
+  text-align: center;
+}
+
+/* login */
+.form-signin {
+  max-width: 350px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.error {
+	color: #a94442;
+	background-color: #f2dede;
+}
+
+.form-error {
+	border: 1px solid #ebccd1;
+	color: #a94442;
+}
+
+.error-message {
+	padding: 8px;
+	margin-bottom: 10px;
+	border: 1px solid transparent;
+	border-radius: 0 0 4px 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+
+/* users */
+
+/* end users */
