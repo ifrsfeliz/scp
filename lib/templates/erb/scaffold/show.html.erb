@@ -1,0 +1,13 @@
+<h1 class="title">Exibindo <%= singular_table_name.capitalize %></h1>
+
+<dl class="dl-horizontal">
+<% attributes.each do |attribute| -%>
+  <dt><%= attribute.human_name %>:</dt>
+  <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
+<% end -%>
+</dl>
+
+<hr />
+
+<%%= link_to 'Editar', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-warning' %>
+<%%= link_to 'Voltar', <%= index_helper %>_path, class: 'btn btn-default' %>
