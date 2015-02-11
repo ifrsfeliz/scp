@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1 class="title">Exibindo Professor</h1>
 
 <p>
   <strong>Nome:</strong>
@@ -30,5 +30,7 @@
   <%= @professor.celular %>
 </p>
 
-<%= link_to 'Edit', edit_professor_path(@professor) %> |
-<%= link_to 'Back', professors_path %>
+<hr />
+
+<%= link_to 'Editar', edit_professor_path(@professor), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', professors_path, class: 'btn btn-default'%>
