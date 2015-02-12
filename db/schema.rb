@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211211612) do
+ActiveRecord::Schema.define(version: 20150212154146) do
+
+  create_table "documents", force: :cascade do |t|
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "student_id"
+  end
+
+  add_index "documents", ["student_id"], name: "index_documents_on_student_id"
 
   create_table "professors", force: :cascade do |t|
     t.string   "nome"

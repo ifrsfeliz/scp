@@ -41,6 +41,8 @@ gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails' #depend
 # Monetize
 gem 'money-rails'
 
+gem 'paperclip'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

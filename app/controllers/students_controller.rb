@@ -28,6 +28,13 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
+
+        if params[:files]
+          params[:files].each { |f|
+            @student.documents.create(file: f)
+          }
+        end
+
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
@@ -42,6 +49,13 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
+
+        if params[:files]
+          params[:files].each { |f|
+            @student.documents.create(file: f)
+          }
+        end
+
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else

@@ -1,4 +1,4 @@
-<%= simple_form_for(@student) do |f| %>
+<%= simple_form_for(@student, html: {multipart: true}) do |f| %>
   <%= f.error_notification %>
 
     <%= f.input :nome %>
@@ -7,6 +7,10 @@
     <%= f.input :email %>
     <%= f.input :telefone %>
     <%= f.input :celular %>
-
+    
+    <div class="form-group">
+      <%= label_tag "Documentos" %>
+      <%= file_field_tag "files[]", type: :file, multiple: true %>
+    </div>
     <%= f.button :submit, class: 'btn btn-primary'%>
 <% end %>

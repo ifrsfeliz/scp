@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources 'documents', only: :destroy
+
   resources :situations
 
   resources :students
