@@ -28,6 +28,13 @@ class ProfessorsController < ApplicationController
 
     respond_to do |format|
       if @professor.save
+        
+        if params[:files]
+          params[:files].each { |f|
+            @professor.documents.create(file: f)
+          }
+        end
+        
         format.html { redirect_to @professor, notice: 'Professor was successfully created.' }
         format.json { render :show, status: :created, location: @professor }
       else
@@ -42,6 +49,13 @@ class ProfessorsController < ApplicationController
   def update
     respond_to do |format|
       if @professor.update(professor_params)
+        
+        if params[:files]
+          params[:files].each { |f|
+            @professor.documents.create(file: f)
+          }
+        end
+        
         format.html { redirect_to @professor, notice: 'Professor was successfully updated.' }
         format.json { render :show, status: :ok, location: @professor }
       else

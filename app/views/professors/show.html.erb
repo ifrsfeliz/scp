@@ -1,34 +1,50 @@
 <h1 class="title">Exibindo Professor</h1>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @professor.nome %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <h4 class="title">Dados</h4>
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @professor.cpf %>
-</p>
+    <dl class="dl-horizontal">
+      <dt>Nome:</dt>
+      <dd><%= @professor.nome %></dd>
+      <dt>Cpf:</dt>
+      <dd><%= @professor.cpf %></dd>
+      <dt>Rg:</dt>
+      <dd><%= @professor.rg %></dd>
+      <dt>Email:</dt>
+      <dd><%= @professor.email %></dd>
+      <dt>Telefone:</dt>
+      <dd><%= @professor.telefone %></dd>
+      <dt>Celular:</dt>
+      <dd><%= @professor.celular %></dd>
+    </dl>
+  </div>
 
-<p>
-  <strong>Rg:</strong>
-  <%= @professor.rg %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @professor.email %>
-</p>
-
-<p>
-  <strong>Telefone:</strong>
-  <%= @professor.telefone %>
-</p>
-
-<p>
-  <strong>Celular:</strong>
-  <%= @professor.celular %>
-</p>
+  <div class="col-md-6">
+    <h4 class="title">Documentos</h4>
+    
+    <table class="table">
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    
+      <% if @professor.documents.any? %>
+        <% @professor.documents.each do |d| %>
+          <tr>
+            <td><%= link_to d.file_file_name, d.file.url %></td>
+            <td><%= link_to 'Deletar', d, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          Nenhum documento cadastrado até o momento.
+        <tr>
+      <% end %>
+    
+    </table>
+  </div>
+</div>
 
 <hr />
 
