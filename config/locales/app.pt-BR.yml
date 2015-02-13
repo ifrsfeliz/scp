@@ -16,6 +16,9 @@ pt-BR:
       research_group:
         one: 'Grupo de Pesquisa'
         other: 'Grupos de Pesquisa'
+      research_line:
+        one: 'Linha de Pesquisa'
+        other: 'Linhass de Pesquisa'
     attributes:
       user:
         admin_authorization: 'Autorização do Admin'

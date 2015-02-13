@@ -1,0 +1,23 @@
+<h1 class="title">Lista de Linhas de Pesquisa</h1>
+
+<table class="table table-striped">
+  <tr>
+      <th>Nome</th>
+      <th>Grupo de Pesquisa</th>
+      <th colspan="3">Ações</th>
+  </tr>
+
+  <%= content_tag_for(:tr, @research_lines) do |research_line| %>
+          <td><%= research_line.nome %></td>
+          <td><%= research_line.research_group.nome %></td>
+        <td>
+      <%= link_to 'Mostrar', research_line %>
+      <%= link_to 'Editar', edit_research_line_path(research_line) %>
+      <%= link_to 'Destruir', research_line, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+    </td>
+  <% end %>
+</table>
+
+<hr />
+
+<%= link_to 'Nova Linha de Pesquisa', new_research_line_path, class: 'btn btn-success' %>

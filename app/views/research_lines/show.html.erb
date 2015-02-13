@@ -1,0 +1,13 @@
+<h1 class="title">Exibindo Linha de Pesquisa</h1>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @research_line.nome %></dd>
+  <dt>Grupo de Pesquisa:</dt>
+  <dd><%= @research_line.research_group.nome %></dd>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_research_line_path(@research_line), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', research_lines_path, class: 'btn btn-default' %>
