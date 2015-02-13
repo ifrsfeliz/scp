@@ -6,5 +6,16 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionController::TestCase
+  # Devise helper
+  include Devise::TestHelpers
+
+ def setup
+   sign_in User.first
+ end
+end
+

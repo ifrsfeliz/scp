@@ -31,7 +31,7 @@ class SituationsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, id: @situation
-    assert_response :success
+    assert_response :success, @response.body
   end
 
   test "should update situation" do

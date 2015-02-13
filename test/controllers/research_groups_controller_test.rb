@@ -18,7 +18,7 @@ class ResearchGroupsControllerTest < ActionController::TestCase
 
   test "should create research_group" do
     assert_difference('ResearchGroup.count') do
-      post :create, research_group: { nome: @research_group.nome, professor_id: @research_group.professor_id, ultima_atualizacao: @research_group.ultima_atualizacao }
+      post :create, research_group: { nome: @research_group.nome, professor_id: @research_group.professor_id, ultima_verificacao: @research_group.ultima_verificacao }
     end
 
     assert_redirected_to research_group_path(assigns(:research_group))
@@ -35,7 +35,7 @@ class ResearchGroupsControllerTest < ActionController::TestCase
   end
 
   test "should update research_group" do
-    patch :update, id: @research_group, research_group: { nome: @research_group.nome, professor_id: @research_group.professor_id, ultima_atualizacao: @research_group.ultima_atualizacao }
+    patch :update, id: @research_group, research_group: { nome: @research_group.nome, professor_id: @research_group.professor_id, ultima_verificacao: @research_group.ultima_verificacao }
     assert_redirected_to research_group_path(assigns(:research_group))
   end
 

@@ -2,10 +2,10 @@
 
 one:
   nome: MyString
-  professor_id: 
-  ultima_atualizacao: 2015-02-12
+  professor: one
+  ultima_verificacao: 2015-02-12
 
 two:
   nome: MyString
-  professor_id: 
-  ultima_atualizacao: 2015-02-12
+  professor: two
+  ultima_verificacao: 2015-02-12
