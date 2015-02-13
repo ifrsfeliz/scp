@@ -13,6 +13,9 @@ pt-BR:
       situation:
         one: 'Situação'
         other: 'Situações'
+      research_group:
+        one: 'Grupo de Pesquisa'
+        other: 'Grupos de Pesquisa'
     attributes:
       user:
         admin_authorization: 'Autorização do Admin'

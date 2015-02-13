@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  professor_id: 
+  ultima_atualizacao: 2015-02-12
+
+two:
+  nome: MyString
+  professor_id: 
+  ultima_atualizacao: 2015-02-12

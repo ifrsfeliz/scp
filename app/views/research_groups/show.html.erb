@@ -1,0 +1,15 @@
+<h1 class="title">Exibindo Grupo de Pesquisa</h1>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @research_group.nome %></dd>
+  <dt>Líder:</dt>
+  <dd><%= @research_group.professor.nome  %></dd>
+  <dt>Última Verificação:</dt>
+  <dd><%= l @research_group.ultima_verificacao %></dd>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_research_group_path(@research_group), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', research_groups_path, class: 'btn btn-default' %>
