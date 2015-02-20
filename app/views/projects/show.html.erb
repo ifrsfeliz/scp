@@ -1,31 +1,56 @@
-<h1 class="title">Exibindo Projeto</h1>
+<div class="row">
+  <div class="col-md-6">
 
-<dl class="dl-horizontal">
-  <dt>Nome:</dt>
-  <dd><%= @project.nome %></dd>
-  <dt>Coordenador:</dt>
-  <dd><%= @project.coordenador.nome %></dd>
-  <dt>Data Início:</dt>
-  <dd><%= l @project.data_inicio %></dd>
-  <dt>Data Fim:</dt>
-  <dd><%= l @project.data_fim %></dd>
-  <dt>Número SUAP:</dt>
-  <dd><%= @project.numero_suap %></dd>
-  <dt>Nome Edital:</dt>
-  <dd><%= @project.nome_edital %></dd>
-  <dt>Link CNPQ:</dt>
-  <dd><%= @project.link_cnpq %></dd>
-  <dt>Última Verificação:</dt>
-  <dd><%= l @project.ultima_verificacao, format: :short %></dd>
-  <dt>Auxílio AIPCT:</dt>
-  <dd><%= @project.auxilio_aipct %></dd>
-  <dt>Valor AIPCT:</dt>
-  <dd><%= humanized_money_with_symbol @project.valor_aipct %></dd>
-  <dt>Linha de Pesquisa:</dt>
-  <dd><%= @project.research_line.nome %></dd>
-  <dt>Situação:</dt>
-  <dd><%= @project.situation.nome %></dd>
-</dl>
+    <h2 class="title">Exibindo Projeto</h2>
+
+    <dl class="dl-horizontal">
+      <dt>Nome:</dt>
+      <dd><%= @project.nome %></dd>
+      <dt>Coordenador:</dt>
+      <dd><%= @project.coordenador.nome %></dd>
+      <dt>Data Início:</dt>
+      <dd><%= l @project.data_inicio %></dd>
+      <dt>Data Fim:</dt>
+      <dd><%= l @project.data_fim %></dd>
+      <dt>Número SUAP:</dt>
+      <dd><%= @project.numero_suap %></dd>
+      <dt>Nome Edital:</dt>
+      <dd><%= @project.nome_edital %></dd>
+      <dt>Link CNPQ:</dt>
+      <dd><%= @project.link_cnpq %></dd>
+      <dt>Última Verificação:</dt>
+      <dd><%= l @project.ultima_verificacao, format: :short %></dd>
+      <% if @project.auxilio_aipct %>
+        <dt>Auxílio AIPCT:</dt>
+        <dd><%= @project.auxilio_aipct %></dd>
+        <dt>Valor AIPCT:</dt>
+        <dd><%= humanized_money_with_symbol @project.valor_aipct %></dd>
+      <% end %>
+      <dt>Linha de Pesquisa:</dt>
+      <dd><%= @project.research_line.nome %></dd>
+      <dt>Situação:</dt>
+      <dd><%= @project.situation.nome %></dd>
+    </dl>
+  </div>
+  <div class="col-md-6">
+    <h2 class="title">Anexos</h2>
+    <table class="table table-striped">
+      <% if @project.project_attachments.any? %>
+        <% @project.project_attachments.each do |p| %>
+          <tr>
+            <td><%= link_to p.file_file_name, p.file.url %></td>
+            <td><%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          Nenhum anexo cadastrado até o momento.
+        <tr>
+      <% end %>
+    </table>
+    <hr />
+  </div>
+</div>
 
 <hr />
 

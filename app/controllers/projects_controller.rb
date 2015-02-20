@@ -28,6 +28,13 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+
+        if params[:attachments]
+          params[:attachments].each { |f|
+            @project.project_attachments.create(file: f)
+          }
+        end
+
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -42,6 +49,13 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
+
+        if params[:attachments]
+          params[:attachments].each { |f|
+            @project.project_attachments.create(file: f)
+          }
+        end
+
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else

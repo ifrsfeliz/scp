@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :research_groups
 
   resources 'documents', only: :destroy
+  resources 'project_attachments', only: :destroy
 
   resources :situations
 
