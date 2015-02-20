@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :projects
+
   resources :research_lines
 
   resources :research_groups

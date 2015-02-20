@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  professor_id: 
+  data_inicio: 2015-02-19
+  data_fim: 2015-02-19
+  numero_suap: MyString
+  nome_edital: MyString
+  link_cnpq: MyString
+  ultima_verificacao: 2015-02-19 21:12:10
+  auxilio_aipct: false
+  valor_aipct: 1
+  research_line_id: 
+  situation_id: 
+
+two:
+  nome: MyString
+  professor_id: 
+  data_inicio: 2015-02-19
+  data_fim: 2015-02-19
+  numero_suap: MyString
+  nome_edital: MyString
+  link_cnpq: MyString
+  ultima_verificacao: 2015-02-19 21:12:10
+  auxilio_aipct: false
+  valor_aipct: 1
+  research_line_id: 
+  situation_id: 

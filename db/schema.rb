@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213124551) do
+ActiveRecord::Schema.define(version: 20150220153514) do
 
   create_table "documents", force: :cascade do |t|
     t.datetime "created_at",        null: false
@@ -37,6 +37,27 @@ ActiveRecord::Schema.define(version: 20150213124551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "nome"
+    t.integer  "professor_id"
+    t.date     "data_inicio"
+    t.date     "data_fim"
+    t.string   "numero_suap"
+    t.string   "nome_edital"
+    t.string   "link_cnpq"
+    t.datetime "ultima_verificacao"
+    t.boolean  "auxilio_aipct"
+    t.integer  "valor_aipct_cents"
+    t.integer  "research_line_id"
+    t.integer  "situation_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "projects", ["professor_id"], name: "index_projects_on_professor_id"
+  add_index "projects", ["research_line_id"], name: "index_projects_on_research_line_id"
+  add_index "projects", ["situation_id"], name: "index_projects_on_situation_id"
 
   create_table "research_groups", force: :cascade do |t|
     t.string   "nome"

@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id                :integer          not null, primary key
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  file_file_name    :string
+#  file_content_type :string
+#  file_file_size    :integer
+#  file_updated_at   :datetime
+#  student_id        :integer
+#  professor_id      :integer
+#
+
 class Document < ActiveRecord::Base
   belongs_to :student
   belongs_to :professor

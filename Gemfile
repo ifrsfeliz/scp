@@ -41,7 +41,11 @@ gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails' #depend
 # Monetize
 gem 'money-rails'
 
+# File uploads
 gem 'paperclip'
+
+# Annotate models
+gem 'annotate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,0 +1,18 @@
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.input :nome %>
+    <%= f.association :coordenador, label_method: :nome %>
+    <%= f.input :data_inicio, label: 'Data Início', as: 'date_picker' %>
+    <%= f.input :data_fim, as: 'date_picker' %>
+    <%= f.input :numero_suap, label: 'Número SUAP' %>
+    <%= f.input :nome_edital %>
+    <%= f.input :link_cnpq, label: 'Link CNPQ' %>
+    <%= f.input :ultima_verificacao, label: 'Última Verificação', as: 'datetime_picker' %>
+    <%= f.input :auxilio_aipct, label: 'Auxílio AIPCT' %>
+    <%= f.input :valor_aipct, label: 'Valor AIPCT' %>
+    <%= f.association :research_line, label: 'Linha de Pesquisa', label_method: :nome %>
+    <%= f.association :situation, label: 'Situação', label_method: :nome %>
+
+    <%= f.button :submit, class: 'btn btn-primary'%>
+<% end %>

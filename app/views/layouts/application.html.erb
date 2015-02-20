@@ -53,6 +53,7 @@
             <div class="collapse navbar-collapse" id="navbar">
               <ul class="nav navbar-nav">
                 <li class=""><a href="<%= root_path %>">Início</a></li>
+                <li><%= link_to "Projetos", projects_path %></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Participantes <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -60,39 +61,28 @@
                     <li><%= link_to "Alunos", students_path %></li>
                   </ul>
                 </li>
-                <li><%= link_to "Grupos de Pesq.", research_groups_path %></li>
-                <li><%= link_to "Linhas de Pesq.", research_lines_path %></li>
-                <li class="dropdown">
-                  <a href="/solpa/users" class="dropdown-toggle" data-toggle="dropdown">Planejamento <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Ação</a></li>
-                    <li><a href="#">Outra Ação</a></li>
-                    <li><a href="#">Mais uma</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Link separado</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Outro separado</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <%= link_to 'Situações', situations_path %>
-                </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <% if current_user %>
+                  <% if current_user.role? :admin %>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminisração <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <% if can? :manage, User %>
+                          <li><%= link_to "Usuários", :users %></li>
+                        <% end %>
+                        <li><%= link_to "Grupos de Pesquisa", research_groups_path %></li>
+                        <li><%= link_to "Linhas de Pesquisa", research_lines_path %></li>
+                        <li><%= link_to 'Situações', situations_path %></li>
+                      </ul>
+                    </li>
+                  <% end %>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href=""Minha Conta</a></li>
                       <li><%= link_to "Alterar Senha", :edit_user_registration %></li>
                       <li><%= link_to "Sair", :destroy_user_session, :method => :delete %></li>
-                      <% if current_user.role? :admin %>
-                        <li class="divider"></li>
-                        <li role="presentation" class="dropdown-header">Administração</li>
-                        <% if can? :manage, User %>
-                          <li><%= link_to "Usuários", :users %></li>
-                        <% end %>
-                      <% end %>
                     </ul>
                   </li>
                 <% else %>
@@ -124,8 +114,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
-            <p>IFRS - Instituto Federal de Educação, Ciência e Tecnologia - Campus Feliz</p>
-            <p>STI - Setor de Tecnologia da Informação</p>
+            <p>IFRS - Instituto Federal de Educação, Ciência e Tecnologia</p>
+            <p>Desenvolvimento IFRS - Campus Feliz</p>
           </div>
         </div>
       </div>

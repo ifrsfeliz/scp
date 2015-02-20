@@ -19,6 +19,9 @@ pt-BR:
       research_line:
         one: 'Linha de Pesquisa'
         other: 'Linhass de Pesquisa'
+      project:
+        one: 'Projeto'
+        other: 'Projetos'
     attributes:
       user:
         admin_authorization: 'Autorização do Admin'

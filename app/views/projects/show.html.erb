@@ -1,0 +1,33 @@
+<h1 class="title">Exibindo Projeto</h1>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @project.nome %></dd>
+  <dt>Coordenador:</dt>
+  <dd><%= @project.coordenador.nome %></dd>
+  <dt>Data Início:</dt>
+  <dd><%= l @project.data_inicio %></dd>
+  <dt>Data Fim:</dt>
+  <dd><%= l @project.data_fim %></dd>
+  <dt>Número SUAP:</dt>
+  <dd><%= @project.numero_suap %></dd>
+  <dt>Nome Edital:</dt>
+  <dd><%= @project.nome_edital %></dd>
+  <dt>Link CNPQ:</dt>
+  <dd><%= @project.link_cnpq %></dd>
+  <dt>Última Verificação:</dt>
+  <dd><%= l @project.ultima_verificacao, format: :short %></dd>
+  <dt>Auxílio AIPCT:</dt>
+  <dd><%= @project.auxilio_aipct %></dd>
+  <dt>Valor AIPCT:</dt>
+  <dd><%= humanized_money_with_symbol @project.valor_aipct %></dd>
+  <dt>Linha de Pesquisa:</dt>
+  <dd><%= @project.research_line.nome %></dd>
+  <dt>Situação:</dt>
+  <dd><%= @project.situation.nome %></dd>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_project_path(@project), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', projects_path, class: 'btn btn-default' %>
