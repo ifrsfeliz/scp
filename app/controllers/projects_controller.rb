@@ -34,8 +34,14 @@ class ProjectsController < ApplicationController
             @project.project_attachments.create(file: f)
           }
         end
+        
+        if params[:publications]
+          params[:publications].each { |f|
+            @project.project_publications.create(file: f)
+          }
+        end
 
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: 'Projeto foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -55,8 +61,14 @@ class ProjectsController < ApplicationController
             @project.project_attachments.create(file: f)
           }
         end
+        
+        if params[:publications]
+          params[:publications].each { |f|
+            @project.project_publications.create(file: f)
+          }
+        end
 
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Projeto foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -70,7 +82,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to projects_url, notice: 'Projeto foi destruído com sucesso.' }
       format.json { head :no_content }
     end
   end

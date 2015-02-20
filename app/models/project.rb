@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
   belongs_to :situation
   
   has_many :project_attachments, dependent: :destroy
+  has_many :project_publications, dependent: :destroy
 
   # Configs
   monetize :valor_aipct_cents, as: 'valor_aipct' #https://github.com/RubyMoney/money-rails

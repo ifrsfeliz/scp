@@ -1,7 +1,7 @@
+<h2 class="title">Exibindo Projeto</h2>
+
 <div class="row">
   <div class="col-md-6">
-
-    <h2 class="title">Exibindo Projeto</h2>
 
     <dl class="dl-horizontal">
       <dt>Nome:</dt>
@@ -31,9 +31,13 @@
       <dt>Situação:</dt>
       <dd><%= @project.situation.nome %></dd>
     </dl>
+
   </div>
   <div class="col-md-6">
-    <h2 class="title">Anexos</h2>
+    <h4 class="title">Integrantes - Professores</h4>
+    <h4 class="title">Integrantes - Alunos</h4>
+    
+    <h4 class="title">Anexos</h4>
     <table class="table table-striped">
       <% if @project.project_attachments.any? %>
         <% @project.project_attachments.each do |p| %>
@@ -48,11 +52,28 @@
         <tr>
       <% end %>
     </table>
-    <hr />
+
+    <h4 class="title">Publicações</h4>
+    <table class="table table-striped">
+      <% if @project.project_publications.any? %>
+        <% @project.project_publications.each do |p| %>
+          <tr>
+            <td><%= link_to p.file_file_name, p.file.url %></td>
+            <td><%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          Nenhum anexo cadastrado até o momento.
+        <tr>
+      <% end %>
+    </table>
   </div>
 </div>
 
 <hr />
+
+
 
 <%= link_to 'Editar', edit_project_path(@project), class: 'btn btn-warning' %>
 <%= link_to 'Voltar', projects_path, class: 'btn btn-default' %>

@@ -13,10 +13,15 @@
     <%= f.input :valor_aipct, label: 'Valor AIPCT', input_html: {value: f.object.valor_aipct || '0,00'} %>
     <%= f.association :research_line, label: 'Linha de Pesquisa', label_method: :nome %>
     <%= f.association :situation, label: 'Situação', label_method: :nome %>
-    
+
     <div class="form-group">
       <%= label_tag "Anexos" %>
       <%= file_field_tag "attachments[]", type: :file, multiple: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag "Publicações" %>
+      <%= file_field_tag "publications[]", type: :file, multiple: true %>
     </div>
 
     <%= f.button :submit, class: 'btn btn-primary'%>
