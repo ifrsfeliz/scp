@@ -22,10 +22,14 @@
       <dd><%= l @project.ultima_verificacao, format: :short %></dd>
       <% if @project.auxilio_aipct %>
         <dt>Auxílio AIPCT:</dt>
-        <dd><%= @project.auxilio_aipct %></dd>
+        <dd><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></dd>
         <dt>Valor AIPCT:</dt>
         <dd><%= humanized_money_with_symbol @project.valor_aipct %></dd>
+      <% else %>
+        <dt>Auxílio AIPCT:</dt>
+        <dd><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></dd>
       <% end %>
+
       <dt>Linha de Pesquisa:</dt>
       <dd><%= @project.research_line.nome %></dd>
       <dt>Situação:</dt>
@@ -35,6 +39,25 @@
   </div>
   <div class="col-md-6">
     <h4 class="title">Professores</h4>
+    <table class="table table-striped">
+      <tr>
+        <th>Professor</th>
+        <th>Email</th>
+      </tr>
+      <% if @project.member_professors.any? %>
+        <% @project.member_professors.each do |p| %>
+          <tr>
+            <td><%= link_to p.professor.nome, p.professor %></td>
+            <td><%= p.professor.email %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td>Nenhum vínculo cadastro ainda</td>
+        </tr>
+      <% end %>
+    </table>
+
     <h4 class="title">Alunos</h4>
     <table class="table table-striped">
       <tr>
@@ -53,7 +76,9 @@
           </tr>
         <% end %>
       <% else %>
-        <p>Nenhum vínculo cadastro ainda</p>
+        <tr>
+          <td>Nenhum vínculo cadastro ainda</td>
+        </tr>
       <% end %>
     </table>
 

@@ -15,7 +15,15 @@
     <%= f.association :situation, label: 'Situação', label_method: :nome %>
 
     <hr />
-    <p class="alert alert-info"><strong>Importante! Qualquer alteração nos vínculos somente serão efetivadas após clicar no botão de Atualizar Projeto/Criar Projeto</strong></p>
+    <p class="alert alert-info"><strong>Importante! Qualquer alteração nos vínculos somente será efetivada após clicar no botão de Atualizar Projeto/Criar Projeto</strong></p>
+
+    <h4 class="title">Vínculo de Professores</h4>
+    <div id="member_professors">
+      <%= f.simple_fields_for :member_professors do |m| %>
+        <%= render 'member_professor_fields', :f => m, :render_options => {:wrapper => 'inline' } %>
+      <% end %>
+      <%= link_to_add_association 'Adicionar Professor', f, :member_professors, class: 'btn btn-primary', :id => 'member_professors' %>
+    </div>
 
     <h4 class="title">Vínculo de Alunos</h4>
     <div id="member_students">
@@ -24,20 +32,25 @@
        <% end %>
        <%= link_to_add_association 'Adicionar Aluno', f, :member_students, class: 'btn btn-primary', :id => 'member_students' %>
     </div>
-    
-    
-    
-    <hr />
 
-    <div class="form-group">
-      <%= label_tag "Anexos" %>
-      <%= file_field_tag "attachments[]", type: :file, multiple: true %>
+    <br />
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h4 class="title">Anexos</h4>
+          <%= file_field_tag "attachments[]", type: :file, multiple: true %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <h4 class="title">Publicações</h4>
+          <%= file_field_tag "publications[]", type: :file, multiple: true %>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= label_tag "Publicações" %>
-      <%= file_field_tag "publications[]", type: :file, multiple: true %>
-    </div>
+    <br />
 
     <%= f.button :submit, class: 'btn btn-primary'%>
 <% end %>

@@ -32,10 +32,17 @@ class Project < ActiveRecord::Base
   has_many :member_students
   has_many :students, through: :member_students
 
+  has_many :member_professors
+  has_many :professors, through: :member_professors
+
   # Configs
   monetize :valor_aipct_cents, as: 'valor_aipct' #https://github.com/RubyMoney/money-rails
 
   accepts_nested_attributes_for :member_students,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+
+  accepts_nested_attributes_for :member_professors,
                                 reject_if: :all_blank,
                                 allow_destroy: true
 end

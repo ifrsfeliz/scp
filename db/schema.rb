@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223163752) do
+ActiveRecord::Schema.define(version: 20150223185317) do
 
   create_table "documents", force: :cascade do |t|
     t.datetime "created_at",        null: false
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20150223163752) do
 
   add_index "documents", ["professor_id"], name: "index_documents_on_professor_id"
   add_index "documents", ["student_id"], name: "index_documents_on_student_id"
+
+  create_table "member_professors", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "professor_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "member_students", force: :cascade do |t|
     t.integer  "project_id"
