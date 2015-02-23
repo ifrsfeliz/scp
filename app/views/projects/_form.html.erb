@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
     <%= f.input :nome %>
-    <%= f.association :coordenador, label_method: :nome %>
+    <%= f.association :coordenador, label_method: :nome, input_html: { class: 'chosen-select' } %>
     <%= f.input :data_inicio, label: 'Data Início', as: 'date_picker' %>
     <%= f.input :data_fim, as: 'date_picker' %>
     <%= f.input :numero_suap, label: 'Número SUAP' %>
@@ -11,8 +11,8 @@
     <%= f.input :ultima_verificacao, label: 'Última Verificação', as: 'datetime_picker' %>
     <%= f.input :auxilio_aipct, label: 'Auxílio AIPCT' %>
     <%= f.input :valor_aipct, label: 'Valor AIPCT', input_html: {value: f.object.valor_aipct || '0,00'} %>
-    <%= f.association :research_line, label: 'Linha de Pesquisa', label_method: :nome %>
-    <%= f.association :situation, label: 'Situação', label_method: :nome %>
+    <%= f.association :research_line, label: 'Linha de Pesquisa', label_method: :nome, input_html: { class: 'chosen-select' } %>
+    <%= f.association :situation, label: 'Situação', label_method: :nome, input_html: { class: 'chosen-select' } %>
 
     <hr />
     <p class="alert alert-info"><strong>Importante! Qualquer alteração nos vínculos somente será efetivada após clicar no botão de Atualizar Projeto/Criar Projeto</strong></p>
