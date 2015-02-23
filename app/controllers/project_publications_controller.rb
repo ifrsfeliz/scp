@@ -1,4 +1,4 @@
-class ProjectAttachmentsController < ApplicationController
+class ProjectPublicationsController < ApplicationController
   before_action :set_publication, only: [:destroy]
 
   def destroy

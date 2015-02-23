@@ -17,6 +17,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require cocoon
 //= require bootstrap-datetimepicker.pt-br
 //
 //= require_tree .

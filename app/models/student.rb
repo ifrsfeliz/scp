@@ -14,6 +14,10 @@
 #
 
 class Student < ActiveRecord::Base
+
+  # Associations
   has_many :documents, dependent: :destroy
+  has_many :member_students
+  has_many :projects, through: :member_students
 
 end

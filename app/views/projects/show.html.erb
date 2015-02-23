@@ -34,9 +34,29 @@
 
   </div>
   <div class="col-md-6">
-    <h4 class="title">Integrantes - Professores</h4>
-    <h4 class="title">Integrantes - Alunos</h4>
-    
+    <h4 class="title">Professores</h4>
+    <h4 class="title">Alunos</h4>
+    <table class="table table-striped">
+      <tr>
+        <th>Aluno</th>
+        <th>Vínculo</th>
+        <th>Início</th>
+        <th>Fim</th>
+      </tr>
+      <% if @project.member_students.any? %>
+        <% @project.member_students.each do |s| %>
+          <tr>
+            <td><%= s.student.nome %></td>
+            <td><%= s.tipo_vinculo %></td>
+            <td><%= l s.data_inicio %></td>
+            <td><%= l s.data_fim %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <p>Nenhum vínculo cadastro ainda</p>
+      <% end %>
+    </table>
+
     <h4 class="title">Anexos</h4>
     <table class="table table-striped">
       <% if @project.project_attachments.any? %>

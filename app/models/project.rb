@@ -20,13 +20,22 @@
 #
 
 class Project < ActiveRecord::Base
+
+  # Associations
   belongs_to :coordenador, foreign_key: 'professor_id', class_name: 'Professor'
   belongs_to :research_line
   belongs_to :situation
-  
+
   has_many :project_attachments, dependent: :destroy
   has_many :project_publications, dependent: :destroy
 
+  has_many :member_students
+  has_many :students, through: :member_students
+
   # Configs
   monetize :valor_aipct_cents, as: 'valor_aipct' #https://github.com/RubyMoney/money-rails
+
+  accepts_nested_attributes_for :member_students,
+                                reject_if: :all_blank,
+                                allow_destroy: true
 end
