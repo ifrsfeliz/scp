@@ -1,0 +1,19 @@
+<h1 class="title">Lista de Áreas</h1>
+
+<table class="table table-striped">
+  <tr>
+      <th>nome</th>
+      <th colspan="3">Ações</th>
+  </tr>
+
+  <%= content_tag_for(:tr, @areas) do |area| %>
+    <td><%= area.nome %></td>
+    <td><%= link_to 'Mostrar', area, class: 'btn btn-default btn-xs' %></td>
+    <td><%= link_to 'Editar', edit_area_path(area), class: 'btn btn-warning btn-xs' %></td>
+    <td><%= link_to 'Destruir', area, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+  <% end %>
+</table>
+
+<hr />
+
+<%= link_to 'Nova Área', new_area_path, class: 'btn btn-success' %>

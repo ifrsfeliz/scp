@@ -69,6 +69,6 @@ class ResearchGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_group_params
-      params.require(:research_group).permit(:nome, :professor_id, :ultima_verificacao)
+      params.require(:research_group).permit(:nome, :professor_id, :link_grupo_cnpq, :ultima_verificacao, :area_id)
     end
 end

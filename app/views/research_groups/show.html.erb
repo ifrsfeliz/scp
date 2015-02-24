@@ -5,6 +5,10 @@
   <dd><%= @research_group.nome %></dd>
   <dt>Líder:</dt>
   <dd><%= @research_group.professor.nome  %></dd>
+  <dt>Link Grupo CNPQ:</dt>
+  <dd><%= @research_group.link_grupo_cnpq %></dd>
+  <dt>Grande Área</dt>
+  <dd><%= @research_group.area.nome unless @research_group.area.nil? %></dd>
   <dt>Última Verificação:</dt>
   <dd><%= l @research_group.ultima_verificacao %></dd>
 </dl>

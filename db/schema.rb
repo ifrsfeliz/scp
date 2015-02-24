@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223223957) do
+ActiveRecord::Schema.define(version: 20150224150957) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "documents", force: :cascade do |t|
     t.datetime "created_at",                    null: false
@@ -103,6 +109,8 @@ ActiveRecord::Schema.define(version: 20150223223957) do
     t.date     "ultima_verificacao"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "link_grupo_cnpq",    limit: 255
+    t.integer  "area_id",            limit: 4
   end
 
   add_index "research_groups", ["professor_id"], name: "index_research_groups_on_professor_id", using: :btree

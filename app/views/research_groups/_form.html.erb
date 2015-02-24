@@ -3,6 +3,8 @@
 
     <%= f.input :nome %>
     <%= f.association :professor, label_method: :nome, value_method: :id, include_blank: false, input_html: {class: 'chosen-select'}, label: 'Líder' %>
+    <%= f.input :link_grupo_cnpq %>
+    <%= f.association :area, label_method: :nome, value_method: :id, include_blank: false, input_html: {class: 'chosen-select'}, label: 'Área' %>
     <%= f.input :ultima_verificacao, as: :date_picker, label: 'Última Verificação' %>
 
     <%= f.button :submit, class: 'btn btn-primary'%>

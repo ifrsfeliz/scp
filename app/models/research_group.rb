@@ -12,6 +12,7 @@
 
 class ResearchGroup < ActiveRecord::Base
   belongs_to :professor
+  belongs_to :area
 
   has_many :research_lines
 end

@@ -1,0 +1,32 @@
+<h1 class="title">Exibindo Área</h1>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @area.nome %></dd>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_area_path(@area), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', areas_path, class: 'btn btn-default' %>
+
+<br />
+<br />
+
+<h4 class="title">Grupos de Pesquisa Associados à esta Área</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Nome</th>
+  </tr>
+  <% if @area.research_groups.any? %>
+    <% @area.research_groups.each do |rg|%>
+      <tr>
+        <td><%= link_to rg.nome, rg %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td>Nenhum Grupo de Pesquisa relacionado à esta Área</td>
+    </tr>
+  <% end %>
+</table>

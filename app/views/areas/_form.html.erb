@@ -1,0 +1,7 @@
+<%= simple_form_for(@area) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.input :nome %>
+
+    <%= f.button :submit, class: 'btn btn-primary'%>
+<% end %>
