@@ -14,19 +14,17 @@
   </tr>
 
   <%= content_tag_for(:tr, @projects) do |project| %>
-          <td><%= project.nome %></td>
-          <td><%= link_to project.coordenador.nome, project.coordenador %></td>
-          <td><%= l project.data_inicio %></td>
-          <td><%= l project.data_fim %></td>
-          <td><%= project.numero_suap %></td>
-          <td><%= l project.ultima_verificacao, format: :short %></td>
-          <td><%= link_to project.research_line.nome, project.research_line %></td>
-          <td><%= project.situation.nome %></td>
-        <td>
-      <%= link_to 'Mostrar', project %>
-      <%= link_to 'Editar', edit_project_path(project) %>
-      <%= link_to 'Destruir', project, method: :delete, data: { confirm: 'Você tem certeza?' } %>
-    </td>
+    <td><%= project.nome %></td>
+    <td><%= link_to project.coordenador.nome, project.coordenador %></td>
+    <td><%= l project.data_inicio %></td>
+    <td><%= l project.data_fim %></td>
+    <td><%= project.numero_suap %></td>
+    <td><%= l project.ultima_verificacao, format: :short %></td>
+    <td><%= link_to project.research_line.nome, project.research_line %></td>
+    <td><%= project.situation.nome %></td>
+    <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs' %></td>
+    <td><%= link_to 'Editar', edit_project_path(project), class: 'btn btn-warning btn-xs' %></td>
+    <td><%= link_to 'Destruir', project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
   <% end %>
 </table>
 

@@ -12,11 +12,9 @@
     <td><%= research_group.nome %></td>
       <td><%= link_to research_group.professor.nome, research_group.professor %></td>
       <td><%= l research_group.ultima_verificacao %></td>
-    <td>
-      <%= link_to 'Mostrar', research_group %>
-      <%= link_to 'Editar', edit_research_group_path(research_group) %>
-      <%= link_to 'Destruir', research_group, method: :delete, data: { confirm: 'Você tem certeza?' } %>
-    </td>
+      <td><%= link_to 'Mostrar', research_group, class: 'btn btn-default btn-xs' %></td>
+      <td><%= link_to 'Editar', edit_research_group_path(research_group), class: 'btn btn-warning btn-xs' %></td>
+      <td><%= link_to 'Destruir', research_group, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
   <% end %>
 </table>
 

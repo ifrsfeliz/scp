@@ -22,9 +22,9 @@
         <td><%= professor.email %></td>
         <td><%= professor.telefone %></td>
         <td><%= professor.celular %></td>
-        <td><%= link_to 'Mostrar', professor %></td>
-        <td><%= link_to 'Editar', edit_professor_path(professor) %></td>
-        <td><%= link_to 'Destruir', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', professor, class: 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_professor_path(professor), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Destruir', professor, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -12,17 +12,15 @@
   </tr>
 
   <%= content_tag_for(:tr, @students) do |student| %>
-          <td><%= student.nome %></td>
-          <td><%= student.cpf %></td>
-          <td><%= student.rg %></td>
-          <td><%= student.email %></td>
-          <td><%= student.telefone %></td>
-          <td><%= student.celular %></td>
-        <td>
-      <%= link_to 'Mostrar', student %>
-      <%= link_to 'Editar', edit_student_path(student) %>
-      <%= link_to 'Destruir', student, method: :delete, data: { confirm: 'Você tem certeza?' } %>
-    </td>
+    <td><%= student.nome %></td>
+    <td><%= student.cpf %></td>
+    <td><%= student.rg %></td>
+    <td><%= student.email %></td>
+    <td><%= student.telefone %></td>
+    <td><%= student.celular %></td>
+    <td><%= link_to 'Mostrar', student, class: 'btn btn-default btn-xs' %></td>
+    <td><%= link_to 'Editar', edit_student_path(student), class: 'btn btn-warning btn-xs' %></td>
+    <td><%= link_to 'Destruir', student, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
   <% end %>
 </table>
 
