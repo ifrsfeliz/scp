@@ -11,4 +11,5 @@
 
 class ResearchLine < ActiveRecord::Base
   belongs_to :research_group
+  has_many :projects
 end

@@ -13,3 +13,24 @@
 
 <%= link_to 'Editar', edit_research_group_path(@research_group), class: 'btn btn-warning' %>
 <%= link_to 'Voltar', research_groups_path, class: 'btn btn-default' %>
+
+<br />
+<br />
+
+<h4 class="title">Linhas de Pesquisa desse Grupo</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Nome</th>
+  </tr>
+  <% if @research_group.research_lines.any? %>
+    <% @research_group.research_lines.each do |rl|%>
+      <tr>
+        <td><%= link_to rl.nome, rl %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td>Nenhuma Linha de Pesquisa associada a esse Grupo de Pesquisa</td>
+    </tr>
+  <% end %>
+</table>

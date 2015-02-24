@@ -11,3 +11,26 @@
 
 <%= link_to 'Editar', edit_research_line_path(@research_line), class: 'btn btn-warning' %>
 <%= link_to 'Voltar', research_lines_path, class: 'btn btn-default' %>
+
+<br />
+<br />
+
+<h4 class="title">Projetos dessa Linha de Pesquisa</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Coordenador</th>
+  </tr>
+  <% if @research_line.projects.any? %>
+    <% @research_line.projects.each do |p|%>
+      <tr>
+        <td><%= link_to p.nome, p %></td>
+        <td><%= link_to p.coordenador.nome, p.coordenador %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td>Nenhum Projeto vinculado a esse Grupo de Pesquisa</td>
+    </tr>
+  <% end %>
+</table>
