@@ -9,6 +9,7 @@ one:
   nome_edital: MyString
   link_cnpq: MyString
   ultima_verificacao: 2015-02-19 21:12:10
+  scholarship_type: one
   auxilio_aipct: false
   valor_aipct_cents: 1
   research_line: one
@@ -22,6 +23,7 @@ two:
   numero_suap: MyString
   nome_edital: MyString
   link_cnpq: MyString
+  scholarship_type: two
   ultima_verificacao: 2015-02-19 21:12:10
   auxilio_aipct: false
   valor_aipct_cents: 1

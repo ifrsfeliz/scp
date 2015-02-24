@@ -73,7 +73,7 @@
       <% if @project.member_students.any? %>
         <% @project.member_students.each do |s| %>
           <tr>
-            <td><%= s.student.nome %></td>
+            <td><%= link_to s.student.nome, s.student %></td>
             <td><%= s.tipo_vinculo %></td>
             <td><%= l s.data_inicio %></td>
             <td><%= l s.data_fim %></td>
