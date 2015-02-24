@@ -8,6 +8,7 @@
     <%= f.input :numero_suap, label: 'Número SUAP' %>
     <%= f.input :nome_edital %>
     <%= f.input :link_cnpq, label: 'Link CNPQ' %>
+    <%= f.association :scholarship_type, label_method: :nome, input_html: { class: 'chosen-select' }, label: 'Tipo de Bolsa' %>
     <%= f.input :ultima_verificacao, label: 'Última Verificação', as: 'datetime_picker' %>
     <%= f.input :auxilio_aipct, label: 'Auxílio AIPCT' %>
     <%= f.input :valor_aipct, label: 'Valor AIPCT', input_html: {value: f.object.valor_aipct || '0,00'} %>

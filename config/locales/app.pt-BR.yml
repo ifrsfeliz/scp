@@ -22,6 +22,9 @@ pt-BR:
       project:
         one: 'Projeto'
         other: 'Projetos'
+      scholarship_type:
+        one: 'Tipo de Bolsa'
+        other: 'Tipos de Bolsa'
     attributes:
       user:
         admin_authorization: 'Autorização do Admin'

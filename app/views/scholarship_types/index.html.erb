@@ -1,0 +1,19 @@
+<h1 class="title">Lista de Tipos de Bolsa</h1>
+
+<table class="table table-striped">
+  <tr>
+      <th>Nome</th>
+      <th colspan="3">Ações</th>
+  </tr>
+
+  <%= content_tag_for(:tr, @scholarship_types) do |scholarship_type| %>
+    <td><%= scholarship_type.nome %></td>
+    <td><%= link_to 'Mostrar', scholarship_type, class: 'btn btn-default btn-xs' %></td>
+    <td><%= link_to 'Editar', edit_scholarship_type_path(scholarship_type), class: 'btn btn-warning btn-xs' %></td>
+    <td><%= link_to 'Destruir', scholarship_type, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-error btn-xs' %></td>
+  <% end %>
+</table>
+
+<hr />
+
+<%= link_to 'Novo Tipo de Bolsa', new_scholarship_type_path, class: 'btn btn-success' %>

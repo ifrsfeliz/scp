@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :scholarship_types
+
   resources :areas
 
   resources :projects

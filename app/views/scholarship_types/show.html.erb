@@ -1,0 +1,11 @@
+<h1 class="title">Exibindo Tipo de Bolsa</h1>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @scholarship_type.nome %></dd>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_scholarship_type_path(@scholarship_type), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', scholarship_types_path, class: 'btn btn-default' %>

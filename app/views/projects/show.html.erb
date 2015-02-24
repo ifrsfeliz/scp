@@ -18,6 +18,8 @@
       <dd><%= @project.nome_edital %></dd>
       <dt>Link CNPQ:</dt>
       <dd><%= @project.link_cnpq %></dd>
+      <dt>Tipo de Bolsa:</dt>
+      <dd><%= @project.scholarship_type.nome %></dd>
       <dt>Última Verificação:</dt>
       <dd><%= l @project.ultima_verificacao, format: :short %></dd>
       <% if @project.auxilio_aipct %>
@@ -35,6 +37,8 @@
       <dt>Situação:</dt>
       <dd><%= @project.situation.nome %></dd>
     </dl>
+
+    <h4 class="title">Relatórios</h4>
 
   </div>
   <div class="col-md-6">

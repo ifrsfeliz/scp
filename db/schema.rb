@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224150957) do
+ActiveRecord::Schema.define(version: 20150224184032) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -83,20 +83,21 @@ ActiveRecord::Schema.define(version: 20150224150957) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "nome",               limit: 255
-    t.integer  "professor_id",       limit: 4
+    t.string   "nome",                limit: 255
+    t.integer  "professor_id",        limit: 4
     t.date     "data_inicio"
     t.date     "data_fim"
-    t.string   "numero_suap",        limit: 255
-    t.string   "nome_edital",        limit: 255
-    t.string   "link_cnpq",          limit: 255
+    t.string   "numero_suap",         limit: 255
+    t.string   "nome_edital",         limit: 255
+    t.string   "link_cnpq",           limit: 255
     t.datetime "ultima_verificacao"
-    t.boolean  "auxilio_aipct",      limit: 1
-    t.integer  "valor_aipct_cents",  limit: 4
-    t.integer  "research_line_id",   limit: 4
-    t.integer  "situation_id",       limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.boolean  "auxilio_aipct",       limit: 1
+    t.integer  "valor_aipct_cents",   limit: 4
+    t.integer  "research_line_id",    limit: 4
+    t.integer  "situation_id",        limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "scholarship_type_id", limit: 4
   end
 
   add_index "projects", ["professor_id"], name: "index_projects_on_professor_id", using: :btree
@@ -133,6 +134,12 @@ ActiveRecord::Schema.define(version: 20150224150957) do
   create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "role_id", limit: 4
     t.integer "user_id", limit: 4
+  end
+
+  create_table "scholarship_types", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "situations", force: :cascade do |t|

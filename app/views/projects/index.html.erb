@@ -7,6 +7,7 @@
       <th>Data Início</th>
       <th>Data Fim</th>
       <th>Número SUAP</th>
+      <th>Tipo de Bolsa</th>
       <th>Última Verificação</th>
       <th>Linha de Pesq.</th>
       <th>Situação</th>
@@ -19,6 +20,7 @@
     <td><%= l project.data_inicio %></td>
     <td><%= l project.data_fim %></td>
     <td><%= project.numero_suap %></td>
+    <td><%= project.scholarship_type.nome unless project.scholarship_type.nil? %></td>
     <td><%= l project.ultima_verificacao, format: :short %></td>
     <td><%= link_to project.research_line.nome, project.research_line %></td>
     <td><%= project.situation.nome %></td>
