@@ -1,4 +1,16 @@
 /* overrides/sobreescritas do bootstrap */
+@media (max-width: 767px) {
+  #logo img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  #second-logo img {
+    display: block;
+    margin: 0 auto 10px;
+  }
+}
+
 
 body {
   font-family: Helvetica, sans-serif;

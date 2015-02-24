@@ -4,6 +4,7 @@
     <title>SCP - Controle de Projetos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
+    <%= favicon_link_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -27,12 +28,15 @@
     <header>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-md-4 col-sm-5">
             <a href="<%= root_path %>" id="logo">
               <img src="<%= image_url "logo-ifrs-feliz.png" %>" alt="IFRS - Campus Feliz">
             </a>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-2 col-md-3 col-sm-3" id="second-logo">
+            <img src="<%= image_url "dppi-header.png" %>" alt="IFRS - Campus Feliz">
+          </div>
+          <div class="col-lg-6 col-md-5 col-sm 4">
             <h1>SCP - Sistema de Controle de Projetos</h1>
           </div>
         </div>
@@ -66,15 +70,17 @@
                 <% if current_user %>
                   <% if current_user.role? :admin %>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminisração <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
                         <% if can? :manage, User %>
                           <li><%= link_to "Usuários", :users %></li>
                         <% end %>
+                        <li><%= link_to 'Situações', situations_path %></li>
+                        <li class="divider"></li>
+                        <li role="presentation" class="dropdown-header">Pesquisa</li>
+                        <li><%= link_to 'Áreas de Pesquisa', areas_path %></li>
                         <li><%= link_to "Grupos de Pesquisa", research_groups_path %></li>
                         <li><%= link_to "Linhas de Pesquisa", research_lines_path %></li>
-                        <li><%= link_to 'Situações', situations_path %></li>
-                        <li><%= link_to 'Áreas de Pesquisa', areas_path %></li>
                       </ul>
                     </li>
                   <% end %>
