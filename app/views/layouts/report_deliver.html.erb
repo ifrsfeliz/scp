@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>SCP - Controle de Projetos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-5">
+            <a href="<%= root_path %>" id="logo">
+              <img src="<%= image_url "logo-ifrs-feliz.png" %>" alt="IFRS - Campus Feliz">
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-3" id="second-logo">
+            <img src="<%= image_url "dppi-header.png" %>" alt="IFRS - Campus Feliz">
+          </div>
+          <div class="col-lg-6 col-md-5 col-sm 4">
+            <h1>SCP - Sistema de Controle de Projetos</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <% if flash[:notice] %>
+              <p class="alert alert-info"><%= notice %></p>
+            <% elsif flash[:alert] %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+    </div>
+    </section>
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>IFRS - Instituto Federal de Educação, Ciência e Tecnologia</p>
+            <p>Desenvolvimento IFRS - Campus Feliz</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

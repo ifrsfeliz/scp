@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224184032) do
+ActiveRecord::Schema.define(version: 20150225194759) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -104,6 +104,28 @@ ActiveRecord::Schema.define(version: 20150224184032) do
   add_index "projects", ["research_line_id"], name: "index_projects_on_research_line_id", using: :btree
   add_index "projects", ["situation_id"], name: "index_projects_on_situation_id", using: :btree
 
+  create_table "reports", force: :cascade do |t|
+    t.text     "atividades_desenvolvidas",       limit: 65535
+    t.text     "resultados_obtidos",             limit: 65535
+    t.text     "dificuldades_encontradas",       limit: 65535
+    t.text     "proximas_etapas",                limit: 65535
+    t.text     "conclusoes",                     limit: 65535
+    t.text     "referencias",                    limit: 65535
+    t.boolean  "notificacao_antecipada",         limit: 1
+    t.boolean  "notificacao_no_dia",             limit: 1
+    t.boolean  "notificacao_atrasada",           limit: 1
+    t.integer  "project_id",                     limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "entregue",                       limit: 1
+    t.string   "access_token",                   limit: 255
+    t.date     "periodo_desenvolvimento_inicio"
+    t.date     "periodo_desenvolvimento_fim"
+    t.string   "avaliacao",                      limit: 255
+  end
+
+  add_index "reports", ["project_id"], name: "index_reports_on_project_id", using: :btree
+
   create_table "research_groups", force: :cascade do |t|
     t.string   "nome",               limit: 255
     t.integer  "professor_id",       limit: 4
@@ -178,4 +200,5 @@ ActiveRecord::Schema.define(version: 20150224184032) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reports", "projects"
 end

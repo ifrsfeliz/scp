@@ -1,0 +1,37 @@
+<h1 class="title">Exibindo Relatório <%= (@last_report) ? 'Final' : 'Parcial' %></h1>
+
+<dl class="dl-horizontal">
+  <dt>Projeto:</dt>
+  <dd><%= @report.project.nome %></dd>
+  <dt>Coordenador</dt>
+  <dd><%= @report.project.coordenador.nome %></dd>
+  <dt>Edital:</dt>
+  <dd><%= @report.project.nome_edital %></dd>
+  <dt>Duração do Projeto:</dt>
+  <dd><%= l @report.project.data_inicio %> à <%= l @report.project.data_fim %></dd>
+  <dt>Período de Desenv. :</dt>
+  <dd><%= l @report.periodo_desenvolvimento_inicio %> à <%= l @report.periodo_desenvolvimento_fim %></dd>
+  <dt>Ativ. Desenvolvidas:</dt>
+  <dd><%= @report.atividades_desenvolvidas %></dd>
+  <dt>Resultados Obtidos:</dt>
+  <dd><%= @report.resultados_obtidos %></dd>
+  <dt>Dificuldades Encontradas:</dt>
+  <dd><%= @report.dificuldades_encontradas %></dd>
+
+  <% unless @last_report %>
+    <dt>Próximas Etapas:</dt>
+    <dd><%= @report.proximas_etapas %></dd>
+  <% end %>
+
+  <% if @last_report %>
+    <dt>Conclusões:</dt>
+    <dd><%= @report.conclusoes %></dd>
+    <dt>Referências:</dt>
+    <dd><%= @report.referencias %></dd>
+  <% end %>
+</dl>
+
+<hr />
+
+<%= link_to 'Editar', edit_report_path(@report), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', reports_path, class: 'btn btn-default' %>

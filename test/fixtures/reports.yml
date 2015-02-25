@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_entrega: 2015-02-24
+  atividades_desenvolvidades: MyText
+  resultados_obtidos: MyText
+  dificuldades_encontradas: MyText
+  proximas_etapas: MyText
+  conclusoes: MyText
+  referencias: MyText
+  notificacao_antecipada: false
+  notificacao_no_dia: false
+  notificacao_atrasada: false
+  project_id: 
+
+two:
+  data_entrega: 2015-02-24
+  atividades_desenvolvidades: MyText
+  resultados_obtidos: MyText
+  dificuldades_encontradas: MyText
+  proximas_etapas: MyText
+  conclusoes: MyText
+  referencias: MyText
+  notificacao_antecipada: false
+  notificacao_no_dia: false
+  notificacao_atrasada: false
+  project_id: 

@@ -1,0 +1,18 @@
+<%= simple_form_for(@report) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :atividades_desenvolvidas, :input_html => {:rows => 10}, label: 'Atividades Desenvolvidas' %>
+  <%= f.input :resultados_obtidos, :input_html => {:rows => 10}, label: 'Resultados Obtidos' %>
+  <%= f.input :dificuldades_encontradas, :input_html => {:rows => 10}, label: 'Dificuldades Encontradas' %>
+
+  <% unless @last_report %>
+    <%= f.input :proximas_etapas, :input_html => {:rows => 10}, label: 'Próximas Etapas' %>
+  <% end %>
+
+  <% if @last_report %>
+    <%= f.input :conclusoes, :input_html => {:rows => 10}, label: 'Conclusões' %>
+    <%= f.input :referencias, :input_html => {:rows => 10}, label: 'Referências' %>
+  <% end %>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

@@ -15,23 +15,32 @@
     <%= f.association :research_line, label: 'Linha de Pesquisa', label_method: :nome, input_html: { class: 'chosen-select' } %>
     <%= f.association :situation, label: 'Situação', label_method: :nome, input_html: { class: 'chosen-select' } %>
 
+    <p class="alert alert-info"><strong>Importante! Qualquer alteração nos campos abaixo somente serão efetivados após clicar no botão de Atualizar Projeto/Criar Projeto</strong></p>
+
+    <h4 class="title">Definição dos Relatórios</h4>
+    <div id="reports">
+      <%= link_to_add_association 'Adicionar Relatório', f, :reports, class: 'btn btn-primary' %>
+      <%= f.simple_fields_for :reports do |m| %>
+        <%= render 'report_fields', :f => m, :render_options => {:wrapper => 'inline' } %>
+      <% end %>
+    </div>
+
     <hr />
-    <p class="alert alert-info"><strong>Importante! Qualquer alteração nos vínculos somente será efetivada após clicar no botão de Atualizar Projeto/Criar Projeto</strong></p>
 
     <h4 class="title">Vínculo de Professores</h4>
     <div id="member_professors">
+      <%= link_to_add_association 'Adicionar Professor', f, :member_professors, class: 'btn btn-primary' %>
       <%= f.simple_fields_for :member_professors do |m| %>
         <%= render 'member_professor_fields', :f => m, :render_options => {:wrapper => 'inline' } %>
       <% end %>
-      <%= link_to_add_association 'Adicionar Professor', f, :member_professors, class: 'btn btn-primary', :id => 'member_professors' %>
     </div>
 
     <h4 class="title">Vínculo de Alunos</h4>
     <div id="member_students">
+       <%= link_to_add_association 'Adicionar Aluno', f, :member_students, class: 'btn btn-primary' %>
        <%= f.simple_fields_for :member_students do |ms| %>
          <%= render 'member_student_fields', :f => ms, :render_options => {:wrapper => 'inline' } %>
        <% end %>
-       <%= link_to_add_association 'Adicionar Aluno', f, :member_students, class: 'btn btn-primary', :id => 'member_students' %>
     </div>
 
     <br />

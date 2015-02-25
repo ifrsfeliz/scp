@@ -27,6 +27,8 @@ class Project < ActiveRecord::Base
   belongs_to :situation
   belongs_to :scholarship_type
 
+  has_many :reports
+
   has_many :project_attachments, dependent: :destroy
   has_many :project_publications, dependent: :destroy
 
@@ -46,4 +48,9 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :member_professors,
                                 reject_if: :all_blank,
                                 allow_destroy: true
+
+  accepts_nested_attributes_for :reports,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+
 end

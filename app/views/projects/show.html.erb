@@ -39,6 +39,36 @@
     </dl>
 
     <h4 class="title">Relatórios</h4>
+    <table class="table table-striped">
+      <tr>
+        <th>Período de Desenvolvimento</th>
+        <th>Status</th>
+        <th>Avaliação</th>
+        <th>Ações</th>
+      </tr>
+      <% if @project.reports.any? %>
+        <% @project.reports.each do |r| %>
+          <tr>
+            <td><%= l r.periodo_desenvolvimento_inicio %> à <strong><%= l r.periodo_desenvolvimento_fim %></strong></td>
+            <td><%= (r.entregue) ? 'Entregue' : 'Pendente' %></td>
+            <td>
+              <% if r.entregue %>
+                <%= (r.avaliacao) ? r.avaliacao : 'Em avaliação' %>
+              <% end %>
+            </td>
+            <td>
+              <% if r.entregue? %>
+                <%= link_to "Mostrar", "#", class: 'btn btn-default btn-xs' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td>Nenhum vínculo cadastro ainda</td>
+        </tr>
+      <% end %>
+    </table>
 
   </div>
   <div class="col-md-6">

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :reports
+  get '/reports/:id/form_deliver', to: 'reports#form_deliver', as: 'report_form_deliver'
+  put '/reports/:id/deliver', to: 'reports#deliver', as: 'report_deliver'
+
   resources :scholarship_types
 
   resources :areas

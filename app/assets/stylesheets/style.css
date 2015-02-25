@@ -106,6 +106,10 @@ header h1 {
   margin-bottom: 20px;
 }
 
+#content .title.center {
+  text-align: center;
+}
+
 footer {
   background: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
   padding: 10px 0 0;
@@ -187,4 +191,8 @@ footer p {
 .remove_fields {
   display: block;
   margin-top: 5px;
+}
+
+.add_fields {
+  margin-bottom: 20px;
 }

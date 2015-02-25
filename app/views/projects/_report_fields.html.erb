@@ -1,0 +1,14 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-md-2">
+      <%= f.input :periodo_desenvolvimento_inicio, as: :date_picker, label: 'Período de Desenv. Início' %>
+    </div>
+    <div class="col-md-2">
+      <%= f.input :periodo_desenvolvimento_fim, as: :date_picker, label: 'Período de Desenv. Fim' %>
+    </div>
+    <div class="col-md-2">
+      <br />
+      <%= link_to_remove_association "Remover Relatório", f, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>

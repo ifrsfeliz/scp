@@ -1,0 +1,8 @@
+<h1 class="title">Editando Relatório <%= (@last_report) ? 'Final' : 'Parcial'%></h1>
+	
+<%= render 'form' %>
+
+<hr />
+
+<%= link_to 'Mostrar', @report, class: 'btn btn-info' %>
+<%= link_to 'Voltar', reports_path, class: 'btn btn-default' %>
