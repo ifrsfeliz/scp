@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225194759) do
+ActiveRecord::Schema.define(version: 20150303230725) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -105,23 +105,24 @@ ActiveRecord::Schema.define(version: 20150225194759) do
   add_index "projects", ["situation_id"], name: "index_projects_on_situation_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
-    t.text     "atividades_desenvolvidas",       limit: 65535
-    t.text     "resultados_obtidos",             limit: 65535
-    t.text     "dificuldades_encontradas",       limit: 65535
-    t.text     "proximas_etapas",                limit: 65535
-    t.text     "conclusoes",                     limit: 65535
-    t.text     "referencias",                    limit: 65535
-    t.boolean  "notificacao_antecipada",         limit: 1
-    t.boolean  "notificacao_no_dia",             limit: 1
-    t.boolean  "notificacao_atrasada",           limit: 1
-    t.integer  "project_id",                     limit: 4
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.boolean  "entregue",                       limit: 1
-    t.string   "access_token",                   limit: 255
+    t.text     "atividades_desenvolvidas",         limit: 65535
+    t.text     "resultados_obtidos",               limit: 65535
+    t.text     "dificuldades_encontradas",         limit: 65535
+    t.text     "proximas_etapas",                  limit: 65535
+    t.text     "conclusoes",                       limit: 65535
+    t.text     "referencias",                      limit: 65535
+    t.boolean  "notificacao_antecipada",           limit: 1
+    t.boolean  "notificacao_no_dia",               limit: 1
+    t.boolean  "notificacao_atrasada",             limit: 1
+    t.integer  "project_id",                       limit: 4
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.boolean  "entregue",                         limit: 1
+    t.string   "access_token",                     limit: 255
     t.date     "periodo_desenvolvimento_inicio"
     t.date     "periodo_desenvolvimento_fim"
-    t.string   "avaliacao",                      limit: 255
+    t.string   "avaliacao",                        limit: 255
+    t.date     "ultima_data_notificacao_atrasada"
   end
 
   add_index "reports", ["project_id"], name: "index_reports_on_project_id", using: :btree

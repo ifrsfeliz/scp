@@ -27,7 +27,7 @@ module ScpRails
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # ignore the assets generation
+    # ignore the assets generat0
     config.generators.assets = false
 
     # i18n

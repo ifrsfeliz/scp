@@ -1,8 +1,8 @@
-<h1 style="color: #3AAC1C">Notificação - Entrega de Relatório</h1>
+<h1 style="color: #3AAC1C">Lembrete de Entrega de Relatório</h1>
 
-<p>Prezado(a) Pesquisador(a) ,</p>
+<p>Prezado(a) Pesquisador(a) <%= @coordenador.nome %>, </p>
 
-<p>Gostaríamos de informar que está se aproximando a data para a entrega do relatório final de pesquisa referente ao projeto intitulado "_____________________".</p>
-<p>Ao término do prazo você receberá um link para preenchimento on line do referido relatório.</p>
+<p>Gostaríamos de informar que está se aproximando a data <b>(<%= l @report.periodo_desenvolvimento_fim %>)</b> para a entrega do relatório de pesquisa referente ao projeto intitulado <b>"<%= @project.nome %>"</b>.</p>
+<p>Ao término do prazo você receberá um link para preenchimento on-line do referido relatório.</p>
 
 <p>Atenciosamente,</p>
