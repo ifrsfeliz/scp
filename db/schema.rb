@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310181654) do
+ActiveRecord::Schema.define(version: 20150310194742) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -108,6 +108,18 @@ ActiveRecord::Schema.define(version: 20150310181654) do
   add_index "projects", ["professor_id"], name: "index_projects_on_professor_id", using: :btree
   add_index "projects", ["research_line_id"], name: "index_projects_on_research_line_id", using: :btree
   add_index "projects", ["situation_id"], name: "index_projects_on_situation_id", using: :btree
+
+  create_table "report_attachments", force: :cascade do |t|
+    t.integer  "report_id",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "file_file_name",    limit: 255
+    t.string   "file_content_type", limit: 255
+    t.integer  "file_file_size",    limit: 4
+    t.datetime "file_updated_at"
+  end
+
+  add_index "report_attachments", ["report_id"], name: "index_report_attachments_on_report_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.text     "atividades_desenvolvidas",         limit: 65535
@@ -207,5 +219,6 @@ ActiveRecord::Schema.define(version: 20150310181654) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "report_attachments", "reports"
   add_foreign_key "reports", "projects"
 end

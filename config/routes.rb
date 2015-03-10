@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'report_attachments/destroy'
+
   resources :reports, only: [:index, :show]
   get '/reports/:id/form_deliver', to: 'reports#form_deliver', as: 'report_form_deliver'
   put '/reports/:id/deliver', to: 'reports#deliver', as: 'report_deliver'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   resources 'documents', only: :destroy
   resources 'project_attachments', only: :destroy
   resources 'project_publications', only: :destroy
+  resources 'report_attachments', only: :destroy
 
   resources :situations
 

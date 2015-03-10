@@ -63,6 +63,12 @@ class ReportsController < ActionController::Base
     respond_to do |format|
       if @report.update(report_params)
 
+        if params[:report_attachments]
+          params[:report_attachments].each { |f|
+            @report.report_attachments.create(file: f)
+          }
+        end
+
         format.html { redirect_to root_path, notice: 'O relatório foi enviado com sucesso!' }
         format.json { render :show, status: :ok, location: @report }
       else

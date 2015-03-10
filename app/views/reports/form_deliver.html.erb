@@ -14,7 +14,7 @@
   <dt>Tipo da Bolsa:</dt>
   <dd><%= @report.project.scholarship_type.nome %></dd>
 </dl>
-<%= simple_form_for(@report, url: report_deliver_path, method: :put) do |f| %>
+<%= simple_form_for(@report, url: report_deliver_path, method: :put, html: {multipart: true}) do |f| %>
   <%= f.error_notification %>
 
   <%= hidden_field_tag :access_token, @report.access_token %>
@@ -31,5 +31,27 @@
     <%= f.input :referencias, :input_html => {:rows => 10}, label: 'Referências' %>
   <% end %>
 
+  <h4 class="title">Anexos</h4>
+  <%= file_field_tag "report_attachments[]", type: :file, multiple: true %>
+
+  <br />
+
   <%= f.button :submit, class: 'btn btn-primary', value: 'Enviar Relatório' %>
 <% end %>
+
+<br >
+<h4 class="title">Anexos</h4>
+<table class="table table-striped">
+  <% if @report.report_attachments.any? %>
+    <% @report.report_attachments.each do |p| %>
+      <tr>
+        <td><%= link_to p.file_file_name, p.file.url %></td>
+        <td><%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td>Nenhum anexo enviado pelo pesquisador para esse relatório.</td>
+    <tr>
+  <% end %>
+</table>

@@ -31,6 +31,21 @@
   <% end %>
 </dl>
 
+<h4 class="title">Anexos</h4>
+<table class="table table-striped">
+  <% if @report.report_attachments.any? %>
+    <% @report.report_attachments.each do |p| %>
+      <tr>
+        <td><%= link_to p.file_file_name, p.file.url %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td>Nenhum anexo enviado pelo pesquisador.</td>
+    <tr>
+  <% end %>
+</table>
+
 <% if @report.avaliacao != 'Aprovado' %>
 <h3 class="title">Avaliação</h3>
 <div class="row">

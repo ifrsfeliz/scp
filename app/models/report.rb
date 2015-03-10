@@ -1,6 +1,7 @@
 class Report < ActiveRecord::Base
   #Associations
   belongs_to :project
+  has_many :report_attachments
 
   # Callbacks
   before_create :generate_access_token

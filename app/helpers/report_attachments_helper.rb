@@ -1,0 +1,2 @@
+module ReportAttachmentsHelper
+end

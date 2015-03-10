@@ -39,7 +39,7 @@ class ReportMailer < ApplicationMailer
     @project = @report.project
     @coordenador = @project.coordenador
 
-    mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "notificação de relatório - #{@project.nome}")
+    mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "Notificação de relatório - #{@project.nome}")
   end
 
   def approved_report(r)
@@ -47,7 +47,7 @@ class ReportMailer < ApplicationMailer
     @project = @report.project
     @coordenador = @project.coordenador
 
-    mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "notificação de relatório - #{@project.nome}")
+    mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "Notificação de relatório - #{@project.nome}")
   end
   
   private
