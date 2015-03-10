@@ -17,6 +17,7 @@
 <%= simple_form_for(@report, url: report_deliver_path, method: :put) do |f| %>
   <%= f.error_notification %>
 
+  <%= hidden_field_tag :access_token, @report.access_token %>
   <%= f.input :atividades_desenvolvidas, :input_html => {:rows => 10}, label: 'Atividades Desenvolvidas' %>
   <%= f.input :resultados_obtidos, :input_html => {:rows => 10}, label: 'Resultados Obtidos' %>
   <%= f.input :dificuldades_encontradas, :input_html => {:rows => 10}, label: 'Dificuldades Encontradas' %>

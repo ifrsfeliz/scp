@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310131114) do
+ActiveRecord::Schema.define(version: 20150310181654) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20150310131114) do
     t.date     "periodo_desenvolvimento_fim"
     t.string   "avaliacao",                        limit: 255
     t.date     "ultima_data_notificacao_atrasada"
+    t.text     "observacao_reformular",            limit: 65535
   end
 
   add_index "reports", ["project_id"], name: "index_reports_on_project_id", using: :btree

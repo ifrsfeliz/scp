@@ -34,6 +34,22 @@ class ReportMailer < ApplicationMailer
     mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "Notificação de Relatório - #{@project.nome}")
   end
 
+  def reformulate_report(r)
+    @report = r
+    @project = @report.project
+    @coordenador = @project.coordenador
+
+    mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "notificação de relatório - #{@project.nome}")
+  end
+
+  def approved_report(r)
+    @report = r
+    @project = @report.project
+    @coordenador = @project.coordenador
+
+    mail(to: @coordenador.email, cc: @config['email_report_managers'], subject: "notificação de relatório - #{@project.nome}")
+  end
+  
   private
   def load_config_data
     @config = YAML.load_file('config/settings.yml')[Rails.env];

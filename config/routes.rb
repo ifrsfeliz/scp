@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :reports
+  resources :reports, only: [:index, :show]
   get '/reports/:id/form_deliver', to: 'reports#form_deliver', as: 'report_form_deliver'
   put '/reports/:id/deliver', to: 'reports#deliver', as: 'report_deliver'
+  put '/reports/:id/approve', to: 'reports#approve', as: 'report_approve'
+  put '/reports/:id/reformulate', to: 'reports#reformulate', as: 'report_reformulate'
 
   resources :scholarship_types
 

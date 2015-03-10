@@ -1,10 +1,11 @@
-<h1 class="title">Lista de Relatórios</h1>
+<h1 class="title">Relatórios para Avaliação</h1>
 
 <table class="table table-striped">
   <tr>
     <th>Projeto</th>
     <th>Período de Desenvolvimento</th>
     <th>Status</th>
+    <th>Avaliação</th>
     <th colspan="3">Ações</th>
   </tr>
 
@@ -12,14 +13,11 @@
     <td><%= report.project.nome %></td>
     <td><%= l report.periodo_desenvolvimento_inicio %> à <%= l report.periodo_desenvolvimento_fim %></td>
     <td><%= report.entregue ? 'Entregue' : 'Pendente' %>
+    <td><%= report.avaliacao ? report.avaliacao : 'Aguardando Avaliação' %>
     <td>
       <%= link_to 'Mostrar', report, class: 'btn btn-default btn-xs' %>
-      <%= link_to 'Editar', edit_report_path(report), class: 'btn btn-warning btn-xs' %>
-      <%= link_to 'Destruir', report, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %>
     </td>
   <% end %>
 </table>
 
 <hr />
-
-<%= link_to 'Novo(a) Report', new_report_path, class: 'btn btn-success' %>

@@ -31,7 +31,24 @@
   <% end %>
 </dl>
 
+<% if @report.avaliacao != 'Aprovado' %>
+<h3 class="title">Avaliação</h3>
+<div class="row">
+  <div class="col-md-8">
+    <%= simple_form_for(@report, url: report_reformulate_path, method: :put) do |f| %>
+      <%= f.input :observacao_reformular, label: 'Observação ao Reformular' %>
+
+      <%= f.button :submit, class: 'btn btn-lg btn-warning', value: 'Reformular' %>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+    <br />
+    <%= link_to "Aprovar", report_approve_path, method: :put, class: 'btn btn-lg btn-primary' %> 
+  </div>
+</div>
+<% end %>
+
 <hr />
 
-<%= link_to 'Editar', edit_report_path(@report), class: 'btn btn-warning' %>
 <%= link_to 'Voltar', reports_path, class: 'btn btn-default' %>
