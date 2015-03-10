@@ -1,0 +1,9 @@
+<h1 style="color: #3AAC1C">Entrega de Relatório Atrasado</h1>
+
+<p>Prezado(a) Pesquisador(a) <%= @coordenador.nome %>, </p>
+
+<p>Gostaríamos de informar que o relatório final do(a) aluno(a) <b><%= @student.nome %></b> referente ao projeto intitulado <b><%= @project.nome %></b> está atrasado <b><%= (Date.today - @member_student.data_fim).to_i %> dias</b>, desde o prazo de entrega em <b><%= l @member_student.data_fim %></b>.</p>
+
+<p>O modelo de relatório encontra-se disponível no site do Câmpus.</p>
+
+<p>Atenciosamente,</p>

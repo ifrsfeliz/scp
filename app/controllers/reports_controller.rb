@@ -97,13 +97,9 @@ class ReportsController < ActionController::Base
 
   # check if the user has access to this page or if has the token to edit this page
   def verify_token_or_role
-    if (current_user && current_user.role?(:admin))
-    elsif (params[:access_token] == @report.access_token)
+    if (params[:access_token] == @report.access_token)
       @access_by_token = true
-
-      puts "**************** #{params[:access_token]}   -   #{@report.access_token} "
     else
-      puts "**************** #{params[:access_token]}   -   #{@report.access_token} "
       redirect_to root_path, notice: 'Você não tem acesso à essa página'
     end
   end

@@ -19,6 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 2.minutes + 10.seconds do
+every 4.minutes + 10.seconds do
   runner 'Report.report_request_notification'
+  runner 'MemberStudent.report_request_notification'
 end

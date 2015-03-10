@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303230725) do
+ActiveRecord::Schema.define(version: 20150310131114) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -41,13 +41,18 @@ ActiveRecord::Schema.define(version: 20150303230725) do
   end
 
   create_table "member_students", force: :cascade do |t|
-    t.integer  "project_id",   limit: 4
-    t.integer  "student_id",   limit: 4
-    t.string   "tipo_vinculo", limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "project_id",                       limit: 4
+    t.integer  "student_id",                       limit: 4
+    t.string   "tipo_vinculo",                     limit: 255
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.date     "data_inicio"
     t.date     "data_fim"
+    t.boolean  "relatorio_entregue",               limit: 1
+    t.boolean  "notificacao_antecipada",           limit: 1
+    t.boolean  "notificacao_no_dia",               limit: 1
+    t.boolean  "notificacao_atrasada",             limit: 1
+    t.date     "ultima_data_notificacao_atrasada"
   end
 
   create_table "professors", force: :cascade do |t|

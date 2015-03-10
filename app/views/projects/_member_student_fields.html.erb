@@ -1,9 +1,9 @@
 <div class="nested-fields">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <%= f.association :student, label: 'Aluno', label_method: :nome %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <%= f.input :tipo_vinculo, collection: ['Aluno Bolsista', 'Aluno Voluntário'] %>
     </div>
     <div class="col-md-2">
@@ -11,6 +11,10 @@
     </div>
     <div class="col-md-2">
       <%= f.input :data_fim, as: :date_picker %>
+    </div>
+    <div class="col-md-2">
+      <br />
+      <%= f.input :relatorio_entregue %>
     </div>
     <div class="col-md-2">
       <br />

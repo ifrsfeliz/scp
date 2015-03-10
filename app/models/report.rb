@@ -8,9 +8,9 @@ class Report < ActiveRecord::Base
   def self.report_request_notification
     reports = Report.where(entregue: [nil, false])
 
-    today = Date.parse('02-04-2015')
+    #today = Date.parse('02-04-2015')
     #today = Date.parse('18-03-2015')
-    #today = Date.today
+    today = Date.today
 
     reports.each do |r|
       if (r.notificacao_antecipada.nil? && r.periodo_desenvolvimento_fim - 15 <= today) # 15 days early or next the deliver date

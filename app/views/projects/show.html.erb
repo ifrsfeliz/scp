@@ -99,6 +99,7 @@
         <th>Vínculo</th>
         <th>Início</th>
         <th>Fim</th>
+        <th>Rel. Entregue?</th>
       </tr>
       <% if @project.member_students.any? %>
         <% @project.member_students.each do |s| %>
@@ -107,6 +108,13 @@
             <td><%= s.tipo_vinculo %></td>
             <td><%= l s.data_inicio %></td>
             <td><%= l s.data_fim %></td>
+            <td>
+              <% if s.relatorio_entregue %>
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+              <% else %>
+                Pendente
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% else %>
