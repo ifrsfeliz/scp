@@ -10,7 +10,7 @@ class MemberStudent < ActiveRecord::Base
     #today = Date.today
 
     member_students.each do |ms|
-        if (ms.notificacao_antecipada.nil? && ms.data_fim - 15 <= today) # 15 days early or next the deliver date
+        if (ms.notificacao_antecipada.nil? && ms.data_fim - 2 <= today) # 15 days early or next the deliver date
           mail = MemberStudentMailer.early_report_notification(ms).deliver
 
           if mail
@@ -26,7 +26,7 @@ class MemberStudent < ActiveRecord::Base
             ms.save
           end
 
-      elsif (ms.notificacao_atrasada.nil? && ms.data_fim + 15 == today)
+      elsif (ms.notificacao_atrasada.nil? && ms.data_fim + 2 == today)
         mail = MemberStudentMailer.first_delayed_report_notification(ms).deliver
 
         if mail
@@ -36,7 +36,7 @@ class MemberStudent < ActiveRecord::Base
         end
 
       # notificacao_atrasada significa que já foi entregue
-      elsif (ms.notificacao_atrasada == true && ms.ultima_data_notificacao_atrasada + 15 == today)
+      elsif (ms.notificacao_atrasada == true && ms.ultima_data_notificacao_atrasada + 2 == today)
         mail = MemberStudentMailer.others_delayed_report_notification(ms).deliver
 
         if mail
