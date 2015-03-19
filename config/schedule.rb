@@ -19,7 +19,15 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 4.minutes + 10.seconds do
+every 2.hours do
   runner 'Report.report_request_notification'
   runner 'MemberStudent.report_request_notification'
+end
+
+every '0 0 1 10 *' do
+  rake "system:notificacao_aipct_antecipada"
+end
+
+every '0 0 15 10 *' do
+  rake "system:notificacao_aipct_no_dia"
 end

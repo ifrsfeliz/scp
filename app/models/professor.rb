@@ -17,5 +17,7 @@ class Professor < ActiveRecord::Base
 
   # Associations
   has_many :documents, dependent: :destroy
-  has_many :projects, through: :member_professors
+  has_many :member_professors
+  has_many :projects
+
 end
