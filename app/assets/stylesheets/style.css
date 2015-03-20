@@ -49,42 +49,10 @@ table caption .new-record {
 }
 /* overrides/sobreescritas do bootstrap */
 
-#top-nav {
-  border-bottom: 1px solid #000;
-  position: relative;
-  z-index: 999;
-  background: #3B3B3B;
-  background: -moz-linear-gradient(top, #3B3B3B 0%, #2b2b2b 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3B3B3B), color-stop(100%,#2b2b2b));
-}
-
-#top-nav ul {
-  list-style: none;
-  margin: 5px 0 5px;
-  padding: 0;
-}
-
-#top-nav ul li {
-  display: inline-block;
-  padding-right: 20px;
-}
-
-#top-nav ul li a {
-  color: #E7E7E7;
-}
-
-#top-nav ul li a:hover {
-  color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
-  text-decoration: none;
-}
-
-#top-nav a.active {
-  color: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
-}
-
 header {
   background: #3AAC1C; /* #3AAC1C, #6F5BB1, #224389, #EE8B07, #9C1A72, #CD2E22 */
   padding: 20px 0;
+  border-top: 1px solid #3B3B3B;
 }
 
 header h1 {

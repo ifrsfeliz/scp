@@ -10,21 +10,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <nav id="top-nav">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul>
-              <li><a href="#" class="active">SCP - Sistema de Controle de Projetos</a></li>
-              <li><a href="#">Sistema Lorem</a></li>
-              <li><a href="#">Sistema Ipsum</a></li>
-              <li><a href="#">Sistema Dolor</a></li>
-              <li><a href="#">Sistema Sit Amet</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;"> 
+      <ul id="menu-barra-temp" style="list-style:none;">
+        <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED">
+          <a href="http://brasil.gov.br" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a>
+        </li>
+        <li>
+          <a style="font-family:sans,sans-serif; text-decoration:none; color:white;" href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a>
+        </li>
+      </ul>
+    </div>
+
     <header>
       <div class="container-fluid">
         <div class="row">
@@ -133,5 +129,6 @@
         </div>
       </div>
     </footer>
+    <script defer="defer" src="http://barra.brasil.gov.br/barra.js" type="text/javascript"></script>
   </body>
 </html>
