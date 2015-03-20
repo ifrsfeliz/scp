@@ -16,7 +16,7 @@ sudo apt-get upgrade
 Instalar alguns pacotes de dependências
 
 ```console
-sudo apt-get install build-essential libmysqlclient-dev libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3
+sudo apt-get install build-essential libmysqlclient-dev libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3 imagemagick
 ```
 
 Verificar a versão stable do ruby: https://www.ruby-lang.org/en/downloads/ e fazer o download via wget
