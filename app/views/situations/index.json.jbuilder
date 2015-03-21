@@ -1,4 +1,4 @@
 json.array!(@situations) do |situation|
-  json.extract! situation, :id, :nome
-  json.url situation_url(situation, format: :json)
+  json.indexLabel situation.nome
+  json.y situation.projects.count
 end
