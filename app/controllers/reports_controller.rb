@@ -10,7 +10,8 @@ class ReportsController < ActionController::Base
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.where(entregue: true, avaliacao: [nil, 'à Reformular'])
+    @reports = Report.where('entregue = ? AND avaliacao = ? OR avaliacao = ?', true, 'Aguardando Avaliação', 'à Reformular')
+    # @reports = Report.all
   end
 
   # GET /reports/1
@@ -38,6 +39,7 @@ class ReportsController < ActionController::Base
   def reformulate
     respond_to do |format|
       @report.avaliacao = 'à Reformular'
+      @report.entregue = false
 
       if @report.update(report_params)
         mail = ReportMailer.reformulate_report(@report).deliver_later
@@ -56,10 +58,15 @@ class ReportsController < ActionController::Base
   end
 
   def form_deliver
+    if @report.entregue?
+      redirect_to root_path, notice: 'Esse formulário já foi enviado, caso necessite fazer alterações solicite a reabertura do relatório.'
+    end
   end
 
   def deliver
     @report.entregue = true
+    @report.avaliacao = 'Aguardando Avaliação'
+
     respond_to do |format|
       if @report.update(report_params)
 

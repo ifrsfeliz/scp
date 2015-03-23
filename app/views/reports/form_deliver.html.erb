@@ -32,9 +32,13 @@
   <% end %>
 
   <h4 class="title">Anexos</h4>
+  <p>(Os anexos serão enviados somente após ser clicado no botão enviar relatório, para selecionar mais de um arquivo, segure o ctrl na janela de seleciionar os arquivos.)</p>
   <%= file_field_tag "report_attachments[]", type: :file, multiple: true %>
+  <br />
+
 
   <br />
+
 
   <%= f.button :submit, class: 'btn btn-primary', value: 'Enviar Relatório' %>
 <% end %>
