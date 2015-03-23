@@ -8,7 +8,6 @@
       <th>Data Fim</th>
       <th>Número SUAP</th>
       <th>Tipo de Bolsa</th>
-      <th>Última Verificação</th>
       <th>Linha de Pesq.</th>
       <th>Situação</th>
       <th colspan="3">Ações</th>
@@ -17,11 +16,10 @@
   <%= content_tag_for(:tr, @projects) do |project| %>
     <td><%= project.nome %></td>
     <td><%= link_to project.coordenador.nome, project.coordenador %></td>
-    <td><%= l project.data_inicio %></td>
-    <td><%= l project.data_fim %></td>
+    <td><%= l project.data_inicio unless project.data_inicio.nil? %></td>
+    <td><%= l project.data_fim unless project.data_fim.nil? %></td>
     <td><%= project.numero_suap %></td>
     <td><%= project.scholarship_type.nome unless project.scholarship_type.nil? %></td>
-    <td><%= l project.ultima_verificacao, format: :short %></td>
     <td><%= link_to project.research_line.nome, project.research_line %></td>
     <td><%= project.situation.nome %></td>
     <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs' %></td>
