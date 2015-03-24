@@ -1,0 +1,35 @@
+<h1 class="title">Lista de Pesquisadores</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>RG</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Celular</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @researchers.each do |researcher| %>
+      <tr>
+        <td><%= researcher.nome %></td>
+        <td><%= researcher.cpf %></td>
+        <td><%= researcher.rg %></td>
+        <td><%= researcher.email %></td>
+        <td><%= researcher.telefone %></td>
+        <td><%= researcher.celular %></td>
+        <td><%= link_to 'Mostrar', researcher, class: 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_researcher_path(researcher), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Destruir', researcher, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr />
+
+<%= link_to 'Novo Pesquisador', new_researcher_path, class: 'btn btn-primary' %>

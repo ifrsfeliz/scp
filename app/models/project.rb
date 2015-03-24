@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  nome               :string
-#  professor_id       :integer
+#  researcher_id       :integer
 #  data_inicio        :date
 #  data_fim           :date
 #  numero_suap        :string
@@ -22,7 +22,7 @@
 class Project < ActiveRecord::Base
 
   # Associations
-  belongs_to :coordenador, foreign_key: 'professor_id', class_name: 'Professor'
+  belongs_to :coordenador, foreign_key: 'researcher_id', class_name: 'Researcher'
   belongs_to :research_line
   belongs_to :situation
   belongs_to :scholarship_type
@@ -35,8 +35,8 @@ class Project < ActiveRecord::Base
   has_many :member_students
   has_many :students, through: :member_students
 
-  has_many :member_professors
-  has_many :professors, through: :member_professors
+  has_many :member_researchers
+  has_many :researchers, through: :member_researchers
 
   # Configs
   monetize :valor_aipct_cents, as: 'valor_aipct' #https://github.com/RubyMoney/money-rails
@@ -45,7 +45,7 @@ class Project < ActiveRecord::Base
                                 reject_if: :all_blank,
                                 allow_destroy: true
 
-  accepts_nested_attributes_for :member_professors,
+  accepts_nested_attributes_for :member_researchers,
                                 reject_if: :all_blank,
                                 allow_destroy: true
 

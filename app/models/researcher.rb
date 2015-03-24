@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: professors
+# Table name: researchers
 #
 #  id         :integer          not null, primary key
 #  nome       :string
@@ -13,11 +13,11 @@
 #  updated_at :datetime         not null
 #
 
-class Professor < ActiveRecord::Base
+class Researcher < ActiveRecord::Base
 
   # Associations
   has_many :documents, dependent: :destroy
-  has_many :member_professors
+  has_many :member_researchers
   has_many :projects
 
 end

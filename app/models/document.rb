@@ -10,12 +10,12 @@
 #  file_file_size    :integer
 #  file_updated_at   :datetime
 #  student_id        :integer
-#  professor_id      :integer
+#  researcher_id      :integer
 #
 
 class Document < ActiveRecord::Base
   belongs_to :student
-  belongs_to :professor
+  belongs_to :researcher
 
   has_attached_file :file,
     :path => ":rails_root/public/files/:class/:id/:filename",

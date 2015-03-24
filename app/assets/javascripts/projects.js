@@ -1,20 +1,20 @@
 var ready;
 
 ready = function() {
-  $("#member_professors a.add_fields").
+  $("#member_researchers a.add_fields").
     data("association-insertion-position", 'append').
-    data("association-insertion-node", '#member_professors');
+    data("association-insertion-node", '#member_researchers');
 
-  $('#member_professors').bind('cocoon:before-insert', function(e, member_professor_to_be_added) {
-    member_professor_to_be_added.fadeIn('slow');
+  $('#member_researchers').bind('cocoon:before-insert', function(e, member_researcher_to_be_added) {
+    member_researcher_to_be_added.fadeIn('slow');
     console.log('Callback antes de mostrar formulário');
-  }).bind('cocoon:before-remove', function(e, member_professor) {
+  }).bind('cocoon:before-remove', function(e, member_researcher) {
     // allow some time for the animation to complete
     console.log('Callback antes de remover formulário');
     $(this).data('remove-timeout', 1000);
-    member_professor.fadeOut('slow');
+    member_researcher.fadeOut('slow');
   });
-  
+
   $("#member_students a.add_fields").
     data("association-insertion-position", 'append').
     data("association-insertion-node", '#member_students');
@@ -28,11 +28,11 @@ ready = function() {
     $(this).data('remove-timeout', 1000);
     member_student.fadeOut('slow');
   });
-  
+
   $("#reports a.add_fields").
     data("association-insertion-position", 'append').
     data("association-insertion-node", '#reports');
-  
+
   $('#reports').bind('cocoon:before-insert', function(e, report_to_be_added) {
     report_to_be_added.fadeIn('slow');
     console.log('Callback antes de mostrar formulário');

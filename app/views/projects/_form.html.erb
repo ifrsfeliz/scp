@@ -25,11 +25,11 @@
 
     <hr />
 
-    <h4 class="title">Vínculo de Professores</h4>
-    <div id="member_professors">
-      <%= link_to_add_association 'Adicionar Professor', f, :member_professors, class: 'btn btn-primary' %>
-      <%= f.simple_fields_for :member_professors do |m| %>
-        <%= render 'member_professor_fields', :f => m, :render_options => {:wrapper => 'inline' } %>
+    <h4 class="title">Vínculo de Pesquisadores</h4>
+    <div id="member_researchers">
+      <%= link_to_add_association 'Adicionar Pesquisador', f, :member_researchers, class: 'btn btn-primary' %>
+      <%= f.simple_fields_for :member_researchers do |m| %>
+        <%= render 'member_researcher_fields', :f => m, :render_options => {:wrapper => 'inline' } %>
       <% end %>
     </div>
 

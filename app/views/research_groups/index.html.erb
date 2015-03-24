@@ -12,7 +12,7 @@
 
   <%= content_tag_for(:tr, @research_groups) do |research_group| %>
     <td><%= research_group.nome %></td>
-    <td><%= link_to research_group.professor.nome, research_group.professor %></td>
+    <td><%= link_to research_group.researcher.nome, research_group.researcher %></td>
     <td><%= research_group.link_grupo_cnpq %></td>
     <td><%= link_to research_group.area.nome, research_group.area unless research_group.area.nil? %></td>
     <td><%= l research_group.ultima_verificacao %></td>

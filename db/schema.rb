@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310194742) do
+ActiveRecord::Schema.define(version: 20150324192430) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -27,17 +27,17 @@ ActiveRecord::Schema.define(version: 20150310194742) do
     t.integer  "file_file_size",    limit: 4
     t.datetime "file_updated_at"
     t.integer  "student_id",        limit: 4
-    t.integer  "professor_id",      limit: 4
+    t.integer  "researcher_id",     limit: 4
   end
 
-  add_index "documents", ["professor_id"], name: "index_documents_on_professor_id", using: :btree
+  add_index "documents", ["researcher_id"], name: "index_documents_on_researcher_id", using: :btree
   add_index "documents", ["student_id"], name: "index_documents_on_student_id", using: :btree
 
-  create_table "member_professors", force: :cascade do |t|
-    t.integer  "project_id",   limit: 4
-    t.integer  "professor_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "member_researchers", force: :cascade do |t|
+    t.integer  "project_id",    limit: 4
+    t.integer  "researcher_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "member_students", force: :cascade do |t|
@@ -53,18 +53,6 @@ ActiveRecord::Schema.define(version: 20150310194742) do
     t.boolean  "notificacao_no_dia",               limit: 1
     t.boolean  "notificacao_atrasada",             limit: 1
     t.date     "ultima_data_notificacao_atrasada"
-  end
-
-  create_table "professors", force: :cascade do |t|
-    t.string   "nome",        limit: 255
-    t.string   "cpf",         limit: 255
-    t.string   "rg",          limit: 255
-    t.string   "email",       limit: 255
-    t.string   "telefone",    limit: 255
-    t.string   "celular",     limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "link_lattes", limit: 255
   end
 
   create_table "project_attachments", force: :cascade do |t|
@@ -89,13 +77,11 @@ ActiveRecord::Schema.define(version: 20150310194742) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "nome",                limit: 255
-    t.integer  "professor_id",        limit: 4
+    t.integer  "researcher_id",       limit: 4
     t.date     "data_inicio"
     t.date     "data_fim"
     t.string   "numero_suap",         limit: 255
     t.string   "nome_edital",         limit: 255
-    t.string   "link_cnpq",           limit: 255
-    t.datetime "ultima_verificacao"
     t.boolean  "auxilio_aipct",       limit: 1
     t.integer  "valor_aipct_cents",   limit: 4
     t.integer  "research_line_id",    limit: 4
@@ -105,8 +91,8 @@ ActiveRecord::Schema.define(version: 20150310194742) do
     t.integer  "scholarship_type_id", limit: 4
   end
 
-  add_index "projects", ["professor_id"], name: "index_projects_on_professor_id", using: :btree
   add_index "projects", ["research_line_id"], name: "index_projects_on_research_line_id", using: :btree
+  add_index "projects", ["researcher_id"], name: "index_projects_on_researcher_id", using: :btree
   add_index "projects", ["situation_id"], name: "index_projects_on_situation_id", using: :btree
 
   create_table "report_attachments", force: :cascade do |t|
@@ -147,7 +133,7 @@ ActiveRecord::Schema.define(version: 20150310194742) do
 
   create_table "research_groups", force: :cascade do |t|
     t.string   "nome",               limit: 255
-    t.integer  "professor_id",       limit: 4
+    t.integer  "researcher_id",      limit: 4
     t.date     "ultima_verificacao"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -155,7 +141,7 @@ ActiveRecord::Schema.define(version: 20150310194742) do
     t.integer  "area_id",            limit: 4
   end
 
-  add_index "research_groups", ["professor_id"], name: "index_research_groups_on_professor_id", using: :btree
+  add_index "research_groups", ["researcher_id"], name: "index_research_groups_on_researcher_id", using: :btree
 
   create_table "research_lines", force: :cascade do |t|
     t.string   "nome",              limit: 255
@@ -165,6 +151,18 @@ ActiveRecord::Schema.define(version: 20150310194742) do
   end
 
   add_index "research_lines", ["research_group_id"], name: "index_research_lines_on_research_group_id", using: :btree
+
+  create_table "researchers", force: :cascade do |t|
+    t.string   "nome",        limit: 255
+    t.string   "cpf",         limit: 255
+    t.string   "rg",          limit: 255
+    t.string   "email",       limit: 255
+    t.string   "telefone",    limit: 255
+    t.string   "celular",     limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "link_lattes", limit: 255
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",       limit: 255

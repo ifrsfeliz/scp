@@ -4,9 +4,9 @@ pt-BR:
       user:
         one: 'Usuário'
         other: 'Usuários'
-      professor:
-        one: 'Professor'
-        other: 'Professores'
+      researcher:
+        one: 'Pesquisador'
+        other: 'Pesquisadores'
       student:
         one: 'Aluno'
         other: 'Alunos'

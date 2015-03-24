@@ -68,17 +68,17 @@
 
   </div>
   <div class="col-md-6">
-    <h4 class="title">Professores</h4>
+    <h4 class="title">Pesquisadores</h4>
     <table class="table table-striped">
       <tr>
-        <th>Professor</th>
+        <th>Pesquisador</th>
         <th>Email</th>
       </tr>
-      <% if @project.member_professors.any? %>
-        <% @project.member_professors.each do |p| %>
+      <% if @project.member_researchers.any? %>
+        <% @project.member_researchers.each do |p| %>
           <tr>
-            <td><%= link_to p.professor.nome, p.professor %></td>
-            <td><%= p.professor.email %></td>
+            <td><%= link_to p.researcher.nome, p.researcher %></td>
+            <td><%= p.researcher.email %></td>
           </tr>
         <% end %>
       <% else %>

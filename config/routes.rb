@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :students
 
-  resources :professors
+  resources :researchers
 
   get 'home/index'
 
