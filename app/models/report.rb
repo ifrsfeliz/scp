@@ -14,7 +14,7 @@ class Report < ActiveRecord::Base
     today = Date.today
 
     reports.each do |r|
-      if (r.notificacao_antecipada.nil? && r.periodo_desenvolvimento_fim - 2 <= today) # 15 days early or next the deliver date
+      if (r.notificacao_antecipada.nil? && r.periodo_desenvolvimento_fim - 15 <= today) # 15 days early or next the deliver date
         mail = ReportMailer.early_report_notification(r).deliver
 
         if mail
@@ -30,7 +30,7 @@ class Report < ActiveRecord::Base
           r.save
         end
 
-      elsif (r.notificacao_atrasada.nil? && r.periodo_desenvolvimento_fim + 2 == today)
+      elsif (r.notificacao_atrasada.nil? && r.periodo_desenvolvimento_fim + 15 == today)
         mail = ReportMailer.first_delayed_report_notification(r).deliver
 
         if mail
@@ -40,7 +40,7 @@ class Report < ActiveRecord::Base
         end
 
       # notificacao_atrasada significa que já foi entregue
-      elsif (r.notificacao_atrasada == true && r.ultima_data_notificacao_atrasada + 2 == today)
+      elsif (r.notificacao_atrasada == true && r.ultima_data_notificacao_atrasada + 15 == today)
         mail = ReportMailer.others_delayed_report_notification(r).deliver
 
         if mail
