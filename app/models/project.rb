@@ -27,16 +27,17 @@ class Project < ActiveRecord::Base
   belongs_to :situation
   belongs_to :scholarship_type
 
-  has_many :reports
+  has_many :reports, dependent: :destroy
 
   has_many :project_attachments, dependent: :destroy
   has_many :project_publications, dependent: :destroy
 
-  has_many :member_students
+  has_many :member_students, dependent: :destroy
   has_many :students, through: :member_students
 
-  has_many :member_researchers
+  has_many :member_researchers, dependent: :destroy
   has_many :researchers, through: :member_researchers
+
 
   # Configs
   monetize :valor_aipct_cents, as: 'valor_aipct' #https://github.com/RubyMoney/money-rails
