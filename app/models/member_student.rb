@@ -24,7 +24,7 @@ class MemberStudent < ActiveRecord::Base
   belongs_to :student
 
   # Validations
-  validates_presence_of :project, :student, :tipo_vinculo, :data_inicio, :data_fim
+  validates_presence_of :student, :tipo_vinculo, :data_inicio, :data_fim
 
 
   def self.report_request_notification

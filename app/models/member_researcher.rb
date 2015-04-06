@@ -16,6 +16,6 @@ class MemberResearcher < ActiveRecord::Base
   belongs_to :researcher
 
   # Validations
-  validates_presence_of :project, :researcher
+  validates_presence_of :researcher
 
 end

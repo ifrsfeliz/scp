@@ -33,7 +33,7 @@ class Report < ActiveRecord::Base
   before_create :generate_access_token
 
   # Validations
-  validates_presence_of :periodo_desenvolvimento_inicio, :periodo_desenvolvimento_fim, :project
+  validates_presence_of :periodo_desenvolvimento_inicio, :periodo_desenvolvimento_fim
 
   def self.report_request_notification
     reports = Report.where(entregue: [nil, false])
