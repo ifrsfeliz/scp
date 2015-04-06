@@ -52,7 +52,7 @@ gem 'money-rails'
 gem 'paperclip'
 
 # Annotate models
-gem 'annotate'
+gem 'annotate', '~> 2.6.8'
 
 gem 'cocoon'
 

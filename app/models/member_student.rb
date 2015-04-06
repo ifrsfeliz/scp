@@ -1,6 +1,31 @@
+# == Schema Information
+#
+# Table name: member_students
+#
+#  id                               :integer          not null, primary key
+#  project_id                       :integer
+#  student_id                       :integer
+#  tipo_vinculo                     :string(255)
+#  created_at                       :datetime         not null
+#  updated_at                       :datetime         not null
+#  data_inicio                      :date
+#  data_fim                         :date
+#  relatorio_entregue               :boolean
+#  notificacao_antecipada           :boolean
+#  notificacao_no_dia               :boolean
+#  notificacao_atrasada             :boolean
+#  ultima_data_notificacao_atrasada :date
+#
+
 class MemberStudent < ActiveRecord::Base
+  
+  # Associations
   belongs_to :project
   belongs_to :student
+
+  # Validations
+  validates_presence_of :project, :student, :tipo_vinculo, :data_inicio, :data_fim
+
 
   def self.report_request_notification
     member_students = MemberStudent.where(relatorio_entregue: [nil, false])
