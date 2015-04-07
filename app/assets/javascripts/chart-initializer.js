@@ -8,6 +8,7 @@ ready = function() {
 	  	},
 	  	data: [{
 	  		type: "doughnut",
+        indexLabel: "{label} - {y}",
         dataPoints: JSON.parse($.ajax({type: "GET", url: "/situations.json", async: false}).responseText)
 	  	}]
 	  });
@@ -24,6 +25,7 @@ ready = function() {
 	  	},
 	  	data: [{
 	  		type: "doughnut",
+        indexLabel: "{label} - {y}",
         dataPoints: JSON.parse($.ajax({type: "GET", url: "/scholarship_types.json", async: false}).responseText)
 	  	}]
 	  });
@@ -40,6 +42,7 @@ ready = function() {
 	  	},
 	  	data: [{
         type: "column",
+        indexLabel: "{y}",
         dataPoints: JSON.parse($.ajax({type: "GET", url: "/projects/per_year.json", async: false}).responseText)
 	  	}]
 	  });
@@ -56,6 +59,7 @@ ready = function() {
 	  	},
 	  	data: [{
         type: "doughnut",
+        indexLabel: "{label} - {y}",
         dataPoints: JSON.parse($.ajax({type: "GET", url: "/projects/per_research_group.json", async: false}).responseText)
 	  	}]
 	  });
