@@ -3,12 +3,12 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>CPF</th>
-      <th>RG</th>
-      <th>Email</th>
-      <th>Telefone</th>
-      <th>Celular</th>
+      <th><%= sort_link @q, :nome, 'Nome' %></th>
+      <th><%= sort_link @q, :cpf, 'CPF' %></th>
+      <th><%= sort_link @q, :rg, 'RG' %></th>
+      <th><%= sort_link @q, :email, 'Email' %></th>
+      <th><%= sort_link @q, :telefone, 'Telefone' %></th>
+      <th><%= sort_link @q, :celular, 'Celular' %></th>
       <th colspan="3">Ações</th>
     </tr>
   </thead>

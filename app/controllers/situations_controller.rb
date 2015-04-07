@@ -4,7 +4,8 @@ class SituationsController < ApplicationController
   # GET /situations
   # GET /situations.json
   def index
-    @situations = Situation.all
+    @q = Situation.ransack(params[:q])
+    @situations = @q.result(distinct: true)
   end
 
   # GET /situations/1

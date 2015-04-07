@@ -2,12 +2,12 @@
 
 <table class="table table-striped">
   <tr>
-      <th>nome</th>
-      <th>cpf</th>
-      <th>rg</th>
-      <th>email</th>
-      <th>telefone</th>
-      <th>celular</th>
+      <th><%= sort_link @q, :nome, 'Nome' %></th>
+      <th><%= sort_link @q, :cpf, 'CPF' %></th>
+      <th><%= sort_link @q, :rg, 'RG' %></th>
+      <th><%= sort_link @q, :email, 'Email' %></th>
+      <th><%= sort_link @q, :telefone, 'Telefone' %></th>
+      <th><%= sort_link @q, :celular, 'Celular' %></th>
       <th colspan="3">Ações</th>
   </tr>
 

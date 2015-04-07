@@ -4,7 +4,8 @@ class ResearchLinesController < ApplicationController
   # GET /research_lines
   # GET /research_lines.json
   def index
-    @research_lines = ResearchLine.all
+    @q = ResearchLine.ransack(params[:q])
+    @research_lines = @q.result(distinct: true)
   end
 
   # GET /research_lines/1

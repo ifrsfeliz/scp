@@ -4,7 +4,8 @@ class ScholarshipTypesController < ApplicationController
   # GET /scholarship_types
   # GET /scholarship_types.json
   def index
-    @scholarship_types = ScholarshipType.all
+    @q = ScholarshipType.ransack(params[:q])
+    @scholarship_types = @q.result(distinct: true)
   end
 
   # GET /scholarship_types/1

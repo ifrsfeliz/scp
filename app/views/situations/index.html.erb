@@ -2,8 +2,8 @@
 
 <table class="table table-striped">
   <tr>
-      <th>Nome</th>
-      <th colspan="3">Ações</th>
+    <th><%= sort_link @q, :nome, 'Nome' %></th>
+    <th colspan="3">Ações</th>
   </tr>
 
   <%= content_tag_for(:tr, @situations) do |situation| %>

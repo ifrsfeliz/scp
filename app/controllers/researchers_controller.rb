@@ -4,7 +4,8 @@ class ResearchersController < ApplicationController
   # GET /researchers
   # GET /researchers.json
   def index
-    @researchers = Researcher.all
+    @q = Researcher.ransack(params[:q])
+    @researchers = @q.result(distinct: true)
   end
 
   # GET /researchers/1

@@ -4,7 +4,8 @@ class ResearchGroupsController < ApplicationController
   # GET /research_groups
   # GET /research_groups.json
   def index
-    @research_groups = ResearchGroup.all
+    @q = ResearchGroup.ransack(params[:q])
+    @research_groups = @q.result(distinct: true)
   end
 
   # GET /research_groups/1
