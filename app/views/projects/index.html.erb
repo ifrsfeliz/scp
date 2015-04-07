@@ -2,15 +2,47 @@
 
 <table class="table table-striped">
   <tr>
-      <th>Nome</th>
-      <th>Coordenador</th>
-      <th>Data Início</th>
-      <th>Data Fim</th>
-      <th>Número SUAP</th>
-      <th>Tipo de Bolsa</th>
-      <th>Linha de Pesq.</th>
-      <th>Situação</th>
+      <th><%= sort_link @q, :nome, 'Nome' %></th>
+      <th><%= sort_link @q, :coordenador_nome, 'Coordenador' %></th>
+      <th><%= sort_link @q, :data_inicio, 'Data Início' %></th>
+      <th><%= sort_link @q, :data_fim, 'Data Fim' %></th>
+      <th><%= sort_link @q, :numero_suap, 'Número SUAP' %></th>
+      <th><%= sort_link @q, :scholarship_type_nome, 'Tipo de Bolsa' %></th>
+      <th><%= sort_link @q, :research_line_nome, 'Linha de Pesq.' %></th>
+      <th><%= sort_link @q, :situation_nome, 'Situação' %></th>
       <th colspan="3">Ações</th>
+  </tr>
+  <tr>
+    <%= search_form_for @q do |f| %>
+      <td>
+        <%= f.search_field :nome_cont, class: 'form-control' %>
+      </td>
+      <td>
+        <%= f.search_field :coordenador_nome_cont, class: 'form-control' %>
+      </td>
+      <td>
+        <%= f.search_field :data_inicio_eq, class: 'form-control', value: (l(f.object.data_inicio_eq) if f.object.data_inicio_eq) %>
+      </td>
+      <td>
+        <%= f.search_field :data_fim_eq, class: 'form-control', value: (l(f.object.data_fim_eq) if f.object.data_fim_eq) %>
+      </td>
+      <td>
+        <%= f.search_field :numero_suap_cont, class: 'form-control' %>
+      </td>
+      <td>
+        <%= f.select :scholarship_type_id_eq, options_from_collection_for_select(ScholarshipType.all, "id", "nome", @q.scholarship_type_id_eq), {include_blank: "Selecione o Tipo"}, {class: 'form-control'} %>
+      </td>
+      <td>
+        <%= f.select :research_line_id_eq, options_from_collection_for_select(ResearchLine.all, "id", "nome", @q.research_line_id_eq), {include_blank: "Selecione a Linha"}, {class: 'form-control'} %>
+      </td>
+      <td>
+        <%= f.select :situation_id_eq, options_from_collection_for_select(Situation.all, "id", "nome", @q.situation_id_eq), {include_blank: "Selecione a Situação"}, {class: 'form-control'} %>
+      </td>
+      <td colspan="3">
+        <%= f.submit 'Filtrar', class: 'btn btn-primary' %>
+        <%= link_to "Limpar", projects_path, class: 'btn btn-warning' %>
+      </td>
+    <% end %>
   </tr>
 
   <%= content_tag_for(:tr, @projects) do |project| %>
