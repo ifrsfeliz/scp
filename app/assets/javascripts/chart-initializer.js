@@ -32,6 +32,38 @@ ready = function() {
 
     chart2.render();
   }
+
+  if ( $( "#chart3" ).length ) {
+	  var chart3 = new CanvasJS.Chart("chart3", {
+	  	title: {
+        text: "Projetos por Ano"
+	  	},
+	  	data: [{
+        type: "column",
+        dataPoints: JSON.parse($.ajax({type: "GET", url: "/projects/per_year.json", async: false}).responseText)
+	  	}]
+	  });
+
+    console.log(JSON.parse($.ajax({type: "GET", url: "/projects/per_year.json", async: false}).responseText));
+
+    chart3.render();
+  }
+
+  if ( $( "#chart4" ).length ) {
+	  var chart4 = new CanvasJS.Chart("chart4", {
+	  	title: {
+        text: "Projetos por Grupo de Pesquisa"
+	  	},
+	  	data: [{
+        type: "doughnut",
+        dataPoints: JSON.parse($.ajax({type: "GET", url: "/projects/per_research_group.json", async: false}).responseText)
+	  	}]
+	  });
+
+    console.log(JSON.parse($.ajax({type: "GET", url: "/projects/per_research_group.json", async: false}).responseText));
+
+    chart4.render();
+  }
 };
 
 $(document).ready(ready);

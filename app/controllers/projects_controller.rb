@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
             @project.project_attachments.create(file: f)
           }
         end
-        
+
         if params[:publications]
           params[:publications].each { |f|
             @project.project_publications.create(file: f)
@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
             @project.project_attachments.create(file: f)
           }
         end
-        
+
         if params[:publications]
           params[:publications].each { |f|
             @project.project_publications.create(file: f)
@@ -86,6 +86,56 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /projects/per_research_group
+  def per_research_group
+    research_groups = ResearchGroup.all
+
+    @cont = []
+
+    research_groups.each do |rg|
+      cont_temp = 0
+      rg.research_lines.each do |rl|
+        cont_temp += rl.projects.count
+      end
+
+      @cont.push({label: rg.nome, y: cont_temp})
+    end
+
+    respond_to do |format|
+      format.json {render :per_research_group, status: :ok}
+    end
+
+  end
+
+  # GET /projects/per_year.json
+  def per_year
+    ano_inicial = Project.order('data_inicio asc').first.data_inicio.year
+    ano_final = Project.order('data_fim desc').first.data_fim.year
+
+    anos_range = ano_inicial..ano_final
+
+    @cont = []
+
+    projects = Project.all
+
+    anos_range.each do |a|
+      cont_temp = 0
+      projects.each do |p|
+        if p.data_inicio.year <= a && p.data_fim.year >= a
+          cont_temp += 1
+        end
+      end
+
+      @cont.push({label: a, y: cont_temp})
+    end
+
+    respond_to do |format|
+      format.json {render :per_year, status: :ok}
+    end
+
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

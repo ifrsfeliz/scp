@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :areas
 
+  get 'projects/per_year'
+  get 'projects/per_research_group'
   resources :projects
 
   resources :research_lines
