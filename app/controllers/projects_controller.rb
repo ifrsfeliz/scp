@@ -88,6 +88,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def delete_edital
+    @project = Project.find(params[:project_id])
+    @project.edital = nil
+
+    if @project.save
+      redirect_to @project, notice: 'Edital deletado com sucesso.'
+    else
+      redirect_to @project, alert: 'Ocorreu um erro ao deletar o edital'
+    end
+  end
+
   # GET /projects/per_research_group
   def per_research_group
     research_groups = ResearchGroup.all
@@ -146,7 +157,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:nome, :researcher_id, :data_inicio, :data_fim, :numero_suap, :nome_edital, :link_cnpq, :ultima_verificacao, :auxilio_aipct, :valor_aipct, :research_line_id, :situation_id, :scholarship_type_id,
+      params.require(:project).permit(:nome, :researcher_id, :data_inicio, :data_fim, :numero_suap, :nome_edital, :link_cnpq, :ultima_verificacao, :auxilio_aipct, :valor_aipct, :research_line_id, :situation_id, :scholarship_type_id, :edital,
                                       reports_attributes: [:id, :periodo_desenvolvimento_inicio, :periodo_desenvolvimento_fim, :_destroy],
                                       member_students_attributes: [:id, :student_id, :_destroy, :tipo_vinculo, :data_inicio, :data_fim],
                                       member_researchers_attributes: [:id, :researcher_id, :_destroy])

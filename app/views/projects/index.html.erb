@@ -46,7 +46,11 @@
   </tr>
 
   <%= content_tag_for(:tr, @projects) do |project| %>
-    <td><%= project.nome %></td>
+    <% if project.edital_file_name? %>
+      <td><%= link_to project.nome, project.edital.url, target: '_blank' %></td>
+    <% else %>
+      <td><%= project.nome %></td>
+    <% end %>
     <td><%= link_to project.coordenador.nome, project.coordenador %></td>
     <td><%= l project.data_inicio unless project.data_inicio.nil? %></td>
     <td><%= l project.data_fim unless project.data_fim.nil? %></td>

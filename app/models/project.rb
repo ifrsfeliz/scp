@@ -28,8 +28,8 @@ class Project < ActiveRecord::Base
 
   has_many :reports, dependent: :destroy
 
-  has_many :project_attachments, dependent: :destroy
-  has_many :project_publications, dependent: :destroy
+  has_many :project_attachments, dependent: :destroy # Anexos
+  has_many :project_publications, dependent: :destroy # Publicações
 
   has_many :member_students, dependent: :destroy
   has_many :students, through: :member_students
@@ -55,5 +55,12 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :reports,
                                 reject_if: :all_blank,
                                 allow_destroy: true
+
+  # Paperclip para fazer upload do Edital
+  has_attached_file :edital,
+    :path => ":rails_root/public/files/:class/:id/:filename",
+    :url  => "/files/:class/:id/:filename"
+
+  do_not_validate_attachment_file_type :edital
 
 end
