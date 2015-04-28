@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_document, only: [:destroy]
 
   def destroy

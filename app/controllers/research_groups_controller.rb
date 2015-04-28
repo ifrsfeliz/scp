@@ -1,4 +1,6 @@
 class ResearchGroupsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_research_group, only: [:show, :edit, :update, :destroy]
 
   # GET /research_groups
