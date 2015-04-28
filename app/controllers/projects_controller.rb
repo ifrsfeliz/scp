@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource :only => [:per_year, :per_research_group]
 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
