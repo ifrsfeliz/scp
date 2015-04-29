@@ -16,7 +16,7 @@
       <dd><%= @project.numero_suap %></dd>
       <dt>Nome Edital:</dt>
       <dd><%= @project.nome_edital %></dd>
-      <dt>Edital (Arquivo):</dt>
+      <dt>Arquivo do Projeto:</dt>
       <% if @project.edital_file_name? %>
         <dd><%= link_to @project.edital_file_name, @project.edital.url, target: '_blank' %> - <%= link_to 'Deletar', project_delete_edital_path(@project), class: 'btn btn-danger btn-xs' %> </dd>
       <% else %>

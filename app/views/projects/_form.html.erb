@@ -7,7 +7,7 @@
     <%= f.input :data_fim, as: 'date_picker' %>
     <%= f.input :numero_suap, label: 'Número SUAP' %>
     <%= f.input :nome_edital %>
-    <%= f.input :edital, as: :file %>
+    <%= f.input :edital, label: 'Arquivo do projeto:', as: :file %>
     <% if f.object.edital_file_name? %>
       <%= link_to f.object.edital_file_name, f.object.edital.url, target: '_blank' %> - <%= link_to 'Deletar', project_delete_edital_path(f.object), class: 'btn btn-danger btn-xs' %>
       <br />
