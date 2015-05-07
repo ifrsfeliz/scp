@@ -155,7 +155,11 @@
         <% @project.project_publications.each do |p| %>
           <tr>
             <td><%= link_to p.file_file_name, p.file.url %></td>
-            <td><%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+            <td>
+              <% if can? :delete, p %>
+                <%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% else %>
@@ -168,8 +172,7 @@
 </div>
 
 <hr />
-
-
-
-<%= link_to 'Editar', edit_project_path(@project), class: 'btn btn-warning' %>
+<% if can? :edit, @project %>
+  <%= link_to 'Editar', edit_project_path(@project), class: 'btn btn-warning' %>
+<% end %>
 <%= link_to 'Voltar', projects_path, class: 'btn btn-default' %>
