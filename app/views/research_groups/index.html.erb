@@ -16,12 +16,19 @@
     <td><%= research_group.link_grupo_cnpq %></td>
     <td><%= link_to research_group.area.nome, research_group.area unless research_group.area.nil? %></td>
     <td><%= l research_group.ultima_verificacao %></td>
-    <td><%= link_to 'Mostrar', research_group, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_research_group_path(research_group), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', research_group, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% if can? :read, research_group %>
+      <td><%= link_to 'Mostrar', research_group, class: 'btn btn-default btn-xs' %></td>
+    <% end %>
+    <% if can? :edit, research_group %>
+      <td><%= link_to 'Editar', edit_research_group_path(research_group), class: 'btn btn-warning btn-xs' %></td>
+    <% end %>
+    <% if can? :delete, research_group %>
+      <td><%= link_to 'Destruir', research_group, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% end %>
   <% end %>
 </table>
 
-<hr />
-
-<%= link_to 'Novo Grupo de Pesquisa', new_research_group_path, class: 'btn btn-success' %>
+<% if can? :create, ResearchGroup %>
+  <hr />
+  <%= link_to 'Novo Grupo de Pesquisa', new_research_group_path, class: 'btn btn-success' %>
+<% end %>

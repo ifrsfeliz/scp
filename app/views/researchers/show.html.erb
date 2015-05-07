@@ -35,7 +35,9 @@
         <% @researcher.documents.each do |d| %>
           <tr>
             <td><%= link_to d.file_file_name, d.file.url %></td>
-            <td><%= link_to 'Deletar', d, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+            <% if can? :manage, @researcher %>
+              <td><%= link_to 'Deletar', d, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-xs btn-danger' %></td>
+            <% end %>
           </tr>
         <% end %>
       <% else %>
@@ -49,6 +51,7 @@
 </div>
 
 <hr />
-
-<%= link_to 'Editar', edit_researcher_path(@researcher), class: 'btn btn-warning' %>
+<% if can? :edit, @researcher %>
+  <%= link_to 'Editar', edit_researcher_path(@researcher), class: 'btn btn-warning' %>
+<% end %>
 <%= link_to 'Voltar', researchers_path, class: 'btn btn-default'%>

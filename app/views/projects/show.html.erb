@@ -18,7 +18,10 @@
       <dd><%= @project.nome_edital %></dd>
       <dt>Arquivo do Projeto:</dt>
       <% if @project.edital_file_name? %>
-        <dd><%= link_to @project.edital_file_name, @project.edital.url, target: '_blank' %> - <%= link_to 'Deletar', project_delete_edital_path(@project), class: 'btn btn-danger btn-xs' %> </dd>
+        <dd><%= link_to @project.edital_file_name, @project.edital.url, target: '_blank' %>
+        <% if (can? :delete, @project) %>
+          - <%= link_to 'Deletar', project_delete_edital_path(@project), class: 'btn btn-danger btn-xs' %> </dd>
+        <% end %>
       <% else %>
         <dd>Nenhum arquivo enviado.</dd>
       <% end %>

@@ -58,12 +58,19 @@
     <td><%= project.scholarship_type.nome unless project.scholarship_type.nil? %></td>
     <td><%= link_to project.research_line.nome, project.research_line %></td>
     <td><%= project.situation.nome %></td>
-    <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_project_path(project), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% if can? :read, project %>
+      <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs' %></td>
+    <% end %>
+    <% if can? :edit, project %>
+      <td><%= link_to 'Editar', edit_project_path(project), class: 'btn btn-warning btn-xs' %></td>
+    <% end %>
+    <% if can? :delete, project %>
+      <td><%= link_to 'Destruir', project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% end %>
   <% end %>
 </table>
 
-<hr />
-
-<%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-success' %>
+<% if can? :create, Project %>
+  <hr />
+  <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-success' %>
+<% end %>

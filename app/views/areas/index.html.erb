@@ -8,12 +8,19 @@
 
   <%= content_tag_for(:tr, @areas) do |area| %>
     <td><%= area.nome %></td>
-    <td><%= link_to 'Mostrar', area, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_area_path(area), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', area, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% if can? :read, area %>
+      <td><%= link_to 'Mostrar', area, class: 'btn btn-default btn-xs' %></td>
+    <% end %>
+    <% if can? :update, area %>
+      <td><%= link_to 'Editar', edit_area_path(area), class: 'btn btn-warning btn-xs' %></td>
+    <% end %>
+    <% if can? :delete, area %>
+      <td><%= link_to 'Destruir', area, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% end %>
   <% end %>
 </table>
 
+<% if can? :create, Area %>
 <hr />
-
 <%= link_to 'Nova Área', new_area_path, class: 'btn btn-success' %>
+<% end %>

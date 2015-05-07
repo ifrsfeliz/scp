@@ -1,4 +1,5 @@
 class ReportsController < ActionController::Base
+
   layout :resolve_layout
 
   before_action :authenticate_user!, except: [:deliver, :form_deliver]
@@ -20,39 +21,47 @@ class ReportsController < ActionController::Base
   end
 
   def approve
-    @report.avaliacao = "Aprovado"
+    if current_user.role? :admin
+      @report.avaliacao = "Aprovado"
 
-    if @report.save
-      mail = ReportMailer.approved_report(@report).deliver_later
+      if @report.save
+        mail = ReportMailer.approved_report(@report).deliver_later
 
-      unless mail 
-        redirect_to reports_path, notice: 'Ocorreu um erro ao enviar o e-mail, comunique o suporte para solucionar o problema'
+        unless mail 
+          redirect_to reports_path, notice: 'Ocorreu um erro ao enviar o e-mail, comunique o suporte para solucionar o problema'
+        end
+
+        redirect_to reports_path, notice: 'Relatório Aprovado com sucesso!'
+      else
+        redirect_to reports_path, notice: 'Ocorreu um erro ao aprovar o relatório, comunique o suporte para solucionar o problema'
       end
 
-      redirect_to reports_path, notice: 'Relatório Aprovado com sucesso!'
     else
-      redirect_to reports_path, notice: 'Ocorreu um erro ao aprovar o relatório, comunique o suporte para solucionar o problema'
+      redirect_to root_path, notice: 'Você não tem permissão de executar essa ação.'
     end
-
   end
 
   def reformulate
     respond_to do |format|
-      @report.avaliacao = 'à Reformular'
-      @report.entregue = false
+      if current_user.role? :admin
+        @report.avaliacao = 'à Reformular'
+        @report.entregue = false
 
-      if @report.update(report_params)
-        mail = ReportMailer.reformulate_report(@report).deliver_later
+        if @report.update(report_params)
+          mail = ReportMailer.reformulate_report(@report).deliver_later
 
-        unless mail
-          redirect_to root_path, notice: 'Ocorreu um erro ao enviar o e-mail, comunique o suporte para solucionar o problema'
+          unless mail
+            redirect_to root_path, notice: 'Ocorreu um erro ao enviar o e-mail, comunique o suporte para solucionar o problema'
+          end
+
+          format.html { redirect_to reports_path, notice: 'O pedido de reformulação foi enviado com sucesso!' }
+          format.json { render :show, status: :ok, location: @report }
+        else
+          format.html { render :edit }
+          format.json { render json: @report.errors, status: :unprocessable_entity }
         end
-
-        format.html { redirect_to reports_path, notice: 'O pedido de reformulação foi enviado com sucesso!' }
-        format.json { render :show, status: :ok, location: @report }
       else
-        format.html { render :edit }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        redirect_to root_path, notice: 'Você não tem permissão de executar essa ação.'
       end
     end
   end

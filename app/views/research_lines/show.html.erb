@@ -9,7 +9,9 @@
 
 <hr />
 
-<%= link_to 'Editar', edit_research_line_path(@research_line), class: 'btn btn-warning' %>
+<% if can? :edit, @research_line %>
+  <%= link_to 'Editar', edit_research_line_path(@research_line), class: 'btn btn-warning' %>
+<% end %>
 <%= link_to 'Voltar', research_lines_path, class: 'btn btn-default' %>
 
 <br />

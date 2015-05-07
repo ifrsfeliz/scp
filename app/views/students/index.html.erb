@@ -18,12 +18,19 @@
     <td><%= student.email %></td>
     <td><%= student.telefone %></td>
     <td><%= student.celular %></td>
-    <td><%= link_to 'Mostrar', student, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_student_path(student), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', student, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% if can? :read, student %>
+      <td><%= link_to 'Mostrar', student, class: 'btn btn-default btn-xs' %></td>
+    <% end %>
+    <% if can? :update, student %>
+      <td><%= link_to 'Editar', edit_student_path(student), class: 'btn btn-warning btn-xs' %></td>
+    <% end %>
+    <% if can? :delete, student %>
+      <td><%= link_to 'Destruir', student, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% end %>
   <% end %>
 </table>
 
-<hr />
-
-<%= link_to 'Novo Aluno', new_student_path, class: 'btn btn-success' %>
+<% if can? :create, Student %>
+  <hr />
+  <%= link_to 'Novo Aluno', new_student_path, class: 'btn btn-success' %>
+<% end %>

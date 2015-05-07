@@ -22,14 +22,21 @@
         <td><%= researcher.email %></td>
         <td><%= researcher.telefone %></td>
         <td><%= researcher.celular %></td>
-        <td><%= link_to 'Mostrar', researcher, class: 'btn btn-default btn-xs' %></td>
-        <td><%= link_to 'Editar', edit_researcher_path(researcher), class: 'btn btn-warning btn-xs' %></td>
-        <td><%= link_to 'Destruir', researcher, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+        <% if can? :read, researcher %>
+          <td><%= link_to 'Mostrar', researcher, class: 'btn btn-default btn-xs' %></td>
+        <% end %>
+        <% if can? :edit, researcher %>
+          <td><%= link_to 'Editar', edit_researcher_path(researcher), class: 'btn btn-warning btn-xs' %></td>
+        <% end %>
+        <% if can? :delete, researcher %>
+          <td><%= link_to 'Destruir', researcher, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<hr />
-
-<%= link_to 'Novo Pesquisador', new_researcher_path, class: 'btn btn-primary' %>
+<% if can? :create, Researcher %>
+  <hr />
+  <%= link_to 'Novo Pesquisador', new_researcher_path, class: 'btn btn-primary' %>
+<% end %>

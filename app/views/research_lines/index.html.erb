@@ -10,9 +10,15 @@
   <%= content_tag_for(:tr, @research_lines) do |research_line| %>
     <td><%= research_line.nome %></td>
     <td><%= link_to research_line.research_group.nome, research_line.research_group %></td>
-    <td><%= link_to 'Mostrar', research_line, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_research_line_path(research_line), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', research_line, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% if can? :read, research_line %>
+      <td><%= link_to 'Mostrar', research_line, class: 'btn btn-default btn-xs' %></td>
+    <% end %>
+    <% if can? :edit, research_line %>
+      <td><%= link_to 'Editar', edit_research_line_path(research_line), class: 'btn btn-warning btn-xs' %></td>
+    <% end %>
+    <% if can? :delete, research_line %>
+      <td><%= link_to 'Destruir', research_line, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <% end %>
   <% end %>
 </table>
 
