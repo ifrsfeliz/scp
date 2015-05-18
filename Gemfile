@@ -9,6 +9,9 @@ gem 'rails', '4.2.0'
 # MySQL Gem
 gem 'mysql2'
 
+# Compass to avoid error: NameError: uninitialized constant Sprockets::SassCacheStore
+gem "compass-rails", github: "Compass/compass-rails", branch: "master" 
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
