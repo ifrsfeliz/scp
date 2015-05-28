@@ -11,10 +11,9 @@ class CreateReports < ActiveRecord::Migration
       t.boolean :notificacao_antecipada
       t.boolean :notificacao_no_dia
       t.boolean :notificacao_atrasada
-      t.references :project, index: true
+      t.references :project
 
       t.timestamps null: false
     end
-    add_foreign_key :reports, :projects
   end
 end

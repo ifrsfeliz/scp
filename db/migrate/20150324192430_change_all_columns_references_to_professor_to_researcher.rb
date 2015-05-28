@@ -1,12 +1,17 @@
 class ChangeAllColumnsReferencesToProfessorToResearcher < ActiveRecord::Migration
   def change
-    rename_column :documents, :professor_id, :researcher_id
+    remove_column :documents, :professor_id
+    add_column :documents, :researcher_id, :integer
 
     rename_table :member_professors, :member_researchers
-    rename_column :member_researchers, :professor_id, :researcher_id
 
-    rename_column :projects, :professor_id, :researcher_id
+    remove_column :member_researchers, :professor_id
+    add_column :member_researchers, :researcher_id, :integer
 
-    rename_column :research_groups, :professor_id, :researcher_id
+    remove_column :projects, :professor_id
+    add_column :projects, :professor_id, :integer
+
+    remove_column :research_groups, :professor_id
+    add_column :research_groups, :professor_id, :integer
   end
 end
