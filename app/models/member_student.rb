@@ -30,9 +30,9 @@ class MemberStudent < ActiveRecord::Base
   def self.report_request_notification
     member_students = MemberStudent.where(relatorio_entregue: [nil, false])
 
-    today = Date.parse('09-04-2015')
+    #today = Date.parse('09-04-2015')
     #today = Date.parse('25-03-2015')
-    #today = Date.today
+    today = Date.today
 
     member_students.each do |ms|
         if (ms.notificacao_antecipada.nil? && ms.data_fim - 2 <= today) # 15 days early or next the deliver date
