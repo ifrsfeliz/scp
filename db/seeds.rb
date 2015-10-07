@@ -14,12 +14,10 @@ end
 u = User.new(:email => "sti@feliz.ifrs.edu.br", :password => '12345678', :password_confirmation => '12345678')
 u.save
 
-user = User.find_by_email('sti@feliz.ifrs.edu.br')
+puts u
 
-puts user
-
-if user
-  user.admin_authorization = true
-  user.save
-  user.roles << Role.find_by_name('admin')
+if u
+  u.admin_authorization = true
+  u.save
+  u.roles << Role.find_by_name('admin')
 end
