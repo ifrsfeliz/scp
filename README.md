@@ -1,9 +1,42 @@
-# scp-rails
-Sistema de Controle de Projetos de Pesquisa
+# Sistema de Controle de Projetos de Pesquisa (rails)
 
-## Instalação
+**Baixar o projeto, descompactar e fazer as alterações abaixo**
 
-Antes de qualquer coisa atualizar o sistema para evitar problemas futuros:
+Considerando que o usuário seja chamado de deploy
+
+```console
+  wget https://github.com/ifrsfeliz/scp-rails/archive/master.zip
+  sudo apt-get install unzip
+  unzip master.zip
+  rm master.zip
+  sudo chown deploy:deploy scp-rails-master
+```
+
+#### Imagens Customizadas
+
+Na pasta do projeto scp-rails-master, deverão ser trocadas imagens que referenciam os campus:
+
+As imagens podem ser vistas aqui: https://github.com/ifrsfeliz/scp-rails/tree/master/app/assets/images
+
+Na pasta: app/assets/images trocar as três imagens necessárias:
+
+* **logo.png** - logo do campus (276x100px)
+* **email-header.png** - cabeçalho do e-mail (600x129px)
+* **mid-logo.png** - logo do departamento ou o que preferirem (157x100px)
+
+#### Usuário Administrador
+
+Alterar a linha abaixo do arquivo db/seeds.rb com o e-mail, senha e confirmação de senha que desejarem.
+
+Este será o Administrador do Sistema
+
+```ruby
+u = User.new(:email => "sti@feliz.ifrs.edu.br", :password => '12345678', :password_confirmation => '12345678')
+```
+
+## Instalação no Ubuntu
+
+Antes de qualquer coisa atualizar o sistema:
 
 ```console
 sudo apt-get update
@@ -24,47 +57,19 @@ Verificar a versão stable do ruby: https://www.ruby-lang.org/en/downloads/ e fa
 Alterar esse link sempre que tiver nova versão (a versão 2.2.1 tava falhando no comando make, caso falhar pegar a versão stable anterior)
 
 ```console
-wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.5.tar.gz
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  curl -sSL https://get.rvm.io | bash -s stable
 ```
 
+Colocar no final do arquivo .bash_profile no diretório home do usuário exemplo (/home/deploy/.bash_profile)
 ```console
-tar -xzf ruby-2.1.5.tar.gz
-```
-
-```console
-cd ruby-2.1.5
-```
-
-```console
-./configure
-```
-
-```console
-make
-```
-
-```console
-sudo make install
+  source /home/deploy/.rvm/scripts/rvm
 ```
 
 Verificar a versão do ruby
 
 ```console
 ruby -v
-```
-
-Se tiver tudo ok, remover os arquivos de instalação do ruby
-
-```console
-cd ..
-```
-
-```console
-rm -rf ~/ruby-2.1.5
-```
-
-```console
-rm ruby-2.1.5.tar.gz
 ```
 
 Adicionar as chaves para download da última versão do NGINX
@@ -338,3 +343,85 @@ cap production deploy:restart
 ```
 
 Para auxílio sti@feliz.ifrs.edu.br
+
+
+# INSTALAÇÃO NO DEBIAN 7 (SEM CAPISTRANO)
+```apt-get install sudo ssh ```
+
+
+NÃO INSTALAR NADA VIA ROOT, SOMENTE VIA USUÁRIO COM PERMISSÃO DE SUDO, para adicionar um usuário como sudo, deve se ter instalado o sudo via apt-get (comando anterior contempla), depois:
+
+```adduser <seuusuario> sudo```
+
+```console
+sudo apt-get install build-essential libmysqlclient-dev libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev libsqlite3-dev sqlite3 imagemagick apt-transport-https ca-certificates
+```
+
+echo 'rvm_path="$HOME/.rvm"' >> ~/.rvmrc
+
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+
+curl -sSL get.rvm.io | bash -s stable
+
+
+Se tiver tudo ok, remover os arquivos de instalação do ruby
+
+```console
+cd ..
+```
+
+```console
+rm -rf ~/ruby-2.1.5
+```
+
+```console
+rm ruby-2.1.5.tar.gz
+```
+
+sudo apt-get install apt-transport-https ca-certificates
+
+Adicionar as chaves para download da última versão do NGINX
+
+```console
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+```
+
+Editar o arquivo de source do apt-get
+
+```console
+sudo nano /etc/apt/sources.list
+```
+
+No final do arquivo colocar
+
+```console
+deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
+```
+
+Atualizar os pacotes e instalar o NGINX e Passenger
+
+```console
+sudo apt-get update
+```
+
+```console
+sudo apt-get install nginx-extras passenger
+```
+
+Com isso algumas vezes as dependencias serão instaladas e sobreescreverá nossa versão do Ruby, assim precisamos voltar a versão atualizando o bin do ruby.
+
+Verificar novamente a versão do ruby
+
+```console
+ruby -v
+```
+
+Se alterou para alguma versão anterior fazer os passos a seguir:
+
+```console
+sudo rm /usr/bin/ruby
+```
+
+```console
+sudo ln -s /usr/local/bin/ruby /usr/bin/ruby
+```
