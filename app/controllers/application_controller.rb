@@ -3,10 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :authenticate_user!, :check_admin_authorization
+  before_filter :authenticate_user!
+  before_filter :check_admin_authorization, :load_settings
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+  def load_settings
+    @config = YAML.load_file('config/settings.yml')[Rails.env];
   end
 
   private

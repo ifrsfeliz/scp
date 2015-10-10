@@ -1,5 +1,7 @@
 class SituationsController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource only: :index
+  skip_before_filter :authenticate_user!, only: :index
 
   before_action :set_situation, only: [:show, :edit, :update, :destroy]
 

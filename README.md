@@ -261,6 +261,23 @@ Se tudo estiver certo o comando abaixo, irá criar as tabelas de usuário e fun�
 rake db:setup RAILS_ENV=production
 ```
 
+Para testar se as credenciais do e-mail estão corretas e se enviará o e-mail (cuidar que pode ser permissão no firewall também).
+
+```console
+rake system:testar_envio_de_email
+```
+
+Caso não chegar o e-mail verificar no log o erro ocorrido.
+
+```console
+cat log/production.log
+```
+
+Isso criará as tarefas no crontab para disparo de e-mail a cada 2 horas (normalmente são disparados ao virar o dia - 00:00)
+```console
+whenever
+```
+
 **ISSO É MUITO IMPORTANTE:** o comando abaixo faz a compilação dos javascript, css e imagens. Então toda vez que uma imagem for trocada deve ser re-executado o comando abaixo, caso contrário não surtirá efeito.
 
 ```console
@@ -270,3 +287,24 @@ rake assets:precompile RAILS_ENV=production
 A partir disso é para estar funcionando, caso houver dúvidas, não existe em nos comunicar.
 
 Para auxílio sti@feliz.ifrs.edu.br
+
+# Para atualização do SCP, quando houverem funcionalidades extras
+
+Basta entrar na pasta do projeto e executar os comandos
+
+```console
+cd ~/app/scp
+
+git pull
+
+rake db:migrate RAILS_ENV=production
+
+rm -rf public/assets
+
+rake assets:precompile RAILS_ENV=production
+
+whenever -c
+
+whenever -w
+
+```

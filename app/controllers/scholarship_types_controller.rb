@@ -1,6 +1,8 @@
 class ScholarshipTypesController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource only: :index
 
+  skip_before_filter :authenticate_user!, only: :index
   before_action :set_scholarship_type, only: [:show, :edit, :update, :destroy]
 
   # GET /scholarship_types
