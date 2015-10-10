@@ -2,17 +2,16 @@
 
 **Baixar o projeto, descompactar e fazer as alterações abaixo**
 
-Considerando que o usuário seja chamado de deploy
+Considerando que o usuário seja chamado de `deploy`, se não for chamado onde houver ocorrências `deploy` substituir pelo usuário atual.
+
+Por questões de padrões de segurança, não ser o root
 
 ```console
-  wget https://github.com/ifrsfeliz/scp-rails/archive/master.zip
-  sudo apt-get install unzip
-  unzip master.zip
-  rm master.zip
-  sudo chown deploy:deploy scp-rails-master
-
   mkdir ~/app
-  mv scp-rails-master ~/app/scp
+  sudo apt-get install git-core
+
+  git clone https://github.com/ifrsfeliz/scp-rails.git ~/app/scp
+  cd ~/app/scp
 ```
 
 #### Imagens Customizadas
@@ -29,12 +28,16 @@ Na pasta: app/assets/images trocar as três imagens necessárias:
 
 #### Usuário Administrador
 
-Alterar a linha abaixo do arquivo db/seeds.rb com o e-mail, senha e confirmação de senha que desejarem.
+Alterar a linha abaixo do arquivo `db/seeds.rb` com o e-mail, senha e confirmação de senha que desejarem.
 
 Este será o Administrador do Sistema
 
 ```ruby
 u = User.new(:email => "sti@feliz.ifrs.edu.br", :password => '12345678', :password_confirmation => '12345678')
+```
+
+```console
+nano db/seeds.rb
 ```
 
 ## Instalação no Ubuntu
@@ -64,12 +67,35 @@ Alterar esse link sempre que tiver nova versão (a versão 2.2.1 tava falhando n
   curl -sSL https://get.rvm.io | bash -s stable
 ```
 
-Colocar no final do arquivo .bash_profile no diretório home do usuário exemplo (/home/<nomedoseuusuario>/.bash_profile)
+Colocar no final do arquivo `~/.bash_profile` no diretório home do usuário exemplo. **PERCEBA O USUÁRIO (deploy), mudar se for o caso**
+
 ```console
   source /home/deploy/.rvm/scripts/rvm
 ```
 
-Verificar a versão do ruby
+```console
+  nano ~/.bash_profile
+```
+
+Feito isso saia do terminal atual
+
+```console
+  exit
+```
+
+**Acesse novamente o servidor, assim ele irá carregar (fazer o source do RVM) que foi colocado no final do arquivo do .bash_profile**
+
+Instalar a versão estável do ruby, a atual é 2.2.3 (pode verificar a versão estável aqui: https://www.ruby-lang.org/en/downloads/)
+
+Ao executar o rvm install, se houver mais dependências, será pedida a senha para executar comandos sudos
+
+```console
+rvm install 2.2.3
+rvm default 2.2.3
+```
+
+
+Verificar a versão do ruby, se está a versão correspondente.
 
 ```console
 ruby -v
@@ -156,7 +182,7 @@ server {
 }
 ```
 
-Feito isso, reiniciar o nginx
+Feito isso, reiniciar o nginx se tudo estiver correto reiniciará sem falhas [ok]
 
 ```console
 sudo service nginx restart
@@ -167,20 +193,6 @@ Instalar o banco de dados a ser utilizado
 ```console
 sudo apt-get install mysql-server
 ```
-
-Colocar a senha para o root etc, entrar no prompt do mysql executando o comando abaixo e colocando a senha do mysql
-
-```console
-mysql -p -u root
-```
-
-Criar o banco de dados da aplicação
-
-```sql
-CREATE DATABASE  scp;
-```
-
-Para sair do console digite: `\q`
 
 Entrar na pasta do projeto e executar os comandos para instalar as bibliotecas do projeto e compilar os assets:
 
@@ -193,21 +205,21 @@ Entrar na pasta do projeto e executar os comandos para instalar as bibliotecas d
 
 Configurar o arquivo do banco de dados `config/database.yml` com o código de exemplo, alterando o usuario e senha:
 
+```console
+  nano config/database.yml
+```
+
 ```yaml
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mysql_production
+  database: scp
   username: usuariodobanco
   password: senhadousuario
   pool: 5
   host: localhost
   port: 3306
-```
-
-```console
-  nano config/database.yml
 ```
 
 Configurar o arquivo de segurança da aplicação, para gerar cookies etc. **NÃO UTILIZAR O CÓDIGO ABAIXO POR SEGURANÇA, ADICIONAR/ALTERAR/REMOVER ALGUNS CARACTERES**.
@@ -216,7 +228,7 @@ Configurar o arquivo de segurança da aplicação, para gerar cookies etc. **NÃ
 nano config/secrets.yml
 ```
 
-Dados do arquivo secrets.yml
+Dados do arquivo `config/secrets.yml`
 
 ```yaml
 production:
@@ -230,7 +242,7 @@ Configurar os dados para Envio de E-mail e URL do site para compilação dos ass
 nano config/settings.yml
 ```
 
-Código de exemplo a ser colocado e modificado: o email_report_managers serão as pessoas que receberão cópias das notificações enviadas para os pesquisadores
+Código de exemplo a ser colocado e modificado: o `email_report_managers` serão as pessoas que receberão cópias das notificações enviadas para os pesquisadores
 
 ```yaml
 production:
