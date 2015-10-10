@@ -242,16 +242,20 @@ Configurar os dados para Envio de E-mail e URL do site para compilação dos ass
 nano config/settings.yml
 ```
 
-Código de exemplo a ser colocado e modificado: o `email_report_managers` serão as pessoas que receberão cópias das notificações enviadas para os pesquisadores
+Código de exemplo a ser colocado e modificado: o `email_report_managers` serão as pessoas que receberão cópias das notificações enviadas para os pesquisadores, aqui quem recebe isso é o pessoal que precisa cuidar os prazos dos relatórios
 
 ```yaml
 production:
-  server_url: http://dominio.com
-  gmail_username: usuario@gmail.com
-  gmail_password: "senha123**"
+  server_url: http://dominio.com.br
+  gmail_username: email@dominio.com.br
+  gmail_password: "sua senha" #deixar entre aspas
   email_report_managers:
-    - pessoa1@domain.com
-    - pessoa2@domain.com
+    - dpi@feliz.ifrs.edu.br
+  nome_departamento: Departamento de Pesquisa, Pós Graduação e Inovação - Campus Feliz
+  campus_endereco1: Rua Princesa Isabel - N° 60
+  campus_endereco2: Vila Rica - Feliz - RS
+  campus_telefone: (51) 3637-4418
+  titulo_do_site: SCP - Controle de Projetos de Pesquisa do Campus Feliz
 
 ```
 
@@ -261,16 +265,10 @@ Se tudo estiver certo o comando abaixo, irá criar as tabelas de usuário e fun�
 rake db:setup RAILS_ENV=production
 ```
 
-Para testar se as credenciais do e-mail estão corretas e se enviará o e-mail (cuidar que pode ser permissão no firewall também).
+Para testar se as credenciais do e-mail estão corretas e se enviará o e-mail (cuidar que pode ser permissão no firewall também), mostrará erro se houver falhas.
 
 ```console
-rake system:testar_envio_de_email
-```
-
-Caso não chegar o e-mail verificar no log o erro ocorrido.
-
-```console
-cat log/production.log
+rake system:testar_envio_de_email RAILS_ENV=production
 ```
 
 Isso criará as tarefas no crontab para disparo de e-mail a cada 2 horas (normalmente são disparados ao virar o dia - 00:00)
@@ -283,6 +281,7 @@ whenever
 ```console
 rake assets:precompile RAILS_ENV=production
 ```
+
 
 A partir disso é para estar funcionando, caso houver dúvidas, não existe em nos comunicar.
 
@@ -306,5 +305,7 @@ rake assets:precompile RAILS_ENV=production
 whenever -c
 
 whenever -w
+
+sudo service nginx restart
 
 ```
