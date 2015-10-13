@@ -58,10 +58,6 @@ Instalar alguns pacotes de dependências
 sudo apt-get install build-essential libmysqlclient-dev libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3 imagemagick apt-transport-https ca-certificates libgmp3-dev
 ```
 
-Verificar a versão stable do ruby: https://www.ruby-lang.org/en/downloads/ e fazer o download via wget
-
-Alterar esse link sempre que tiver nova versão (a versão 2.2.1 tava falhando no comando make, caso falhar pegar a versão stable anterior)
-
 ```console
   gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
   curl -sSL https://get.rvm.io | bash -s stable
@@ -273,7 +269,7 @@ rake system:testar_envio_de_email RAILS_ENV=production
 
 Isso criará as tarefas no crontab para disparo de e-mail a cada 2 horas (normalmente são disparados ao virar o dia - 00:00)
 ```console
-whenever
+whenever -w
 ```
 
 **ISSO É MUITO IMPORTANTE:** o comando abaixo faz a compilação dos javascript, css e imagens. Então toda vez que uma imagem for trocada deve ser re-executado o comando abaixo, caso contrário não surtirá efeito.
@@ -295,6 +291,8 @@ Basta entrar na pasta do projeto e executar os comandos
 cd ~/app/scp
 
 git pull
+
+bundle install
 
 rake db:migrate RAILS_ENV=production
 
