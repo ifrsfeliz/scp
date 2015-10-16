@@ -16,7 +16,7 @@ Por questões de padrões de segurança, não ser o root
 
 #### Imagens Customizadas
 
-Na pasta do projeto scp-rails-master, deverão ser trocadas imagens que referenciam os campus:
+Na pasta do projeto `~/app/scp`, deverão ser trocadas imagens que referenciam os campus:
 
 As imagens podem ser vistas aqui: https://github.com/ifrsfeliz/scp-rails/tree/master/app/assets/images
 
