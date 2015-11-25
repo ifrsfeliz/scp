@@ -4,7 +4,7 @@
       <%= f.association :student, label: 'Aluno', label_method: :nome %>
     </div>
     <div class="col-md-2">
-      <%= f.input :tipo_vinculo, collection: ['Aluno Bolsista', 'Aluno Voluntário'] %>
+      <%= f.input :tipo_vinculo, collection: ['Aluno Bolsista', 'Aluno Voluntário', 'Aluno de Pós Graduação'] %>
     </div>
     <div class="col-md-2">
       <%= f.input :data_inicio, as: :date_picker %>
