@@ -51,12 +51,12 @@
     <% else %>
       <td><%= project.nome %></td>
     <% end %>
-    <td><%= link_to project.coordenador.nome, project.coordenador %></td>
+    <td><%= link_to project.coordenador.nome, project.coordenador unless project.coordenador.nil? %></td>
     <td><%= l project.data_inicio unless project.data_inicio.nil? %></td>
     <td><%= l project.data_fim unless project.data_fim.nil? %></td>
     <td><%= project.numero_suap %></td>
     <td><%= project.scholarship_type.nome unless project.scholarship_type.nil? %></td>
-    <td><%= link_to project.research_line.nome, project.research_line %></td>
+    <td><%= link_to project.research_line.nome, project.research_line unless project.research_line.nil? %></td>
     <td><%= project.situation.nome %></td>
     <% if can? :read, project %>
       <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs' %></td>
