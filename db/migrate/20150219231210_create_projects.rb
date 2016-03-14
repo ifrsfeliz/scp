@@ -2,7 +2,7 @@ class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
       t.string :nome
-      t.references :professor
+      t.integer :professor_id
       t.date :data_inicio
       t.date :data_fim
       t.string :numero_suap
