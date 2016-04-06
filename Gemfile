@@ -9,7 +9,7 @@ gem 'rails', '4.2.4'
 gem 'mysql2', '~> 0.3.18'
 
 # Compass to avoid error: NameError: uninitialized constant Sprockets::SassCacheStore
-gem "compass-rails", github: "Compass/compass-rails", branch: "master" 
+gem "compass-rails", git: "https://github.com/Compass/compass-rails.git", branch: "master" 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -43,8 +43,8 @@ gem 'chosen-rails'
 
 # simple form && datepicker
 gem 'simple_form'
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails' #dependency of datetimepicker-rails
+gem 'datetimepicker-rails', git: 'https://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
+gem 'momentjs-rails', '>= 2.8.1', git: 'https://github.com/derekprior/momentjs-rails.git' #dependency of datetimepicker-rails
 
 # Monetize
 gem 'money-rails'
