@@ -1,14 +1,9 @@
 FactoryGirl.define do
   factory :role do
-    sequence(:name) { |i| "role#{i}" }
+    name 'comum'
 
-    factory :role_admin do
+    trait :admin do
       name 'admin'
     end
-
-    factory :role_comum do
-      name 'comum'
-    end
-
   end
 end

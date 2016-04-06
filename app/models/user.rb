@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
   private
   def set_default_role
-    if self.roles.empty?
+    if roles.empty?
       self.roles << Role.find_by_name('comum')
     end
   end

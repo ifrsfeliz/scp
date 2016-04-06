@@ -24,8 +24,6 @@ class UsersController < ApplicationController
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(user_params)
-      puts @user
-      
       flash[:notice] = "Usuário atualizado com Sucesso."
       redirect_to users_path
     else
@@ -43,7 +41,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    puts params
     params.require(:user).permit(:admin_authorization, {:role_ids => []})
   end
 end

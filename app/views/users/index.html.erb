@@ -23,13 +23,13 @@
           <% end %>
       </td>
         <% if can? :read, user %>
-          <td><%= link_to 'Mostrar', user, class: 'btn btn-default btn-xs' %></td>
+          <td><%= link_to 'Mostrar', user, class: 'btn btn-default btn-xs', id: "show_#{user.id}" %></td>
         <% end %>
         <% if can? :update, user %>
-          <td><%= link_to 'Editar', edit_user_path(user), class: 'btn btn-warning btn-xs' %></td>
+          <td><%= link_to 'Editar', edit_user_path(user), class: 'btn btn-warning btn-xs', id: "edit_#{user.id}" %></td>
         <% end %>
         <% if can? :delete, user %>
-          <td><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+          <td><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_#{user.id}" %></td>
         <% end %>
       </tr>
     <% end %>
