@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
@@ -88,5 +88,70 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # rspec-rails is a testing framework for Rails 3.x and 4.x.
+  gem 'rspec-rails',           '~> 3.4.2'
+
+  # factory_girl is a fixtures replacement with a straightforward definition syntax
+  gem 'factory_girl_rails'
+
+  # can use pry inside rails console
+  gem 'pry-rails'
+
+  # to better display when inspecting elements
+  gem 'awesome_print'
 end
+
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+
+  # Starts unicorn
+  gem 'foreman'
+
+  # Display better errors
+  gem 'better_errors'
+
+  # Open mails when deliver in development
+  gem 'letter_opener_web', '~> 1.2.0'
+
+  # Ignore assets on log
+  gem 'quiet_assets'
+end
+
+group :test do
+  # to show test coverage
+  gem 'simplecov', require: false
+
+  # use shoulda inspec specs
+  gem 'shoulda-matchers', require: false
+
+  # specs for email
+  gem 'email_spec'
+
+  # Acceptance test framework for web applications (integration tests)
+  gem 'capybara'
+
+  # javascript driver for capybara
+  gem 'poltergeist'
+
+  # Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
+  gem 'vcr'
+
+  # Database Cleaner is a set of strategies for cleaning your database in Ruby.
+  gem 'database_cleaner'
+
+  # Create fake data for testing purpose
+  gem 'faker'
+
+  # Report test coverage to codeclimate
+  gem 'codeclimate-test-reporter', require: false
+
+  gem 'webmock', '~> 1.24.2'
+end
+
 
