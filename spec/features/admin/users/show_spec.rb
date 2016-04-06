@@ -1,17 +1,18 @@
 require 'rails_helper_features'
 
 RSpec.feature 'Show a user' do
-  given!(:user)  { create :user }
-  given!(:admin) { create :user, :with_admin }
+  given!(:role_admin) { create :role, :admin }
+  given!(:role_comum) { create :role }
+  given!(:admin) { create :user, :as_admin }
 
   it 'Should show a category' do
     sign_in_as_admin(admin)
 
-    visit admin_users_path
+    visit users_path
 
-    click_on "show_user_#{user.id}"
+    click_on "show_#{admin.id}"
 
-    expect(page).to have_text("Email: #{user.email}")
+    expect(page).to have_text(admin.email)
   end
 
 end

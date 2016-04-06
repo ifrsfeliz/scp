@@ -1,40 +1,19 @@
 require 'rails_helper_features'
 
 RSpec.feature 'Delete a user' do
-  given!(:user)  { create :user }
-  given!(:admin) { create :user, :with_admin }
+  given!(:role_admin) { create :role, :admin }
+  given!(:role_comum) { create :role }
+  given!(:admin) { create :user, :as_admin }
+  given!(:admin_not_authorized) { create :user, :as_admin, admin_authorization: false }
 
   it 'Should delete a category' do
     sign_in_as_admin(admin)
 
-    visit admin_users_path
+    visit users_path
 
-    click_on "delete_user_#{user.id}"
+    click_on "destroy_#{admin_not_authorized.id}"
 
-    expect(page).to have_text('User deleted successfully')
+    expect(page).to have_text('Usuário deletado com sucesso')
   end
 
-  context "when crazy admin tries to destroy himself" do
-    it "is not authorized to do it" do
-      sign_in_as_admin(admin)
-
-      visit admin_users_path
-
-      click_on "delete_user_#{admin.id}"
-
-      expect(page).to have_text("You're not authorized to perform this action")
-    end
-  end
-
-  context "given a non admin user" do
-    it 'is not authorized to destroy a user' do
-      sign_in_as_admin(user)
-
-      visit admin_users_path
-
-      click_on "delete_user_#{admin.id}"
-
-      expect(page).to have_text("You're not authorized to perform this action")
-    end
-  end
 end

@@ -1,55 +1,26 @@
 require 'rails_helper_features'
 
 RSpec.feature 'Edit users' do
-  given!(:user)  { create :user }
-  given!(:admin) { create :user, :with_admin }
+  given!(:role_admin) { create :role, :admin }
+  given!(:role_comum) { create :role }
+  given!(:admin) { create :user, :as_admin }
+  given!(:admin_not_authorized) { create :user, :as_admin, admin_authorization: false }
 
-  it 'edits a user with valid data' do
-    sign_in_as_admin(admin)
+  context "Admin autoriza usuário a logar" do
+    it 'altera permissão do usuário' do
+      sign_in_as_admin(admin)
 
-    visit admin_user_path(user)
+      visit users_path
 
-    click_link 'Edit User'
+      click_on "edit_#{admin_not_authorized.id}"
 
-    expect(current_path).to eq(edit_admin_user_path(user))
+      check 'user_admin_authorization'
 
-    fill_in 'user_email', with: 'someone@quezmedia.com'
-    fill_in 'user_password', with: '12341234'
-    select 'admin', from: 'user_role_ids'
+      click_on 'Salvar Usuário'
 
-    click_on 'Update User'
-    expect(current_path).to eq(admin_users_path)
-    expect(page).to have_text('User updated successfully')
-  end
-
-  it 'renders "edit" with invalid data' do
-    sign_in_as_admin(admin)
-
-    visit admin_user_path(user)
-
-    click_link 'Edit User'
-
-    expect(current_path).to eq(edit_admin_user_path(user))
-
-    fill_in 'user_email', with: ''
-    fill_in 'user_password', with: ''
-
-    click_button 'Update User'
-    expect(current_path).to eq(admin_user_path(user))
-    expect(page).to_not have_text('User updated successfully')
-    expect(page).to have_text("can't be blank")
-  end
-
-  context "given a non admin user" do
-    it 'is not authorized to edit a user' do
-      sign_in_as_admin(user)
-
-      visit admin_user_path(user)
-
-      click_link 'Edit User'
-
-      expect(current_path).to eq(admin_user_path(user))
-      expect(page).to have_text("You're not authorized to perform this action")
+      expect(page).to have_text('Usuário atualizado com Sucesso.')
+      expect(admin_not_authorized.reload.admin_authorization).to eq(true)
     end
   end
+
 end

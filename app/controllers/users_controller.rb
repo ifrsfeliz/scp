@@ -6,14 +6,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-    redirect_to users_path, notice: 'Não é possível criar usuários manualmente.'
-  end
-
-  def create
-    redirect_to users_path, notice: 'Não é possível criar usuários manualmente.'
-  end
-
   def edit
     @user = User.find(params[:id])
     @roles = Role.all
@@ -26,8 +18,6 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:notice] = "Usuário atualizado com Sucesso."
       redirect_to users_path
-    else
-      render :action => 'edit'
     end
   end
 
