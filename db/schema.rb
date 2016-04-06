@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20150410171827) do
 
   create_table "member_researchers", force: :cascade do |t|
     t.integer  "project_id",    limit: 4
+    t.integer  "researcher_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "researcher_id", limit: 4
   end
 
   create_table "member_students", force: :cascade do |t|
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20150410171827) do
     t.datetime "updated_at",                                   null: false
     t.date     "data_inicio"
     t.date     "data_fim"
-    t.boolean  "relatorio_entregue",               limit: 1
-    t.boolean  "notificacao_antecipada",           limit: 1
-    t.boolean  "notificacao_no_dia",               limit: 1
-    t.boolean  "notificacao_atrasada",             limit: 1
+    t.boolean  "relatorio_entregue"
+    t.boolean  "notificacao_antecipada"
+    t.boolean  "notificacao_no_dia"
+    t.boolean  "notificacao_atrasada"
     t.date     "ultima_data_notificacao_atrasada"
   end
 
@@ -74,18 +74,18 @@ ActiveRecord::Schema.define(version: 20150410171827) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "nome",                limit: 255
+    t.integer  "researcher_id",       limit: 4
     t.date     "data_inicio"
     t.date     "data_fim"
     t.string   "numero_suap",         limit: 255
     t.string   "nome_edital",         limit: 255
-    t.boolean  "auxilio_aipct",       limit: 1
+    t.boolean  "auxilio_aipct"
     t.integer  "valor_aipct_cents",   limit: 4
     t.integer  "research_line_id",    limit: 4
     t.integer  "situation_id",        limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "scholarship_type_id", limit: 4
-    t.integer  "professor_id",        limit: 4
     t.string   "edital_file_name",    limit: 255
     t.string   "edital_content_type", limit: 255
     t.integer  "edital_file_size",    limit: 4
@@ -109,13 +109,13 @@ ActiveRecord::Schema.define(version: 20150410171827) do
     t.text     "proximas_etapas",                  limit: 65535
     t.text     "conclusoes",                       limit: 65535
     t.text     "referencias",                      limit: 65535
-    t.boolean  "notificacao_antecipada",           limit: 1
-    t.boolean  "notificacao_no_dia",               limit: 1
-    t.boolean  "notificacao_atrasada",             limit: 1
+    t.boolean  "notificacao_antecipada"
+    t.boolean  "notificacao_no_dia"
+    t.boolean  "notificacao_atrasada"
     t.integer  "project_id",                       limit: 4
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
-    t.boolean  "entregue",                         limit: 1
+    t.boolean  "entregue"
     t.string   "access_token",                     limit: 255
     t.date     "periodo_desenvolvimento_inicio"
     t.date     "periodo_desenvolvimento_fim"
@@ -126,12 +126,12 @@ ActiveRecord::Schema.define(version: 20150410171827) do
 
   create_table "research_groups", force: :cascade do |t|
     t.string   "nome",               limit: 255
+    t.integer  "researcher_id",      limit: 4
     t.date     "ultima_verificacao"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "link_grupo_cnpq",    limit: 255
     t.integer  "area_id",            limit: 4
-    t.integer  "professor_id",       limit: 4
   end
 
   create_table "research_lines", force: :cascade do |t|
@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20150410171827) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin_authorization",    limit: 1,   default: false
+    t.boolean  "admin_authorization",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
