@@ -90,7 +90,7 @@ group :development, :test do
   gem 'spring'
 
   # rspec-rails is a testing framework for Rails 3.x and 4.x.
-  gem 'rspec-rails',           '~> 3.4.2'
+  gem 'rspec-rails'
 
   # factory_girl is a fixtures replacement with a straightforward definition syntax
   gem 'factory_girl_rails'
