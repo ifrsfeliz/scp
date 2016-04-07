@@ -5,7 +5,7 @@ RSpec.feature 'Show a user' do
   given!(:role_comum) { create :role }
   given!(:admin) { create :user, :as_admin }
 
-  it 'Should show a category' do
+  it 'Deve mostrar um usuario' do
     sign_in_as_admin(admin)
 
     visit users_path

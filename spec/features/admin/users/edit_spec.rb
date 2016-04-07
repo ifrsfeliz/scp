@@ -6,8 +6,8 @@ RSpec.feature 'Edit users' do
   given!(:admin) { create :user, :as_admin }
   given!(:admin_not_authorized) { create :user, :as_admin, admin_authorization: false }
 
-  context "Admin autoriza usuário a logar" do
-    it 'altera permissão do usuário' do
+  context "Admin autoriza usuario a logar" do
+    it 'altera permissão do usuario' do
       sign_in_as_admin(admin)
 
       visit users_path
@@ -18,7 +18,7 @@ RSpec.feature 'Edit users' do
 
       click_on 'Salvar'
 
-      expect(page).to have_text('Usuário atualizado com Sucesso.')
+      expect(page).to have_text('atualizado com Sucesso.')
       expect(admin_not_authorized.reload.admin_authorization).to eq(true)
     end
   end
