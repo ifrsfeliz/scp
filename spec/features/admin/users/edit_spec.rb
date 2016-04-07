@@ -16,7 +16,7 @@ RSpec.feature 'Edit users' do
 
       check 'user_admin_authorization'
 
-      click_on 'Salvar Usuário'
+      click_on 'Salvar'
 
       expect(page).to have_text('Usuário atualizado com Sucesso.')
       expect(admin_not_authorized.reload.admin_authorization).to eq(true)

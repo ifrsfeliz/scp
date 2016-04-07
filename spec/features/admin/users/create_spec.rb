@@ -6,7 +6,7 @@ RSpec.feature 'Create users' do
   given!(:admin) { create :user, :as_admin }
   given!(:admin_not_authorized) { create :user, :as_admin, admin_authorization: false }
 
-  context "Usuario não pode logar se não tiver sido autorizado pelo admin" do
+  context "Usuario nao pode logar se nao tiver sido autorizado pelo admin" do
     it 'verifica admin_authorization' do
       sign_in_as_admin(admin_not_authorized)
 
