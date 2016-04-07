@@ -41,16 +41,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Email SMTP Configuration
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.default_url_options = { :host => "http://localhost:3000" }
-
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-    :address              => "localhost", #this is to test with mailcatcher
-    :port                 => 1025,
-    :authentication       => :plain,
-    :enable_starttls_auto => true
-  }
 
 end
