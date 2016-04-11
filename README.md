@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/ifrsfeliz/scp-rails/badges/gpa.svg)](https://codeclimate.com/github/ifrsfeliz/scp-rails)
+[![Test Coverage](https://codeclimate.com/github/ifrsfeliz/scp-rails/badges/coverage.svg)](https://codeclimate.com/github/ifrsfeliz/scp-rails/coverage)
+[![Issue Count](https://codeclimate.com/github/ifrsfeliz/scp-rails/badges/issue_count.svg)](https://codeclimate.com/github/ifrsfeliz/scp-rails)
+
 # Sistema de Controle de Projetos de Pesquisa (rails)
 
 **Baixar o projeto, descompactar e fazer as alterações abaixo**
