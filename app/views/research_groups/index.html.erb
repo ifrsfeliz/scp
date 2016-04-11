@@ -17,13 +17,13 @@
     <td><%= link_to research_group.area.nome, research_group.area unless research_group.area.nil? %></td>
     <td><%= l research_group.ultima_verificacao %></td>
     <% if can? :read, research_group %>
-      <td><%= link_to 'Mostrar', research_group, class: 'btn btn-default btn-xs' %></td>
+      <td><%= link_to 'Mostrar', research_group, class: 'btn btn-default btn-xs', id: "show_research_group_#{research_group.id}" %></td>
     <% end %>
     <% if can? :edit, research_group %>
-      <td><%= link_to 'Editar', edit_research_group_path(research_group), class: 'btn btn-warning btn-xs' %></td>
+      <td><%= link_to 'Editar', edit_research_group_path(research_group), class: 'btn btn-warning btn-xs', id: "edit_research_group_#{research_group.id}" %></td>
     <% end %>
     <% if can? :delete, research_group %>
-      <td><%= link_to 'Destruir', research_group, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+      <td><%= link_to 'Destruir', research_group, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_research_group_#{research_group.id}" %></td>
     <% end %>
   <% end %>
 </table>

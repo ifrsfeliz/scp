@@ -1,6 +1,6 @@
 require 'rails_helper_features'
 
-RSpec.feature 'Create users' do
+RSpec.feature 'Cria areas' do
   given!(:admin) { create :user, :as_admin }
 
   context "Inclusão de áreas no SCP" do

@@ -31,7 +31,7 @@ class ResearchGroupsController < ApplicationController
 
     respond_to do |format|
       if @research_group.save
-        format.html { redirect_to @research_group, notice: 'Research group was successfully created.' }
+        format.html { redirect_to @research_group, notice: 'Grupo de Pesquisa criado com sucesso.' }
         format.json { render :show, status: :created, location: @research_group }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ResearchGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @research_group.update(research_group_params)
-        format.html { redirect_to @research_group, notice: 'Research group was successfully updated.' }
+        format.html { redirect_to @research_group, notice: 'Grupo de Pesquisa atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @research_group }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ResearchGroupsController < ApplicationController
   def destroy
     @research_group.destroy
     respond_to do |format|
-      format.html { redirect_to research_groups_url, notice: 'Research group was successfully destroyed.' }
+      format.html { redirect_to research_groups_url, notice: 'Grupo de Pesquisa removido com sucesso.' }
       format.json { head :no_content }
     end
   end
