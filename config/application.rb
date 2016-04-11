@@ -16,10 +16,6 @@ module ScpRails
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-    # Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
-    ENV.update YAML.load_file('config/settings.yml')[Rails.env] rescue {
-    }
-
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de

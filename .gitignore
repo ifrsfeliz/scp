@@ -4,11 +4,10 @@ capybara-*.html
 /log
 /tmp
 /db/*.sqlite3
-/config/database.yml
 /public/system
 /public/files
 /coverage/
-/config/settings.yml
+/.env
 /spec/tmp
 **.orig
 rerun.txt
