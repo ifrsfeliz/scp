@@ -8,8 +8,6 @@ class ReportsController < ActionController::Base
 
   before_filter :verify_token_or_role, only: [:deliver, :form_deliver]
 
-  before_filter :load_settings
-
   # GET /reports
   # GET /reports.json
   def index
@@ -94,10 +92,6 @@ class ReportsController < ActionController::Base
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def load_settings
-    @config = YAML.load_file('config/settings.yml')[Rails.env];
   end
 
   private

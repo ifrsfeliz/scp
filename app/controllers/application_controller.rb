@@ -4,14 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
-  before_filter :check_admin_authorization, :load_settings
+  before_filter :check_admin_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
-  end
-
-  def load_settings
-    @config = YAML.load_file('config/settings.yml')[Rails.env];
   end
 
   private
