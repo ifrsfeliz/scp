@@ -1,6 +1,9 @@
 pt-BR:
   activerecord:
     models:
+      area:
+        one: 'Área'
+        other: 'Áreas'
       user:
         one: 'Usuário'
         other: 'Usuários'
