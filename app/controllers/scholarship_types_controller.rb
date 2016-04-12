@@ -47,7 +47,7 @@ class ScholarshipTypesController < ApplicationController
   def update
     respond_to do |format|
       if @scholarship_type.update(scholarship_type_params)
-        format.html { redirect_to @scholarship_type, notice: 'Tipo de Bolsa atualizado com sucessor.' }
+        format.html { redirect_to @scholarship_type, notice: 'Tipo de Bolsa atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @scholarship_type }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class ScholarshipTypesController < ApplicationController
   def destroy
     @scholarship_type.destroy
     respond_to do |format|
-      format.html { redirect_to scholarship_types_url, notice: 'Tipo de Bolsa destruído com sucesso.' }
+      format.html { redirect_to scholarship_types_url, notice: 'Tipo de Bolsa removido com sucesso.' }
       format.json { head :no_content }
     end
   end

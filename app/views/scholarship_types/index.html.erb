@@ -8,9 +8,9 @@
 
   <%= content_tag_for(:tr, @scholarship_types) do |scholarship_type| %>
     <td><%= scholarship_type.nome %></td>
-    <td><%= link_to 'Mostrar', scholarship_type, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_scholarship_type_path(scholarship_type), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', scholarship_type, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <td><%= link_to 'Mostrar', scholarship_type, class: 'btn btn-default btn-xs', id: "show_scholarship_type_#{scholarship_type.id}" %></td>
+    <td><%= link_to 'Editar', edit_scholarship_type_path(scholarship_type), class: 'btn btn-warning btn-xs', id: "edit_scholarship_type_#{scholarship_type.id}" %></td>
+    <td><%= link_to 'Destruir', scholarship_type, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_scholarship_type_#{scholarship_type.id}" %></td>
   <% end %>
 </table>
 
