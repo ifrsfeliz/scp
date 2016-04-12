@@ -1,4 +1,20 @@
 GIT
+  remote: git://github.com/egeek/momentjs-rails.git
+  revision: bb72242dfec3ee50260e4ad0f57e27b57aa9526f
+  specs:
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
+GIT
   remote: https://github.com/Compass/compass-rails.git
   revision: 62e37c73e8c8470b094e8d7f2cbb98356b591e57
   branch: master
@@ -7,22 +23,6 @@ GIT
       compass (~> 1.0.0)
       sass-rails (< 5.1)
       sprockets (< 4.0)
-
-GIT
-  remote: https://github.com/derekprior/momentjs-rails.git
-  revision: eda1b74512db5844673bd4d37a6e4fe6127053b3
-  specs:
-    momentjs-rails (2.11.0)
-      railties (>= 3.1)
-
-GIT
-  remote: https://github.com/zpaulovics/datetimepicker-rails.git
-  revision: 36d21cec5da7f5b214925804f60e63c61c747023
-  branch: master
-  submodules: true
-  specs:
-    datetimepicker-rails (4.7.16)
-      momentjs-rails (>= 2.9.0)
 
 GEM
   remote: https://rubygems.org/
@@ -391,7 +391,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener_web (~> 1.2.0)
-  momentjs-rails (>= 2.8.1)!
+  momentjs-rails (~> 2.11.1)!
   money-rails
   mysql2 (~> 0.3.18)
   paperclip

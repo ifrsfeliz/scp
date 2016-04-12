@@ -43,8 +43,11 @@ gem 'chosen-rails'
 
 # simple form && datepicker
 gem 'simple_form'
-gem 'datetimepicker-rails', git: 'https://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
-gem 'momentjs-rails', '>= 2.8.1', git: 'https://github.com/derekprior/momentjs-rails.git' #dependency of datetimepicker-rails
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+# This gem above the author didn't updated moment to 2.11.1 so is breaking the dependencies
+#gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails' #dependency of datetimepicker-rails
+#To fix is the user egeek has created a PR, so while the main contributor do not merge we will use the specific fix
+gem 'momentjs-rails', '~> 2.11.1', :github => 'egeek/momentjs-rails' #dependency of datetimepicker-rails
 
 # Monetize
 gem 'money-rails'
