@@ -8,9 +8,9 @@
 
   <%= content_tag_for(:tr, @situations) do |situation| %>
     <td><%= situation.nome %></td>
-    <td><%= link_to 'Mostrar', situation, class: 'btn btn-default btn-xs' %></td>
-    <td><%= link_to 'Editar', edit_situation_path(situation), class: 'btn btn-warning btn-xs' %></td>
-    <td><%= link_to 'Destruir', situation, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+    <td><%= link_to 'Mostrar', situation, class: 'btn btn-default btn-xs', id: "show_situation_#{situation.id}" %></td>
+    <td><%= link_to 'Editar', edit_situation_path(situation), class: 'btn btn-warning btn-xs', id: "edit_situation_#{situation.id}" %></td>
+    <td><%= link_to 'Destruir', situation, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_situation_#{situation.id}" %></td>
   <% end %>
 </table>
 
