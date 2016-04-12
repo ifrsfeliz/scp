@@ -11,8 +11,8 @@
 
     <div class="form-group">
       <%= label_tag "Documentos" %>
-      <%= file_field_tag "files[]", type: :file, multiple: true %>
+      <%= file_field_tag "files[]", type: :file, multiple: true, id: "researcher_documents" %>
     </div>
 
-    <%= f.button :submit, class: 'btn btn-success' %>
+    <%= f.submit "Salvar", class: 'btn btn-success' %>
 <% end %>

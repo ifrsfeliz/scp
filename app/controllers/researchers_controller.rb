@@ -38,7 +38,7 @@ class ResearchersController < ApplicationController
           }
         end
 
-        format.html { redirect_to @researcher, notice: 'Pesquisador foi criado com sucesso.' }
+        format.html { redirect_to @researcher, notice: 'Pesquisador criado com sucesso.' }
         format.json { render :show, status: :created, location: @researcher }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class ResearchersController < ApplicationController
           }
         end
 
-        format.html { redirect_to @researcher, notice: 'Pesquisador foi atualizado com sucesso.' }
+        format.html { redirect_to @researcher, notice: 'Pesquisador atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @researcher }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class ResearchersController < ApplicationController
   def destroy
     @researcher.destroy
     respond_to do |format|
-      format.html { redirect_to researchers_url, notice: 'Pesquisador foi destruído com sucesso.' }
+      format.html { redirect_to researchers_url, notice: 'Pesquisador removido com sucesso.' }
       format.json { head :no_content }
     end
   end

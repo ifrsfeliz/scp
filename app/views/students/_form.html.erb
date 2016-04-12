@@ -7,10 +7,10 @@
     <%= f.input :email %>
     <%= f.input :telefone %>
     <%= f.input :celular %>
-    
+
     <div class="form-group">
       <%= label_tag "Documentos" %>
-      <%= file_field_tag "files[]", type: :file, multiple: true %>
+      <%= file_field_tag "files[]", type: :file, multiple: true, id: "student_documents" %>
     </div>
-    <%= f.button :submit, class: 'btn btn-primary'%>
+    <%= f.submit "Salvar", class: 'btn btn-primary'%>
 <% end %>
