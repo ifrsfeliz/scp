@@ -23,13 +23,13 @@
         <td><%= researcher.telefone %></td>
         <td><%= researcher.celular %></td>
         <% if can? :read, researcher %>
-          <td><%= link_to 'Mostrar', researcher, class: 'btn btn-default btn-xs' %></td>
+          <td><%= link_to 'Mostrar', researcher, class: 'btn btn-default btn-xs', id: "show_researcher_#{researcher.id}" %></td>
         <% end %>
         <% if can? :edit, researcher %>
-          <td><%= link_to 'Editar', edit_researcher_path(researcher), class: 'btn btn-warning btn-xs' %></td>
+          <td><%= link_to 'Editar', edit_researcher_path(researcher), class: 'btn btn-warning btn-xs', id: "edit_researcher_#{researcher.id}" %></td>
         <% end %>
         <% if can? :delete, researcher %>
-          <td><%= link_to 'Destruir', researcher, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+          <td><%= link_to 'Destruir', researcher, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_researcher_#{researcher.id}" %></td>
         <% end %>
       </tr>
     <% end %>
