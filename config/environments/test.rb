@@ -39,4 +39,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Email SMTP Configuration
+  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_mailer.default_url_options = { :host => "http://localhost:3000" }
 end

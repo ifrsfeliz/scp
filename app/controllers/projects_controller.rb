@@ -1,58 +1,45 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource
+
   skip_authorize_resource :only => [:per_year, :per_research_group]
-
   skip_before_filter :authenticate_user!, only: [:per_year, :per_research_group]
-
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
-  # GET /projects
-  # GET /projects.json
   def index
     @q = Project.ransack(params[:q])
     @projects = @q.result(distinct: true)
   end
 
-  # GET /projects/1
-  # GET /projects/1.json
   def show
   end
 
-  # GET /projects/new
   def new
     @project = Project.new
   end
 
-  # GET /projects/1/edit
   def edit
   end
 
-  # POST /projects
-  # POST /projects.json
   def create
     @project = Project.new(project_params)
 
-    respond_to do |format|
-      if @project.save
+    if @project.save
 
-        if params[:attachments]
-          params[:attachments].each { |f|
-            @project.project_attachments.create(file: f)
-          }
-        end
-
-        if params[:publications]
-          params[:publications].each { |f|
-            @project.project_publications.create(file: f)
-          }
-        end
-
-        format.html { redirect_to @project, notice: 'Projeto criado com sucesso.' }
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.html { render :new }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+      if params[:attachments]
+        params[:attachments].each { |f|
+          @project.project_attachments.create(file: f)
+        }
       end
+
+      if params[:publications]
+        params[:publications].each { |f|
+          @project.project_publications.create(file: f)
+        }
+      end
+
+      redirect_to @project, notice: 'Projeto criado com sucesso.'
+    else
+      render :new
     end
   end
 

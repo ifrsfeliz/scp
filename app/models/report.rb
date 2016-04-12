@@ -38,8 +38,6 @@ class Report < ActiveRecord::Base
   def self.report_request_notification
     reports = Report.where(entregue: [nil, false])
 
-    #today = Date.parse('02-04-2015')
-    #today = Date.parse('18-03-2015')
     today = Date.today
 
     reports.each do |r|
@@ -78,7 +76,7 @@ class Report < ActiveRecord::Base
         end
       end
     end
-      
+
   end
 
   private

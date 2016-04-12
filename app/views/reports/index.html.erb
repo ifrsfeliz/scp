@@ -15,7 +15,7 @@
     <td><%= report.entregue ? 'Entregue' : 'Pendente' %>
     <td><%= report.avaliacao ? report.avaliacao : 'Aguardando Avaliação' %>
     <td>
-      <%= link_to 'Mostrar', report, class: 'btn btn-default btn-xs' %>
+      <%= link_to 'Mostrar', report, class: 'btn btn-default btn-xs', id: "show_report_#{report.id}" %>
     </td>
   <% end %>
 </table>

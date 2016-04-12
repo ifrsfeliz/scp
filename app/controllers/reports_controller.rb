@@ -3,20 +3,13 @@ class ReportsController < ActionController::Base
   layout :resolve_layout
 
   before_action :authenticate_user!, except: [:deliver, :form_deliver]
-
   before_action :set_report, only: [:show, :edit, :update, :destroy, :form_deliver, :deliver, :reformulate, :approve]
-
   before_filter :verify_token_or_role, only: [:deliver, :form_deliver]
 
-  # GET /reports
-  # GET /reports.json
   def index
     @reports = Report.where('entregue = ? AND avaliacao = ? OR avaliacao = ?', true, 'Aguardando Avaliação', 'à Reformular')
-    # @reports = Report.all
   end
 
-  # GET /reports/1
-  # GET /reports/1.json
   def show
   end
 
@@ -24,45 +17,25 @@ class ReportsController < ActionController::Base
     if current_user.role? :admin
       @report.avaliacao = "Aprovado"
 
-      if @report.save
-        mail = ReportMailer.approved_report(@report).deliver_later
-
-        unless mail 
-          redirect_to reports_path, notice: 'Ocorreu um erro ao enviar o e-mail, comunique o suporte para solucionar o problema'
-        end
-
-        redirect_to reports_path, notice: 'Relatório Aprovado com sucesso!'
-      else
-        redirect_to reports_path, notice: 'Ocorreu um erro ao aprovar o relatório, comunique o suporte para solucionar o problema'
-      end
-
+      @report.save
+      ReportMailer.approved_report(@report).deliver_later
+      redirect_to reports_path, notice: 'Relatório aprovado com sucesso!'
     else
       redirect_to root_path, notice: 'Você não tem permissão de executar essa ação.'
     end
   end
 
   def reformulate
-    respond_to do |format|
-      if current_user.role? :admin
-        @report.avaliacao = 'à Reformular'
-        @report.entregue = false
+    if current_user.role? :admin
+      @report.avaliacao = 'à Reformular'
+      @report.entregue = false
 
-        if @report.update(report_params)
-          mail = ReportMailer.reformulate_report(@report).deliver_later
+      @report.update(report_params)
+      ReportMailer.reformulate_report(@report).deliver_later
 
-          unless mail
-            redirect_to root_path, notice: 'Ocorreu um erro ao enviar o e-mail, comunique o suporte para solucionar o problema'
-          end
-
-          format.html { redirect_to reports_path, notice: 'O pedido de reformulação foi enviado com sucesso!' }
-          format.json { render :show, status: :ok, location: @report }
-        else
-          format.html { render :edit }
-          format.json { render json: @report.errors, status: :unprocessable_entity }
-        end
-      else
-        redirect_to root_path, notice: 'Você não tem permissão de executar essa ação.'
-      end
+      redirect_to reports_path, notice: 'Pedido de reformulação enviado com sucesso!'
+    else
+      redirect_to root_path, notice: 'Você não tem permissão de executar essa ação.'
     end
   end
 
@@ -76,22 +49,15 @@ class ReportsController < ActionController::Base
     @report.entregue = true
     @report.avaliacao = 'Aguardando Avaliação'
 
-    respond_to do |format|
-      if @report.update(report_params)
+    @report.update(report_params)
 
-        if params[:report_attachments]
-          params[:report_attachments].each { |f|
-            @report.report_attachments.create(file: f)
-          }
-        end
-
-        format.html { redirect_to root_path, notice: 'O relatório foi enviado com sucesso!' }
-        format.json { render :show, status: :ok, location: @report }
-      else
-        format.html { render :edit }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
+    if params[:report_attachments]
+      params[:report_attachments].each { |f|
+        @report.report_attachments.create(file: f)
+      }
     end
+
+    redirect_to root_path, notice: 'O relatório enviado com sucesso!'
   end
 
   private

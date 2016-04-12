@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :project do
-    sequence(:nome) { |n| "Area #{n}" }
+    sequence(:nome) { |n| "Projeto #{n}" }
     association :coordenador, factory: :researcher
     data_inicio Time.now - 24.hours
     data_fim Time.now
