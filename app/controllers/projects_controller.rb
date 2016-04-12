@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
           }
         end
 
-        format.html { redirect_to @project, notice: 'Projeto foi criado com sucesso.' }
+        format.html { redirect_to @project, notice: 'Projeto criado com sucesso.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -59,27 +59,23 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    respond_to do |format|
-      if @project.update(project_params)
+    if @project.update(project_params)
 
-        if params[:attachments]
-          params[:attachments].each { |f|
-            @project.project_attachments.create(file: f)
-          }
-        end
-
-        if params[:publications]
-          params[:publications].each { |f|
-            @project.project_publications.create(file: f)
-          }
-        end
-
-        format.html { redirect_to @project, notice: 'Projeto foi atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+      if params[:attachments]
+        params[:attachments].each { |f|
+          @project.project_attachments.create(file: f)
+        }
       end
+
+      if params[:publications]
+        params[:publications].each { |f|
+          @project.project_publications.create(file: f)
+        }
+      end
+
+      redirect_to @project, notice: 'Projeto atualizado com sucesso.'
+    else
+      render :edit
     end
   end
 
@@ -87,21 +83,17 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Projeto foi destruído com sucesso.' }
-      format.json { head :no_content }
-    end
+
+    redirect_to projects_path, notice: 'Projeto removido com sucesso.'
   end
 
   def delete_edital
     @project = Project.find(params[:project_id])
     @project.edital = nil
 
-    if @project.save
-      redirect_to @project, notice: 'Edital deletado com sucesso.'
-    else
-      redirect_to @project, alert: 'Ocorreu um erro ao deletar o edital'
-    end
+    @project.save
+
+    redirect_to @project, notice: 'Edital deletado com sucesso.'
   end
 
   # GET /projects/per_research_group

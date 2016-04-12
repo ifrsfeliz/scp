@@ -53,18 +53,18 @@
       <div class="col-md-6">
         <div class="form-group">
           <h4 class="title">Anexos</h4>
-          <%= file_field_tag "attachments[]", type: :file, multiple: true %>
+          <%= file_field_tag "attachments[]", type: :file, multiple: true, id: 'project_attachments' %>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <h4 class="title">Publicações</h4>
-          <%= file_field_tag "publications[]", type: :file, multiple: true %>
+          <%= file_field_tag "publications[]", type: :file, multiple: true, id: 'project_publications' %>
         </div>
       </div>
     </div>
 
     <br />
 
-    <%= f.button :submit, class: 'btn btn-primary'%>
+    <%= f.submit "Salvar", class: 'btn btn-primary'%>
 <% end %>

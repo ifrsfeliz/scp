@@ -59,13 +59,13 @@
     <td><%= link_to project.research_line.nome, project.research_line unless project.research_line.nil? %></td>
     <td><%= project.situation.nome %></td>
     <% if can? :read, project %>
-      <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs' %></td>
+      <td><%= link_to 'Mostrar', project, class: 'btn btn-default btn-xs', id: "show_project_#{project.id}" %></td>
     <% end %>
     <% if can? :edit, project %>
-      <td><%= link_to 'Editar', edit_project_path(project), class: 'btn btn-warning btn-xs' %></td>
+      <td><%= link_to 'Editar', edit_project_path(project), class: 'btn btn-warning btn-xs', id: "edit_project_#{project.id}" %></td>
     <% end %>
     <% if can? :delete, project %>
-      <td><%= link_to 'Destruir', project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+      <td><%= link_to 'Destruir', project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_project_#{project.id}" %></td>
     <% end %>
   <% end %>
 </table>

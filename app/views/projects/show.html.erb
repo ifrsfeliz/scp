@@ -20,7 +20,7 @@
       <% if @project.edital_file_name? %>
         <dd><%= link_to @project.edital_file_name, @project.edital.url, target: '_blank' %>
         <% if (can? :delete, @project) %>
-          - <%= link_to 'Deletar', project_delete_edital_path(@project), class: 'btn btn-danger btn-xs' %> </dd>
+          - <%= link_to 'Deletar', project_delete_edital_path(@project), class: 'btn btn-danger btn-xs', id: "destroy_project_edital" %> </dd>
         <% end %>
       <% else %>
         <dd>Nenhum arquivo enviado.</dd>
@@ -137,7 +137,7 @@
             <td><%= link_to p.file_file_name, p.file.url %></td>
             <td>
               <% if can? :delete, p %>
-                <%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-xs btn-danger' %>
+                <%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-xs btn-danger', id: "destroy_project_attachment_#{p.id}" %>
               <% end %>
             </td>
           </tr>
@@ -157,7 +157,7 @@
             <td><%= link_to p.file_file_name, p.file.url %></td>
             <td>
               <% if can? :delete, p %>
-                <%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+                <%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' }, id: "destroy_project_publication_#{p.id}" %>
               <% end %>
             </td>
           </tr>
