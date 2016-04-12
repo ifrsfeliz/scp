@@ -11,13 +11,13 @@
     <td><%= research_line.nome %></td>
     <td><%= link_to research_line.research_group.nome, research_line.research_group %></td>
     <% if can? :read, research_line %>
-      <td><%= link_to 'Mostrar', research_line, class: 'btn btn-default btn-xs' %></td>
+      <td><%= link_to 'Mostrar', research_line, class: 'btn btn-default btn-xs', id: "show_research_line_#{research_line.id}" %></td>
     <% end %>
     <% if can? :edit, research_line %>
-      <td><%= link_to 'Editar', edit_research_line_path(research_line), class: 'btn btn-warning btn-xs' %></td>
+      <td><%= link_to 'Editar', edit_research_line_path(research_line), class: 'btn btn-warning btn-xs', id: "edit_research_line_#{research_line.id}" %></td>
     <% end %>
     <% if can? :delete, research_line %>
-      <td><%= link_to 'Destruir', research_line, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs' %></td>
+      <td><%= link_to 'Destruir', research_line, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-xs', id: "destroy_research_line_#{research_line.id}" %></td>
     <% end %>
   <% end %>
 </table>

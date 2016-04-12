@@ -31,7 +31,7 @@ class ResearchLinesController < ApplicationController
 
     respond_to do |format|
       if @research_line.save
-        format.html { redirect_to @research_line, notice: 'Research line was successfully created.' }
+        format.html { redirect_to @research_line, notice: 'Linha de Pesquisa criada com sucesso.' }
         format.json { render :show, status: :created, location: @research_line }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ResearchLinesController < ApplicationController
   def update
     respond_to do |format|
       if @research_line.update(research_line_params)
-        format.html { redirect_to @research_line, notice: 'Research line was successfully updated.' }
+        format.html { redirect_to @research_line, notice: 'Linha de Pesquisa atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @research_line }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ResearchLinesController < ApplicationController
   def destroy
     @research_line.destroy
     respond_to do |format|
-      format.html { redirect_to research_lines_url, notice: 'Research line was successfully destroyed.' }
+      format.html { redirect_to research_lines_url, notice: 'Linha de Pesquisa removida com sucesso.' }
       format.json { head :no_content }
     end
   end

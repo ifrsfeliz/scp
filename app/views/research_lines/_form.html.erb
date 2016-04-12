@@ -4,5 +4,5 @@
     <%= f.input :nome %>
     <%= f.association :research_group, label_method: :nome, value_method: :id, include_blank: false, input_html: {class: 'chosen-select'}, label: 'Grupo de Pesquisa' %>
 
-    <%= f.button :submit, class: 'btn btn-primary'%>
+    <%= f.submit "Salvar", class: 'btn btn-primary'%>
 <% end %>
