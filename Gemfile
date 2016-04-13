@@ -9,7 +9,7 @@ gem 'rails', '4.2.5.1'
 gem 'mysql2', '~> 0.3.18'
 
 # Compass to avoid error: NameError: uninitialized constant Sprockets::SassCacheStore
-gem "compass-rails", git: "https://github.com/Compass/compass-rails.git", branch: "master" 
+gem "compass-rails", git: "https://github.com/Compass/compass-rails.git", branch: "master"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby 
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -44,10 +44,7 @@ gem 'chosen-rails'
 # simple form && datepicker
 gem 'simple_form'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-# This gem above the author didn't updated moment to 2.11.1 so is breaking the dependencies
-#gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails' #dependency of datetimepicker-rails
-#To fix is the user egeek has created a PR, so while the main contributor do not merge we will use the specific fix
-gem 'momentjs-rails', '~> 2.11.1', :github => 'egeek/momentjs-rails' #dependency of datetimepicker-rails
+gem 'momentjs-rails', '~> 2.11.1', :github => 'derekprior/momentjs-rails' #dependency of datetimepicker-rails
 
 # Monetize
 gem 'money-rails'
@@ -150,5 +147,3 @@ group :test do
 
   gem 'webmock', '~> 1.24.2'
 end
-
-
