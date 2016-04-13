@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document.destroy
-    redirect_to :back, notice: 'Documento deletado com sucesso.'
+    redirect_to :back, notice: 'Documento removido com sucesso.'
   end
 
   private
