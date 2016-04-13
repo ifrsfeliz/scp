@@ -50,7 +50,7 @@
     <% @report.report_attachments.each do |p| %>
       <tr>
         <td><%= link_to p.file_file_name, p.file.url %></td>
-        <td><%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td><%= link_to 'Deletar', p, method: :delete, data: { confirm: 'Você tem certeza?' }, id: "destroy_report_attachment_#{p.id}" %></td>
       </tr>
     <% end %>
   <% else %>

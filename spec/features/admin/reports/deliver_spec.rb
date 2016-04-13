@@ -18,7 +18,7 @@ RSpec.feature 'Deve entregar um relatório como pesquisador' do
 
     click_on 'Enviar Relatório'
 
-    expect(page).to have_text('O relatório enviado com sucesso!')
+    expect(page).to have_text('Relatório enviado com sucesso!')
   end
 
   it 'Não deve deixar acessar relatório que já foi entregue' do

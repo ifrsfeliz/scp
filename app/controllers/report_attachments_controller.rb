@@ -3,10 +3,7 @@ class ReportAttachmentsController < ApplicationController
 
   def destroy
     @attachment.destroy
-    respond_to do |format|
-      format.html { redirect_to :back, notice: 'Anexo deletado com sucesso.' }
-      format.json { head :no_content }
-    end
+    redirect_to :back, notice: 'Anexo deletado com sucesso.'
   end
 
   private

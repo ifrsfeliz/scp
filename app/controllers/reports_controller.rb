@@ -57,7 +57,7 @@ class ReportsController < ActionController::Base
       }
     end
 
-    redirect_to root_path, notice: 'O relatório enviado com sucesso!'
+    redirect_to root_path, notice: 'Relatório enviado com sucesso!'
   end
 
   private
