@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   private
   def set_default_role
     if roles.empty?
-      self.roles << Role.find_by_name('comum')
+      self.roles << Role.where(name: 'comum').first_or_create
     end
   end
 end
