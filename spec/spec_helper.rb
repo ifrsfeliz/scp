@@ -1,8 +1,9 @@
 # IF coverage=on rspec will start simplecov
-if ENV['coverage'] == 'on'
+if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start 'rails' do
     minimum_coverage 100
+    add_filter 'app/inputs'
   end
 end
 
