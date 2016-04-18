@@ -1,0 +1,9 @@
+pt-BR:
+  enums:
+    report:
+      status:
+        aguardando_data_de_envio: 'Aguardando Data de Envio'
+        pendente: 'Pendente'
+        em_avaliacao: 'Em Avaliação'
+        aprovado: 'Aprovado'
+        em_reformulacao: 'Em Reformulação'

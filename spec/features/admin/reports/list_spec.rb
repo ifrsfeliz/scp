@@ -2,7 +2,7 @@ require 'rails_helper_features'
 
 RSpec.feature 'Deve mostrar relatório com avaliação pendente' do
   given!(:admin) { create :user, :as_admin }
-  given!(:report) { create :report, entregue: true, avaliacao: 'Aguardando Avaliação' }
+  given!(:report) { create :report, status: Report.statuses[:em_avaliacao]}
   given!(:report2) { create :report }
 
   it 'Deve mostrar relatórios pendentes' do

@@ -156,6 +156,7 @@ GEM
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
       mail (~> 2.6.3)
+    enum_help (0.0.15)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.7.0)
@@ -385,6 +386,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   email_spec
+  enum_help
   execjs
   factory_girl_rails
   faker

@@ -7,7 +7,7 @@ class ReportsController < ActionController::Base
   before_filter :verify_token_or_role, only: [:deliver, :form_deliver]
 
   def index
-    @reports = Report.where('entregue = ? AND avaliacao = ? OR avaliacao = ?', true, 'Aguardando Avaliação', 'à Reformular')
+    @reports = Report.pendente + Report.em_avaliacao + Report.em_reformulacao
   end
 
   def show
@@ -15,9 +15,9 @@ class ReportsController < ActionController::Base
 
   def approve
     if current_user.role? :admin
-      @report.avaliacao = "Aprovado"
-
+      @report.status = Report.statuses[:aprovado]
       @report.save
+
       ReportMailer.approved_report(@report).deliver_later
       redirect_to reports_path, notice: 'Relatório aprovado com sucesso!'
     else
@@ -27,10 +27,10 @@ class ReportsController < ActionController::Base
 
   def reformulate
     if current_user.role? :admin
-      @report.avaliacao = 'à Reformular'
-      @report.entregue = false
-
+      @report.status = Report.statuses[:em_reformulacao]
+      @report.enviado_pelo_pesquisador_em = nil
       @report.update(report_params)
+
       ReportMailer.reformulate_report(@report).deliver_later
 
       redirect_to reports_path, notice: 'Pedido de reformulação enviado com sucesso!'
@@ -46,9 +46,8 @@ class ReportsController < ActionController::Base
   end
 
   def deliver
-    @report.entregue = true
-    @report.avaliacao = 'Aguardando Avaliação'
-
+    @report.status = Report.statuses[:em_avaliacao]
+    @report.enviado_pelo_pesquisador_em = Time.now
     @report.update(report_params)
 
     if params[:report_attachments]

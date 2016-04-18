@@ -48,21 +48,17 @@
       <tr>
         <th>Período de Desenvolvimento</th>
         <th>Status</th>
-        <th>Avaliação</th>
+        <th>Enviado pelo Pesquisador em:</th>
         <th>Ações</th>
       </tr>
       <% if @project.reports.any? %>
         <% @project.reports.each do |r| %>
           <tr>
-            <td><%= l r.periodo_desenvolvimento_inicio %> à <strong><%= l r.periodo_desenvolvimento_fim %></strong></td>
-            <td><%= (r.entregue) ? 'Entregue' : 'Pendente' %></td>
+            <td><%= l r.periodo_desenvolvimento_inicio %> a <strong><%= l r.periodo_desenvolvimento_fim %></strong></td>
+            <td><%= r.status_i18n %>
+            <td><%= l r.enviado_pelo_pesquisador_em, format: :long if r.enviado_pelo_pesquisador_em %></td>
             <td>
-              <% if r.entregue %>
-                <%= (r.avaliacao) ? r.avaliacao : 'Em avaliação' %>
-              <% end %>
-            </td>
-            <td>
-              <% if r.entregue? %>
+              <% if r.aprovado? %>
                 <%= link_to "Mostrar", r, class: 'btn btn-default btn-xs' %>
               <% end %>
             </td>

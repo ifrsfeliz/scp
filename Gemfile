@@ -41,6 +41,9 @@ gem 'cancancan'
 # Let the Selects good to use
 gem 'chosen-rails'
 
+# Enum help
+gem 'enum_help'
+
 # simple form && datepicker
 gem 'simple_form'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true

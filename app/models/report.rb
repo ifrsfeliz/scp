@@ -25,6 +25,10 @@
 #
 
 class Report < ActiveRecord::Base
+
+  # Enums
+  enum status: [:aguardando_data_de_envio, :pendente, :em_avaliacao, :aprovado, :em_reformulacao]
+
   # Associations
   belongs_to :project
   has_many :report_attachments, dependent: :destroy
@@ -36,16 +40,19 @@ class Report < ActiveRecord::Base
   validates_presence_of :periodo_desenvolvimento_inicio, :periodo_desenvolvimento_fim
 
   def self.report_request_notification
-    reports = Report.where(entregue: [nil, false])
+    reports = Report.aguardando_data_de_envio + Report.pendente
 
     today = Date.today
 
     reports.each do |r|
-      if (r.notificacao_antecipada.nil? && r.periodo_desenvolvimento_fim - 15 <= today) # 15 days early or next the deliver date
+
+      if (r.notificacao_antecipada.nil? && r.periodo_desenvolvimento_fim <= today + 15.days ) # 15 days early or next the deliver date
+
         mail = ReportMailer.early_report_notification(r).deliver_now
 
         if mail
           r.notificacao_antecipada = true
+          r.status = Report.statuses[:pendente]
           r.save
         end
 
@@ -54,24 +61,28 @@ class Report < ActiveRecord::Base
 
         if mail
           r.notificacao_no_dia = true
+          r.status = Report.statuses[:pendente]
           r.save
         end
 
-      elsif (r.notificacao_atrasada.nil? && r.periodo_desenvolvimento_fim + 15 >= today)
+      elsif (r.notificacao_atrasada.nil? && r.periodo_desenvolvimento_fim <= today - 15.days)
         mail = ReportMailer.first_delayed_report_notification(r).deliver_now
 
         if mail
           r.notificacao_atrasada = true
           r.ultima_data_notificacao_atrasada = today
+          r.status = Report.statuses[:pendente]
           r.save
         end
 
       # notificacao_atrasada significa que já foi entregue outras notificacoes
-      elsif (r.notificacao_atrasada == true && r.ultima_data_notificacao_atrasada + 15 >= today)
+      elsif (r.notificacao_atrasada == true && r.ultima_data_notificacao_atrasada <= today - 15.days)
         mail = ReportMailer.others_delayed_report_notification(r).deliver_now
 
         if mail
+          r.notificacao_atrasada = true
           r.ultima_data_notificacao_atrasada = today
+          r.status = Report.statuses[:pendente]
           r.save
         end
       end
