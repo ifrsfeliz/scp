@@ -11,9 +11,9 @@
 
   <%= content_tag_for(:tr, @reports) do |report| %>
     <td><%= report.project.nome %></td>
-    <td><%= l report.periodo_desenvolvimento_inicio %> à <%= l report.periodo_desenvolvimento_fim %></td>
+    <td><%= l report.periodo_desenvolvimento_inicio %> a <%= l report.periodo_desenvolvimento_fim %></td>
     <td><%= l report.enviado_pelo_pesquisador_em, format: :long if report.enviado_pelo_pesquisador_em %></td>
-    <td><%= report.status_i18n %>
+    <td><%= report.status_i18n %></td>
     <td>
       <%= link_to 'Mostrar', report, class: 'btn btn-default btn-xs', id: "show_report_#{report.id}" %>
     </td>

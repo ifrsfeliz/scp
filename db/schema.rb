@@ -223,6 +223,10 @@ ActiveRecord::Schema.define(version: 20160418142108) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "documents", "students"
+  add_foreign_key "projects", "research_lines"
+  add_foreign_key "projects", "situations"
   add_foreign_key "report_attachments", "reports"
   add_foreign_key "reports", "projects"
+  add_foreign_key "research_lines", "research_groups"
 end
