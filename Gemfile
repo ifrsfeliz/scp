@@ -6,7 +6,7 @@ gem 'rails', '4.2.5.1'
 # gem 'sqlite3'
 
 # MySQL Gem
-gem 'mysql2', '~> 0.3.18'
+gem 'mysql2'
 
 # Compass to avoid error: NameError: uninitialized constant Sprockets::SassCacheStore
 gem "compass-rails", git: "https://github.com/Compass/compass-rails.git", branch: "master"

@@ -372,7 +372,7 @@ DEPENDENCIES
   letter_opener_web (~> 1.2.0)
   momentjs-rails (~> 2.11.1)!
   money-rails
-  mysql2 (~> 0.3.18)
+  mysql2
   paperclip
   poltergeist
   pry-rails
