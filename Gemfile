@@ -69,11 +69,6 @@ gem 'ransack'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-gem 'capistrano-rvm'
-
 # runtime js to debian
 gem 'execjs'
 gem 'therubyracer'
@@ -84,10 +79,6 @@ group :development, :test do
 
   # Env vars for configurations
   gem 'dotenv-rails'
-
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rails', '~> 1.1.1'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
