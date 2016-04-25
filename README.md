@@ -140,11 +140,11 @@ Copiar a localização referente ao `Command`, exemplo do output:
 
 ```console
 passenger-config was invoked through the following Ruby interpreter:
-Command: /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby
-Version: ruby 2.3.0 (2015-08-18 revision 51636) [x86_64-linux]
-To use in Apache: PassengerRuby /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby
-To use in Nginx : passenger_ruby /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby
-To use with Standalone: /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby /usr/bin/passenger start
+Command: /home/ticpfeliz/.rvm/gems/ruby-2.3.0/wrappers/ruby
+Version: ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
+To use in Apache: PassengerRuby /home/ticpfeliz/.rvm/gems/ruby-2.3.0/wrappers/ruby
+To use in Nginx : passenger_ruby /home/ticpfeliz/.rvm/gems/ruby-2.3.0/wrappers/ruby
+To use with Standalone: /home/ticpfeliz/.rvm/gems/ruby-2.3.0/wrappers/ruby /usr/bin/passenger start
 ```
 
 Editar o arquivo /etc/nginx/nginx.conf
@@ -206,10 +206,10 @@ Entrar na pasta do projeto e executar os comandos para instalar as bibliotecas d
 Para a configuração da aplicação todos os dados obrigatórios ficam no arquivo `.env.production`, para isso basta copiar o arquivo `.env.example` e fazer as alterações necessárias.
 
 ```console
-cp ~/app/scp/.env.example ~/app/scp/.env.production
+cp .env.example .env.production
 ```
 
-Depois de copiar o arquivo, abrir o arquivo `.env.production` e fazer as alterações necessárias seguindo as instruções que dentro estão.
+Depois de copiar o arquivo, *abrir o arquivo* `.env.production` e fazer as alterações necessárias seguindo as instruções que dentro estão.
 
 
 Se tudo estiver certo o comando abaixo, irá criar as tabelas de usuário e funções e também popular o usuário administrador configurado no início.
