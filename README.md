@@ -90,8 +90,8 @@ Instalar a versão estável do ruby, a atual é 2.2.3 (pode verificar a versão 
 Ao executar o rvm install, se houver mais dependências, será pedida a senha para executar comandos sudos
 
 ```console
-rvm install 2.2.3
-rvm default 2.2.3
+rvm install 2.3.0
+rvm use 2.3.0 --default
 ```
 
 
@@ -140,11 +140,11 @@ Copiar a localização referente ao `Command`, exemplo do output:
 
 ```console
 passenger-config was invoked through the following Ruby interpreter:
-Command: /home/deploy/.rvm/gems/ruby-2.2.3/wrappers/ruby
-Version: ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-linux]
-To use in Apache: PassengerRuby /home/deploy/.rvm/gems/ruby-2.2.3/wrappers/ruby
-To use in Nginx : passenger_ruby /home/deploy/.rvm/gems/ruby-2.2.3/wrappers/ruby
-To use with Standalone: /home/deploy/.rvm/gems/ruby-2.2.3/wrappers/ruby /usr/bin/passenger start
+Command: /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby
+Version: ruby 2.3.0 (2015-08-18 revision 51636) [x86_64-linux]
+To use in Apache: PassengerRuby /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby
+To use in Nginx : passenger_ruby /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby
+To use with Standalone: /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby /usr/bin/passenger start
 ```
 
 Editar o arquivo /etc/nginx/nginx.conf
@@ -157,7 +157,7 @@ Nas linhas onde estiver o código abaixo, descomentar as linhas tirando o '#', n
 
 ```nginx
 passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
-passenger_ruby /home/deploy/.rvm/gems/ruby-2.2.3/wrappers/ruby;
+passenger_ruby /home/deploy/.rvm/gems/ruby-2.3.0/wrappers/ruby;
 ```
 
 Editar o arquivo /etc/nginx/sites-enabled/default
@@ -203,61 +203,14 @@ Entrar na pasta do projeto e executar os comandos para instalar as bibliotecas d
   bundle install
 ```
 
-Configurar o arquivo do banco de dados `config/database.yml` com o código de exemplo, alterando o usuario e senha:
+Para a configuração da aplicação todos os dados obrigatórios ficam no arquivo `.env.production`, para isso basta copiar o arquivo `.env.example` e fazer as alterações necessárias.
 
 ```console
-  nano config/database.yml
+cp ~/app/scp/.env.example ~/app/scp/.env.production
 ```
 
-```yaml
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: scp
-  username: usuariodobanco
-  password: senhadousuario
-  pool: 5
-  host: localhost
-  port: 3306
-```
+Depois de copiar o arquivo, abrir o arquivo `.env.production` e fazer as alterações necessárias seguindo as instruções que dentro estão.
 
-Configurar o arquivo de segurança da aplicação, para gerar cookies etc. **NÃO UTILIZAR O CÓDIGO ABAIXO POR SEGURANÇA, ADICIONAR/ALTERAR/REMOVER ALGUNS CARACTERES**.
-
-```console
-nano config/secrets.yml
-```
-
-Dados do arquivo `config/secrets.yml`
-
-```yaml
-production:
-  secret_key_base: b38c6d5ef3c8048bea9a41ff4ea20676e505404e973446c3efc9d281fe65
-  secret_token: b38c6d5ef3c8048bea9a41ff4ea20676e505404e973446c3efc9d281654asd9
-```
-
-Configurar os dados para Envio de E-mail e URL do site para compilação dos assets
-
-```console
-nano config/settings.yml
-```
-
-Código de exemplo a ser colocado e modificado: o `email_report_managers` serão as pessoas que receberão cópias das notificações enviadas para os pesquisadores, aqui quem recebe isso é o pessoal que precisa cuidar os prazos dos relatórios
-
-```yaml
-production:
-  server_url: http://dominio.com.br
-  gmail_username: email@dominio.com.br
-  gmail_password: "sua senha" #deixar entre aspas
-  email_report_managers:
-    - dpi@feliz.ifrs.edu.br
-  nome_departamento: Departamento de Pesquisa, Pós Graduação e Inovação - Campus Feliz
-  campus_endereco1: Rua Princesa Isabel - N° 60
-  campus_endereco2: Vila Rica - Feliz - RS
-  campus_telefone: (51) 3637-4418
-  titulo_do_site: SCP - Controle de Projetos de Pesquisa do Campus Feliz
-
-```
 
 Se tudo estiver certo o comando abaixo, irá criar as tabelas de usuário e funções e também popular o usuário administrador configurado no início.
 
@@ -266,6 +219,8 @@ rake db:setup RAILS_ENV=production
 ```
 
 Para testar se as credenciais do e-mail estão corretas e se enviará o e-mail (cuidar que pode ser permissão no firewall também), mostrará erro se houver falhas.
+
+Quando executar esse comando utilizando uma conta nova do Gmail, poderá causar uma exception, terá de logar na conta e habilitar a opção: "Permitir apps menos seguras". Link para auxilio: https://support.google.com/accounts/answer/6010255?hl=pt-BR
 
 ```console
 rake system:testar_envio_de_email RAILS_ENV=production
