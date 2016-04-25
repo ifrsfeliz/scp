@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418142108) do
+ActiveRecord::Schema.define(version: 20160425165002) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "nome",       limit: 255
@@ -29,9 +29,6 @@ ActiveRecord::Schema.define(version: 20160418142108) do
     t.integer  "student_id",        limit: 4
     t.integer  "researcher_id",     limit: 4
   end
-
-  add_index "documents", ["researcher_id"], name: "index_documents_on_researcher_id", using: :btree
-  add_index "documents", ["student_id"], name: "index_documents_on_student_id", using: :btree
 
   create_table "member_researchers", force: :cascade do |t|
     t.integer  "project_id",    limit: 4
@@ -86,18 +83,15 @@ ActiveRecord::Schema.define(version: 20160418142108) do
     t.integer  "valor_aipct_cents",   limit: 4
     t.integer  "research_line_id",    limit: 4
     t.integer  "situation_id",        limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "scholarship_type_id", limit: 4
     t.string   "edital_file_name",    limit: 255
     t.string   "edital_content_type", limit: 255
     t.integer  "edital_file_size",    limit: 4
     t.datetime "edital_updated_at"
+    t.text     "observacao",          limit: 65535
   end
-
-  add_index "projects", ["research_line_id"], name: "index_projects_on_research_line_id", using: :btree
-  add_index "projects", ["researcher_id"], name: "index_projects_on_researcher_id", using: :btree
-  add_index "projects", ["situation_id"], name: "index_projects_on_situation_id", using: :btree
 
   create_table "report_attachments", force: :cascade do |t|
     t.integer  "report_id",         limit: 4
@@ -108,8 +102,6 @@ ActiveRecord::Schema.define(version: 20160418142108) do
     t.integer  "file_file_size",    limit: 4
     t.datetime "file_updated_at"
   end
-
-  add_index "report_attachments", ["report_id"], name: "index_report_attachments_on_report_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.text     "atividades_desenvolvidas",         limit: 65535
@@ -135,8 +127,6 @@ ActiveRecord::Schema.define(version: 20160418142108) do
     t.datetime "enviado_pelo_pesquisador_em"
   end
 
-  add_index "reports", ["project_id"], name: "index_reports_on_project_id", using: :btree
-
   create_table "research_groups", force: :cascade do |t|
     t.string   "nome",               limit: 255
     t.integer  "researcher_id",      limit: 4
@@ -147,16 +137,12 @@ ActiveRecord::Schema.define(version: 20160418142108) do
     t.integer  "area_id",            limit: 4
   end
 
-  add_index "research_groups", ["researcher_id"], name: "index_research_groups_on_researcher_id", using: :btree
-
   create_table "research_lines", force: :cascade do |t|
     t.string   "nome",              limit: 255
     t.integer  "research_group_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
-
-  add_index "research_lines", ["research_group_id"], name: "index_research_lines_on_research_group_id", using: :btree
 
   create_table "researchers", force: :cascade do |t|
     t.string   "nome",        limit: 255
@@ -223,10 +209,4 @@ ActiveRecord::Schema.define(version: 20160418142108) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "documents", "students"
-  add_foreign_key "projects", "research_lines"
-  add_foreign_key "projects", "situations"
-  add_foreign_key "report_attachments", "reports"
-  add_foreign_key "reports", "projects"
-  add_foreign_key "research_lines", "research_groups"
 end
